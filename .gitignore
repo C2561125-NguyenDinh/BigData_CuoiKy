@@ -18,3 +18,6 @@ report/*.png
 outputs/**/t87*
 outputs/**/t88*
 outputs/**/f55*
+
+# Script day len GitHub (chi dung tren may)
+push_github.bat

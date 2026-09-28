@@ -1,0 +1,19 @@
+layer,dataset,files,rows,columns,row_groups,size_mb,schema_fp,producer
+Bronze,fhvhv_tripdata_2024-*,12,239470448,24,236,5508.5,cc5218a0b9,NYC TLC
+Silver,service=hvfhv/year=2024,48,229331243,32,270,7015.0,9f87dd8d01,03_silver_gold_month.py
+Bronze,fhvhv_tripdata_2025-*,12,243589684,25,238,5683.2,fefb24f298,NYC TLC
+Silver,service=hvfhv/year=2025,48,232106815,32,264,7131.3,a0d5ac3dc9,03_silver_gold_month.py
+Bronze,yellow_tripdata_2024-*,12,41169720,19,44,660.9,c15873e78e,NYC TLC
+Silver,service=yellow/year=2024,12,39183528,32,47,873.9,eed64b69bd,03_silver_gold_month.py
+Bronze,yellow_tripdata_2025-*,12,48722602,20,53,791.5,483751328d,NYC TLC
+Silver,service=yellow/year=2025,12,43690199,32,52,998.9,2e6c46de6d,03_silver_gold_month.py
+Gold,company_grp_day,1,54825,19,1,2.6,07ec6f751e,02/04/09
+Gold,dim_zone,1,265,17,1,0.0,23a0dae5a2,02/04/09
+Gold,dml_od_dataset,1,9280,36,1,1.5,200e385a2c,02/04/09
+Gold,grp_hour_day,1,859415,19,7,29.4,dbf4b340d5,02/04/09
+Gold,od_month,1,2230151,18,19,64.7,17135dbd66,02/04/09
+Gold,trip_sample,1,1974894,34,17,62.3,8d0689e210,02/04/09
+Gold,zone_day_do,1,370868,18,4,14.4,6375ac9537,02/04/09
+Gold,zone_day_pu,1,358148,20,3,14.3,3c100d0bfc,02/04/09
+Gold,zone_hour_month,1,281102,18,3,9.9,d9a3099448,02/04/09
+Gold,zone_polygons,1,49189,5,1,0.8,b71cabf3ad,02/04/09

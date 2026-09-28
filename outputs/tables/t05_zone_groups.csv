@@ -1,0 +1,11 @@
+grp,Borough,n_zones
+AIRPORT,EWR,1
+AIRPORT,Queens,2
+CRZ,Manhattan,38
+CRZ_PARTIAL,Manhattan,6
+MN_NORTH,Manhattan,25
+OUTER,Bronx,43
+OUTER,Brooklyn,61
+OUTER,Queens,67
+OUTER,Staten Island,20
+UNKNOWN,Unknown,1

@@ -1,0 +1,41 @@
+{
+  "seconds": 39.6,
+  "overlap": {
+    "auc_propensity": 0.9496387800426619,
+    "share_trimmed": 0.5010775862068966,
+    "n": 9280,
+    "n_treated": 3539
+  },
+  "x_sets": {
+    "r\u00fat g\u1ecdn": [
+      "ln_n_2024",
+      "miles_pt",
+      "min_pt",
+      "tips_pt",
+      "uber_share",
+      "night_share",
+      "same_zone"
+    ],
+    "\u0111\u1ea7y \u0111\u1ee7": [
+      "ln_n_2024",
+      "mph_2024",
+      "fare_pm_2024",
+      "pay_pm_2024",
+      "miles_pt",
+      "min_pt",
+      "tips_pt",
+      "uber_share",
+      "night_share",
+      "same_zone",
+      "pu_Man",
+      "do_Man",
+      "pu_Bro",
+      "do_Bro",
+      "pu_Que",
+      "do_Que",
+      "pu_Sta",
+      "do_Sta"
+    ]
+  },
+  "main": "r\u00fat g\u1ecdn"
+}

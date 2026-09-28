@@ -1,0 +1,5 @@
+scenario,rebuild,seconds,minutes
+Mất lớp Gold (còn Silver),Chạy lại phần Gold của bước 03 + bước 04,826.5,13.775
+Mất lớp Silver và Gold (còn Bronze),Chạy lại bước 03 toàn bộ + bước 04,5096.600000000001,84.94333333333336
+Mất một phân vùng tháng HVFHV,Chạy lại 4 khúc của tháng đó,168.64999999999998,2.810833333333333
+Mất toàn bộ kết quả phân tích (còn Gold),"Chạy lại các bước 06–11, 14",201.5,3.3583333333333334

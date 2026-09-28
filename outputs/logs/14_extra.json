@@ -1,0 +1,9 @@
+{
+  "seconds": 4.8,
+  "zone_effects": {
+    "n": 37,
+    "n_negative": 37,
+    "n_sig_negative": 37,
+    "n_mph_positive": 37
+  }
+}

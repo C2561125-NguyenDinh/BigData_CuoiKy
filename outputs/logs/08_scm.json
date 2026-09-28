@@ -1,0 +1,22 @@
+{
+  "seconds": 57.4,
+  "standard": {
+    "rmspe_pre": 0.02649525088398251,
+    "rmspe_post": 0.07880104628312841,
+    "ratio": 2.974157392514707,
+    "avg_gap_post": -0.06706425823240636,
+    "avg_pct_effect_post": -6.4996793855982435,
+    "n_donors_positive": 11
+  },
+  "demeaned": {
+    "rmspe_pre": 0.02649525088398243,
+    "rmspe_post": 0.07880104628312871,
+    "ratio": 2.9741573925147273,
+    "avg_gap_post": -0.06706425823240676,
+    "avg_pct_effect_post": -6.499679385598276,
+    "n_donors_positive": 11
+  },
+  "placebo_n": 60,
+  "placebo_rank_p": 0.18032786885245902,
+  "placebo_gap_p": 0.01639344262295082
+}

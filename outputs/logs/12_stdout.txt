@@ -1,0 +1,9 @@
+         sec_quality  sec_silver  sec_gold  ...      n_raw  silver_mb   rows_per_sec
+service                                     ...                                     
+hvfhv          217.6      3613.3     661.3  ...  483060132    14146.0  107542.662630
+yellow          26.8       412.9      89.4  ...   89892322     1872.6  169928.775047
+
+[2 rows x 7 columns]          bronze_mb  silver_mb
+service                      
+hvfhv      11191.8    14146.0
+yellow      1452.2     1872.6

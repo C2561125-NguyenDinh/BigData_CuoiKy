@@ -1,0 +1,6 @@
+case,files,partitions,scanned_mb,rows_scanned,rows,seconds
+toàn bộ Silver (không lọc),120,48,16019.1,544311785,544311785,39.181
+service='hvfhv',96,24,14146.3,461438058,461438058,30.132
+service='hvfhv' AND year=2025,48,12,7131.3,232106815,232106815,15.286
+service='hvfhv' AND year=2025 AND month=3,4,1,601.6,19564232,19564232,1.402
+lọc theo cột d (không phải khóa phân vùng),120,48,16019.1,23353605,23353605,7.4

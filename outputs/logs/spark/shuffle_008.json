@@ -1,0 +1,19 @@
+{
+  "engine": "spark_df",
+  "months": [
+    "2025-03"
+  ],
+  "n_rows": 19564232,
+  "groups": 7981,
+  "shuffle": 8,
+  "times": [
+    10.61,
+    7.635,
+    7.326
+  ],
+  "first_s": 10.61,
+  "median_s": 7.635,
+  "py_peak_mb": 54.0,
+  "boot_s": 2.729223792994162,
+  "jvm_peak_mb": 838.015625
+}

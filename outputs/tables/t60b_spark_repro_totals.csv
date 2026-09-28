@@ -1,0 +1,3 @@
+service,months,n_silver,seconds,sec_median,jvm_peak_mb,rows_per_sec,duckdb_gold_all7_s
+hvfhv,24,461438058,189.85,6.915,1071.265625,2430540.205425336,661.3
+yellow,24,82873727,33.89,1.36,936.0,2445374.063145471,93.7

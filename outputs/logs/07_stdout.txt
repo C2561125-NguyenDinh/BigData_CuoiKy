@@ -1,0 +1,113 @@
+   service     outcome      coef        se              p    pct_effect
+0    hvfhv        ln_n -0.097248  0.006225   2.938454e-38 -9.266936e+00
+4    hvfhv     fare_pm  0.290567  0.025271   1.380255e-24  4.509439e+00
+8    hvfhv      pay_pm  0.039558  0.008949   1.503452e-05  8.613350e-01
+12   hvfhv     fare_pt  2.021840  0.102099   4.453624e-52  7.050133e+00
+16   hvfhv      pay_pt  0.775317  0.039803   5.016393e-51  3.791217e+00
+20   hvfhv    rider_pt  3.651179  0.109378   2.337765e-91  1.018665e+01
+24   hvfhv      cbd_pt  1.374953  0.009109  9.825980e-237  7.539817e+06
+28   hvfhv     tips_pt  0.104461  0.006432   2.542170e-40  6.842344e+00
+32   hvfhv   pay_share -2.336375  0.111505   8.930336e-56 -3.266259e+00
+36   hvfhv         mph  0.405569  0.020076   2.284535e-53  3.128308e+00
+40   hvfhv    miles_pt  0.142711  0.008208   3.806670e-44  3.177928e+00
+44   hvfhv        wait -0.376749  0.018307   1.398105e-54 -8.388961e+00
+48   hvfhv  shared_pct -0.489006  0.095247   5.927595e-07 -1.615918e+01
+52  yellow        ln_n -0.671240  0.058505   6.933337e-20 -4.889257e+01
+56  yellow        ln_n -0.249554  0.101408   1.715032e-02 -2.208519e+01
+60  yellow     fare_pm  0.240198  0.048743   8.556269e-06  3.732799e+00
+64  yellow     fare_pt -0.689027  0.177835   2.958806e-04 -3.866853e+00
+68  yellow    rider_pt -0.287712  0.178654   1.132426e-01 -1.390190e+00
+72  yellow      cbd_pt  0.524327  0.009385   8.712582e-49  3.983436e+06
+76  yellow     tips_pt  0.103601  0.071495   1.532105e-01  3.515265e+00
+80  yellow         mph -0.427154  0.148914   5.909421e-03 -4.057586e+00
+84  yellow    miles_pt -0.328363  0.063117   3.242967e-06 -1.158979e+01
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/causal.py:80: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  d[nm] = ((r == k) & (d[treat] == 1)).astype(float)
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/07_did_main.py:242: RuntimeWarning: divide by zero encountered in scalar divide
+  pct=(100 * (np.exp(r.coef) - 1)) if y == "ln_n" else 100 * r.coef / pre_mean,
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/07_did_main.py:242: RuntimeWarning: divide by zero encountered in scalar divide
+  pct=(100 * (np.exp(r.coef) - 1)) if y == "ln_n" else 100 * r.coef / pre_mean,
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/07_did_main.py:242: RuntimeWarning: divide by zero encountered in scalar divide
+  pct=(100 * (np.exp(r.coef) - 1)) if y == "ln_n" else 100 * r.coef / pre_mean,
+/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/code/07_did_main.py:242: RuntimeWarning: divide by zero encountered in scalar divide
+  pct=(100 * (np.exp(r.coef) - 1)) if y == "ln_n" else 100 * r.coef / pre_mean,
+                      flow   outcome                           outcome_label      coef        se              p    ci_low   ci_high   pre_mean        pct   n_obs  n_clusters
+0   Tất cả chuyến chạm CRZ      ln_n                       log số chuyến đón -0.105020  0.005576   6.371337e-49 -0.116005 -0.094035   6.812532  -9.969336  222720         237
+3   Tất cả chuyến chạm CRZ  rider_pt  Tổng chi phí hành khách / chuyến (USD)  2.832976  0.082314   5.873030e-94  2.670813  2.995139  35.336738   8.017084  222720         237
+4   Tất cả chuyến chạm CRZ    cbd_pt                  Phí CBD / chuyến (USD)  1.454348  0.004683  2.866255e-310  1.445122  1.463575   0.000000        inf  222720         237
+8   Tất cả chuyến chạm CRZ   fare_pt           Giá cước cơ sở / chuyến (USD)  1.216197  0.076039   1.682901e-39  1.066394  1.366000  28.570361   4.256849  222720         237
+9   Tất cả chuyến chạm CRZ    pay_pt          Thu nhập tài xế / chuyến (USD)  0.263724  0.034607   6.109307e-13  0.195546  0.331902  21.282905   1.239135  222720         237
+11                 CRZ→CRZ      ln_n                       log số chuyến đón -0.117248  0.006295   3.103764e-48 -0.129650 -0.104845   7.440235 -11.063502  170208         237
+14                 CRZ→CRZ  rider_pt  Tổng chi phí hành khách / chuyến (USD)  3.147922  0.116737   5.038213e-74  2.917944  3.377901  27.871437  11.294439  170208         237
+15                 CRZ→CRZ    cbd_pt                  Phí CBD / chuyến (USD)  1.463349  0.003884   0.000000e+00  1.455698  1.471000   0.000000        inf  170208         237
+19                 CRZ→CRZ   fare_pt           Giá cước cơ sở / chuyến (USD)  1.506601  0.106791   3.470907e-33  1.296216  1.716986  22.532963   6.686210  170208         237
+20                 CRZ→CRZ    pay_pt          Thu nhập tài xế / chuyến (USD)  0.069554  0.043728   1.130340e-01 -0.016592  0.155700  15.372951   0.452444  170208         237
+22               CRZ→ngoài      ln_n                       log số chuyến đón -0.096269  0.006789   1.983549e-33 -0.109644 -0.082895   6.433816  -9.178062  166104         237
+25               CRZ→ngoài  rider_pt  Tổng chi phí hành khách / chuyến (USD)  2.646362  0.113541   3.793526e-63  2.422678  2.870045  40.627913   6.513654  166104         237
+26               CRZ→ngoài    cbd_pt                  Phí CBD / chuyến (USD)  1.450826  0.005618  1.990048e-291  1.439758  1.461894   0.000000        inf  166104         237
+30               CRZ→ngoài   fare_pt           Giá cước cơ sở / chuyến (USD)  1.040632  0.101166   9.612029e-21  0.841327  1.239936  32.938068   3.159358  166104         237
+31               CRZ→ngoài    pay_pt          Thu nhập tài xế / chuyến (USD)  0.441865  0.040535   1.123723e-22  0.362008  0.521722  25.319947   1.745126  166104         237
+33               ngoài→CRZ      ln_n                       log số chuyến đón -0.098875  0.011702   6.140576e-15 -0.121951 -0.075799   6.414575  -9.414408  161976         200
+36               ngoài→CRZ  rider_pt  Tổng chi phí hành khách / chuyến (USD)  2.629318  0.097541   2.394147e-68  2.436973  2.821664  39.148283   6.716306  161976         200
+37               ngoài→CRZ    cbd_pt                  Phí CBD / chuyến (USD)  1.446409  0.005612  3.405328e-253  1.435342  1.457475   0.000000        inf  161976         200
+41               ngoài→CRZ   fare_pt           Giá cước cơ sở / chuyến (USD)  1.032499  0.090186   1.213166e-23  0.854656  1.210341  31.549162   3.272666  161976         200
+42               ngoài→CRZ    pay_pt          Thu nhập tài xế / chuyến (USD)  0.315427  0.058733   2.178490e-07  0.199608  0.431246  24.477982   1.288616  161976         200
+{
+ "hv_zone_week": {
+  "zones": 237,
+  "treated": 37,
+  "control": 200,
+  "weeks": 103,
+  "obs": 24411,
+  "trips": 425139263.0
+ },
+ "ye_zone_week": {
+  "zones": 54,
+  "treated": 38,
+  "control": 16,
+  "weeks": 103,
+  "obs": 5562,
+  "trips": 60238446.0
+ },
+ "hv_zone_day": {
+  "zones": 237,
+  "obs": 173247
+ },
+ "hv_od_month": {
+  "pairs": 9280,
+  "obs": 222720,
+  "by_type": {
+   "CRZ\u2192CRZ": 1351,
+   "CRZ\u2192ngo\u00e0i": 1180,
+   "kh\u00f4ng ch\u1ea1m CRZ": 5741,
+   "ngo\u00e0i\u2192CRZ": 1008
+  },
+  "trips": 342491463.0
+ }
+} time 27.7

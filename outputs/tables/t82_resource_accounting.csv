@@ -1,0 +1,10 @@
+item,value,unit,note
+Dung lượng lớp Bronze,12.34775390625,GB,"572,952,454 dòng; 48 tệp"
+Dung lượng lớp Silver,15.643652343749999,GB,"544,311,785 dòng; 120 tệp"
+Dung lượng lớp Gold,0.19521484375,GB,"6,188,137 dòng; 10 tệp"
+Thời gian lớp Silver + Gold (bước 03),83.68000000000002,phút,"2 luồng, giới hạn bộ nhớ DuckDB 1,8 GB"
+Thời gian hợp nhất Gold (bước 04),1.2633333333333332,phút,
+"Thời gian các bước phân tích 06–11, 14",3.3583333333333334,phút,11 nhật ký
+Tài nguyên xử lý Silver+Gold trên mỗi triệu dòng Bronze,17.526061595330916,lõi·giây,= thời gian × 2 lõi / triệu dòng
+Tái lập zone_day_pu bằng Spark trên mỗi triệu dòng Silver,0.8221023544437863,lõi·giây,local[2]
+Tỷ lệ Gold / Bronze theo dung lượng,1.580974525668098,%,mức cô đặc thông tin cho phân tích

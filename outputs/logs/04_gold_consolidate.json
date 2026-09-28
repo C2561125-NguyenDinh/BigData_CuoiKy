@@ -1,0 +1,12 @@
+{
+  "seconds": 75.8,
+  "rows": {
+    "zone_day_pu": 358148,
+    "zone_day_do": 370868,
+    "grp_hour_day": 859415,
+    "company_grp_day": 54825,
+    "zone_hour_month": 281102,
+    "od_month": 2230151,
+    "trip_sample": 1974894
+  }
+}

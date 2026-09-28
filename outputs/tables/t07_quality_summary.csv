@@ -1,0 +1,3 @@
+service,n_raw,q_out_of_month,q_bad_zone,q_bad_miles,q_bad_time,q_bad_fare,q_bad_speed,q_bad_pay,n_rejected,n_silver,silver_mb,sec_quality,sec_silver,sec_gold,sec_total,chunks,reject_pct
+hvfhv,483060132,0,21092054,105733,41526,460418,374,2743,21622074,461438058,14146.0,217.6,3613.3,661.3,4491.8,96,4.476062619881038
+yellow,89892322,634,797317,2183746,1632958,3618609,26945,0,7018595,82873727,1872.6,26.8,412.9,89.4,529.0,24,7.807780290734953

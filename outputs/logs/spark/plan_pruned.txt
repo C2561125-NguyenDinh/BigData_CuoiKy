@@ -1,0 +1,85 @@
+== Physical Plan ==
+AdaptiveSparkPlan (13)
++- == Final Plan ==
+   * HashAggregate (8)
+   +- AQEShuffleRead (7)
+      +- ShuffleQueryStage (6), Statistics(sizeInBytes=40.5 KiB, rowCount=1.30E+3)
+         +- Exchange (5)
+            +- * HashAggregate (4)
+               +- * Project (3)
+                  +- * ColumnarToRow (2)
+                     +- Scan parquet  (1)
++- == Initial Plan ==
+   HashAggregate (12)
+   +- Exchange (11)
+      +- HashAggregate (10)
+         +- Project (9)
+            +- Scan parquet  (1)
+
+
+(1) Scan parquet 
+Output [5]: [pu#5, fare#9, service#0, year#32, month#33]
+Batched: true
+Location: InMemoryFileIndex [file:/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPricing_CaseStudy/data/silver]
+PartitionFilters: [isnotnull(service#0), isnotnull(year#32), isnotnull(month#33), (service#0 = hvfhv), (year#32 = 2025), (month#33 = 3)]
+ReadSchema: struct<pu:int,fare:double>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [5]: [pu#5, fare#9, service#0, year#32, month#33]
+
+(3) Project [codegen id : 1]
+Output [2]: [pu#5, fare#9]
+Input [5]: [pu#5, fare#9, service#0, year#32, month#33]
+
+(4) HashAggregate [codegen id : 1]
+Input [2]: [pu#5, fare#9]
+Keys [1]: [pu#5]
+Functions [2]: [partial_count(1), partial_sum(fare#9)]
+Aggregate Attributes [2]: [count#145L, sum#146]
+Results [3]: [pu#5, count#147L, sum#148]
+
+(5) Exchange
+Input [3]: [pu#5, count#147L, sum#148]
+Arguments: hashpartitioning(pu#5, 8), ENSURE_REQUIREMENTS, [plan_id=178]
+
+(6) ShuffleQueryStage
+Output [3]: [pu#5, count#147L, sum#148]
+Arguments: 0
+
+(7) AQEShuffleRead
+Input [3]: [pu#5, count#147L, sum#148]
+Arguments: coalesced
+
+(8) HashAggregate [codegen id : 2]
+Input [3]: [pu#5, count#147L, sum#148]
+Keys [1]: [pu#5]
+Functions [2]: [count(1), sum(fare#9)]
+Aggregate Attributes [2]: [count(1)#138L, sum(fare#9)#140]
+Results [3]: [pu#5, count(1)#138L AS n#139L, sum(fare#9)#140 AS fare#141]
+
+(9) Project
+Output [2]: [pu#5, fare#9]
+Input [5]: [pu#5, fare#9, service#0, year#32, month#33]
+
+(10) HashAggregate
+Input [2]: [pu#5, fare#9]
+Keys [1]: [pu#5]
+Functions [2]: [partial_count(1), partial_sum(fare#9)]
+Aggregate Attributes [2]: [count#145L, sum#146]
+Results [3]: [pu#5, count#147L, sum#148]
+
+(11) Exchange
+Input [3]: [pu#5, count#147L, sum#148]
+Arguments: hashpartitioning(pu#5, 8), ENSURE_REQUIREMENTS, [plan_id=160]
+
+(12) HashAggregate
+Input [3]: [pu#5, count#147L, sum#148]
+Keys [1]: [pu#5]
+Functions [2]: [count(1), sum(fare#9)]
+Aggregate Attributes [2]: [count(1)#138L, sum(fare#9)#140]
+Results [3]: [pu#5, count(1)#138L AS n#139L, sum(fare#9)#140 AS fare#141]
+
+(13) AdaptiveSparkPlan
+Output [3]: [pu#5, n#139L, fare#141]
+Arguments: isFinalPlan=true
+

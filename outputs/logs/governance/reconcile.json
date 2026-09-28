@@ -1,0 +1,6 @@
+{
+  "partitions": 48,
+  "pass_bronze": 48,
+  "pass_balance": 48,
+  "pass_silver": 48
+}

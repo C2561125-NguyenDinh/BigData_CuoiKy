@@ -1,0 +1,9 @@
+{
+  "service": "yellow",
+  "month": "2025-06",
+  "seconds": 1.41,
+  "n_silver": 3827160,
+  "rows_per_sec": 2705703,
+  "boot_s": 6.77,
+  "jvm_peak_mb": 930.2734375
+}

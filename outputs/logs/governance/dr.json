@@ -1,0 +1,25 @@
+{
+  "rows": [
+    {
+      "scenario": "Mất lớp Gold (còn Silver)",
+      "rebuild": "Chạy lại phần Gold của bước 03 + bước 04",
+      "seconds": 826.5
+    },
+    {
+      "scenario": "Mất lớp Silver và Gold (còn Bronze)",
+      "rebuild": "Chạy lại bước 03 toàn bộ + bước 04",
+      "seconds": 5096.600000000001
+    },
+    {
+      "scenario": "Mất một phân vùng tháng HVFHV",
+      "rebuild": "Chạy lại 4 khúc của tháng đó",
+      "seconds": 168.64999999999998
+    },
+    {
+      "scenario": "Mất toàn bộ kết quả phân tích (còn Gold)",
+      "rebuild": "Chạy lại các bước 06–11, 14",
+      "seconds": 201.5
+    }
+  ],
+  "bronze_gb": 12.34765625
+}

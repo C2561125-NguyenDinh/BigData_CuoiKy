@@ -1,0 +1,93 @@
+{
+  "summary": [
+    {
+      "service": "hvfhv",
+      "grp": "AIRPORT",
+      "days": 731,
+      "flagged": 52,
+      "flagged_low": 21,
+      "flagged_high": 31
+    },
+    {
+      "service": "hvfhv",
+      "grp": "CRZ",
+      "days": 731,
+      "flagged": 61,
+      "flagged_low": 49,
+      "flagged_high": 12
+    },
+    {
+      "service": "hvfhv",
+      "grp": "MN_NORTH",
+      "days": 731,
+      "flagged": 51,
+      "flagged_low": 31,
+      "flagged_high": 20
+    },
+    {
+      "service": "hvfhv",
+      "grp": "OUTER",
+      "days": 731,
+      "flagged": 54,
+      "flagged_low": 28,
+      "flagged_high": 26
+    },
+    {
+      "service": "yellow",
+      "grp": "AIRPORT",
+      "days": 731,
+      "flagged": 49,
+      "flagged_low": 23,
+      "flagged_high": 26
+    },
+    {
+      "service": "yellow",
+      "grp": "CRZ",
+      "days": 731,
+      "flagged": 56,
+      "flagged_low": 51,
+      "flagged_high": 5
+    },
+    {
+      "service": "yellow",
+      "grp": "MN_NORTH",
+      "days": 731,
+      "flagged": 55,
+      "flagged_low": 46,
+      "flagged_high": 9
+    },
+    {
+      "service": "yellow",
+      "grp": "OUTER",
+      "days": 731,
+      "flagged": 48,
+      "flagged_low": 27,
+      "flagged_high": 21
+    }
+  ],
+  "crz_flagged": 61,
+  "pchart": [
+    {
+      "service": "hvfhv",
+      "pbar_pct": 4.476062619881038,
+      "months": 24,
+      "out_p_chart": 24,
+      "sigma_z": 43.21700199876573,
+      "out_laney": 2,
+      "laney_months": "2024-01;2025-08",
+      "p_min_pct": 3.832301071047344,
+      "p_max_pct": 5.7216782889475795
+    },
+    {
+      "service": "yellow",
+      "pbar_pct": 7.807780290734953,
+      "months": 24,
+      "out_p_chart": 24,
+      "sigma_z": 66.50965123139848,
+      "out_laney": 13,
+      "laney_months": "2024-01;2024-02;2024-04;2024-05;2024-06;2024-11;2025-05;2025-06;2025-07;2025-08;2025-09;2025-10;2025-11",
+      "p_min_pct": 4.0840978075508305,
+      "p_max_pct": 13.829576576895446
+    }
+  ]
+}

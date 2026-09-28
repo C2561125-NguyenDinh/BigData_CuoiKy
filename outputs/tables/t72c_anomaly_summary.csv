@@ -1,0 +1,9 @@
+service,grp,days,flagged,flagged_low,flagged_high
+hvfhv,AIRPORT,731,52,21,31
+hvfhv,CRZ,731,61,49,12
+hvfhv,MN_NORTH,731,51,31,20
+hvfhv,OUTER,731,54,28,26
+yellow,AIRPORT,731,49,23,26
+yellow,CRZ,731,56,51,5
+yellow,MN_NORTH,731,55,46,9
+yellow,OUTER,731,48,27,21

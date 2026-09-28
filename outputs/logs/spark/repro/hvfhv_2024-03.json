@@ -1,0 +1,9 @@
+{
+  "service": "hvfhv",
+  "month": "2024-03",
+  "seconds": 8.02,
+  "n_silver": 20441826,
+  "rows_per_sec": 2549038,
+  "boot_s": 6.18,
+  "jvm_peak_mb": 951.14453125
+}

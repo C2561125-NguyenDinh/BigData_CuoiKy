@@ -1,0 +1,20 @@
+{
+  "files": 50,
+  "total_gb": 12.35,
+  "seconds": 167.7,
+  "throughput_mb_s": 75.4,
+  "reverify": [
+    {
+      "file": "yellow_tripdata_2025-07.parquet",
+      "match": true
+    },
+    {
+      "file": "fhvhv_tripdata_2025-04.parquet",
+      "match": true
+    },
+    {
+      "file": "fhvhv_tripdata_2024-05.parquet",
+      "match": true
+    }
+  ]
+}

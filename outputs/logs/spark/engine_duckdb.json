@@ -1,0 +1,17 @@
+{
+  "engine": "duckdb",
+  "months": [
+    "2025-03"
+  ],
+  "n_rows": 19564232,
+  "groups": 7981,
+  "shuffle": 8,
+  "times": [
+    3.461,
+    3.124,
+    3.029
+  ],
+  "first_s": 3.461,
+  "median_s": 3.124,
+  "py_peak_mb": 135.4
+}

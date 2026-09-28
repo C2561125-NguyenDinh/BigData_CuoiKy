@@ -1,0 +1,43 @@
+{
+  "n": 1145311,
+  "flagged": 5727,
+  "fit_score_s": 26.2,
+  "rules": [
+    {
+      "rule": "Thu nhập tài xế > giá cước + tip",
+      "n": 132643,
+      "pct": 11.581395795552474,
+      "overlap_iso_pct": 0.9318245214598584
+    },
+    {
+      "rule": "Giá cước / dặm > 30 USD",
+      "n": 8748,
+      "pct": 0.7638100044442078,
+      "overlap_iso_pct": 10.859625057155922
+    },
+    {
+      "rule": "Tip > giá cước",
+      "n": 339,
+      "pct": 0.029598947360149338,
+      "overlap_iso_pct": 24.48377581120944
+    },
+    {
+      "rule": "Tốc độ < 2 dặm/giờ và thời gian > 30 phút",
+      "n": 186,
+      "pct": 0.01624013040999344,
+      "overlap_iso_pct": 23.655913978494624
+    },
+    {
+      "rule": "Cùng vùng đón/trả và quãng đường > 10 dặm",
+      "n": 397,
+      "pct": 0.03466307404713655,
+      "overlap_iso_pct": 17.884130982367758
+    },
+    {
+      "rule": "Isolation Forest (ngưỡng 0,5%)",
+      "n": 5727,
+      "pct": 0.5000388540754432,
+      "overlap_iso_pct": 100.0
+    }
+  ]
+}

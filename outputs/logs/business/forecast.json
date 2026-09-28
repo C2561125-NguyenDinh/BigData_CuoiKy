@@ -1,0 +1,71 @@
+{
+  "best": "Ridge: lịch + MN phía bắc + quận ngoài + xu hướng",
+  "accuracy": [
+    {
+      "model": "Ridge: lịch + MN phía bắc + quận ngoài + xu hướng",
+      "holdout_days": 65,
+      "mape_pct": 8.9233197918918,
+      "rmse": 19087.5349379557,
+      "bias_pct": -3.9988293138770983,
+      "post_effect_pct": 3.0619628805943933
+    },
+    {
+      "model": "Ridge: lịch + quận ngoài",
+      "holdout_days": 65,
+      "mape_pct": 9.493099155375015,
+      "rmse": 18867.390848533927,
+      "bias_pct": -4.858162087948375,
+      "post_effect_pct": -8.591633349292305
+    },
+    {
+      "model": "Ridge: lịch + MN phía bắc + quận ngoài",
+      "holdout_days": 65,
+      "mape_pct": 9.494709502287922,
+      "rmse": 19854.26616841233,
+      "bias_pct": -5.622646147756233,
+      "post_effect_pct": -2.2384651731729655
+    },
+    {
+      "model": "LightGBM: lịch + MN phía bắc + quận ngoài",
+      "holdout_days": 65,
+      "mape_pct": 11.456866890100327,
+      "rmse": 21339.62262327505,
+      "bias_pct": -5.964190140363014,
+      "post_effect_pct": -3.1177684615061985
+    },
+    {
+      "model": "Ridge: chỉ lịch + xu hướng",
+      "holdout_days": 65,
+      "mape_pct": 14.81827381606533,
+      "rmse": 27087.834381380522,
+      "bias_pct": -7.012050531643091,
+      "post_effect_pct": -8.977715644475225
+    },
+    {
+      "model": "Naive theo tuần (t−7)",
+      "holdout_days": 65,
+      "mape_pct": 20.06349676007994,
+      "rmse": 38420.63301865086,
+      "bias_pct": -6.82294460755598,
+      "post_effect_pct": NaN
+    }
+  ],
+  "post_effect_pct": 3.0619628805943933,
+  "coef": {
+    "dow0": -0.1024832331207074,
+    "dow1": -0.029902500769029117,
+    "dow2": -0.017906295915485315,
+    "dow3": -0.018788531909598283,
+    "dow4": -0.05965278032386512,
+    "dow5": 0.03794319927451628,
+    "holiday": -0.054204213369281745,
+    "hol_adj": -0.06325585371832176,
+    "xmas": -0.13836390676510568,
+    "sin1": -0.03314095161128594,
+    "cos1": -0.01241123887877471,
+    "ln_mn": 1.1108356680539901,
+    "ln_out": -0.018176959608210308,
+    "trend": -0.05502767601439995
+  },
+  "resid_sd": 0.06920809718584914
+}

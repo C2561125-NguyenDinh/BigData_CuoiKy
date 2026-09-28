@@ -1,0 +1,19 @@
+(1) MapPartitionsRDD[150] at javaToPython at NativeMethodAccessorImpl.java:0 []
+ |  MapPartitionsRDD[149] at javaToPython at NativeMethodAccessorImpl.java:0 []
+ |  SQLExecutionRDD[148] at javaToPython at NativeMethodAccessorImpl.java:0 []
+ |  MapPartitionsRDD[147] at javaToPython at NativeMethodAccessorImpl.java:0 []
+ |  ShuffledRowRDD[146] at javaToPython at NativeMethodAccessorImpl.java:0 []
+ +-(5) MapPartitionsRDD[145] at javaToPython at NativeMethodAccessorImpl.java:0 []
+    |  MapPartitionsRDD[144] at javaToPython at NativeMethodAccessorImpl.java:0 []
+    |  MapPartitionsRDD[143] at javaToPython at NativeMethodAccessorImpl.java:0 []
+    |  MapPartitionsRDD[142] at javaToPython at NativeMethodAccessorImpl.java:0 []
+    |  MapPartitionsRDD[141] at javaToPython at NativeMethodAccessorImpl.java:0 []
+    |  *(1) Project [d#23, hr#24, pu#5, dl#6, pu_grp#28, do_grp#29, fare#9, miles#7, time_s#8, wait_min#26]
++- *(1) ColumnarToRow
+   +- FileScan parquet [pu#5,dl#6,miles#7,time_s#8,fare#9,d#23,hr#24,wait_min#26,pu_grp#28,do_grp#29,service#0,year#32,month#33] Batched: true, DataFilters: [], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPric..., PartitionFilters: [], PushedFilters: [], ReadSchema: struct<pu:int,dl:int,miles:double,time_s:double,fare:double,d:date,hr:tinyint,wait_min:double,pu_...
+ MapPartitionsRDD[66] at count at NativeMethodAccessorImpl.java:0 []
+    |      CachedPartitions: 5; MemorySize: 380.4 MiB; DiskSize: 0.0 B
+    |  MapPartitionsRDD[65] at count at NativeMethodAccessorImpl.java:0 []
+    |  MapPartitionsRDD[64] at count at NativeMethodAccessorImpl.java:0 []
+    |  MapPartitionsRDD[63] at count at NativeMethodAccessorImpl.java:0 []
+    |  FileScanRDD[62] at count at NativeMethodAccessorImpl.java:0 []

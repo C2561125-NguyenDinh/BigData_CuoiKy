@@ -1,0 +1,36 @@
+== Parsed Logical Plan ==
+'Aggregate ['pu], ['pu, count(1) AS n#139L, sum('fare) AS fare#141]
++- Filter (((service#0 = hvfhv) AND (year#32 = 2025)) AND (month#33 = 3))
+   +- Project [service#0, year#32, month#33, pu#5, d#23, fare#9]
+      +- Relation [service#0,company_code#1,request_ts#2,pickup_ts#3,dropoff_ts#4,pu#5,dl#6,miles#7,time_s#8,fare#9,tolls#10,bcf#11,tax#12,cong_sur#13,airport_fee#14,cbd_fee#15,tips#16,driver_pay#17,shared_req#18,shared_match#19,wav_req#20,total_amount#21,payment_type#22,d#23,... 10 more fields] parquet
+
+== Analyzed Logical Plan ==
+pu: int, n: bigint, fare: double
+Aggregate [pu#5], [pu#5, count(1) AS n#139L, sum(fare#9) AS fare#141]
++- Filter (((service#0 = hvfhv) AND (year#32 = 2025)) AND (month#33 = 3))
+   +- Project [service#0, year#32, month#33, pu#5, d#23, fare#9]
+      +- Relation [service#0,company_code#1,request_ts#2,pickup_ts#3,dropoff_ts#4,pu#5,dl#6,miles#7,time_s#8,fare#9,tolls#10,bcf#11,tax#12,cong_sur#13,airport_fee#14,cbd_fee#15,tips#16,driver_pay#17,shared_req#18,shared_match#19,wav_req#20,total_amount#21,payment_type#22,d#23,... 10 more fields] parquet
+
+== Optimized Logical Plan ==
+Aggregate [pu#5], [pu#5, count(1) AS n#139L, sum(fare#9) AS fare#141]
++- Project [pu#5, fare#9]
+   +- Filter (((isnotnull(service#0) AND isnotnull(year#32)) AND isnotnull(month#33)) AND (((service#0 = hvfhv) AND (year#32 = 2025)) AND (month#33 = 3)))
+      +- Relation [service#0,company_code#1,request_ts#2,pickup_ts#3,dropoff_ts#4,pu#5,dl#6,miles#7,time_s#8,fare#9,tolls#10,bcf#11,tax#12,cong_sur#13,airport_fee#14,cbd_fee#15,tips#16,driver_pay#17,shared_req#18,shared_match#19,wav_req#20,total_amount#21,payment_type#22,d#23,... 10 more fields] parquet
+
+== Physical Plan ==
+AdaptiveSparkPlan isFinalPlan=true
++- == Final Plan ==
+   *(2) HashAggregate(keys=[pu#5], functions=[count(1), sum(fare#9)], output=[pu#5, n#139L, fare#141])
+   +- AQEShuffleRead coalesced
+      +- ShuffleQueryStage 0
+         +- Exchange hashpartitioning(pu#5, 8), ENSURE_REQUIREMENTS, [plan_id=178]
+            +- *(1) HashAggregate(keys=[pu#5], functions=[partial_count(1), partial_sum(fare#9)], output=[pu#5, count#147L, sum#148])
+               +- *(1) Project [pu#5, fare#9]
+                  +- *(1) ColumnarToRow
+                     +- FileScan parquet [pu#5,fare#9,service#0,year#32,month#33] Batched: true, DataFilters: [], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPric..., PartitionFilters: [isnotnull(service#0), isnotnull(year#32), isnotnull(month#33), (service#0 = hvfhv), (year#32 = 2..., PushedFilters: [], ReadSchema: struct<pu:int,fare:double>
++- == Initial Plan ==
+   HashAggregate(keys=[pu#5], functions=[count(1), sum(fare#9)], output=[pu#5, n#139L, fare#141])
+   +- Exchange hashpartitioning(pu#5, 8), ENSURE_REQUIREMENTS, [plan_id=160]
+      +- HashAggregate(keys=[pu#5], functions=[partial_count(1), partial_sum(fare#9)], output=[pu#5, count#147L, sum#148])
+         +- Project [pu#5, fare#9]
+            +- FileScan parquet [pu#5,fare#9,service#0,year#32,month#33] Batched: true, DataFilters: [], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/sessions/rcw-01uq7pyjknfqtg2zutjyw62c/mnt/BigData/CongestionPric..., PartitionFilters: [isnotnull(service#0), isnotnull(year#32), isnotnull(month#33), (service#0 = hvfhv), (year#32 = 2..., PushedFilters: [], ReadSchema: struct<pu:int,fare:double>

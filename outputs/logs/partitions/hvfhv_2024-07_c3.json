@@ -1,0 +1,20 @@
+{
+  "service": "hvfhv",
+  "month": "2024-07",
+  "chunk": 3,
+  "n_raw": 4382968,
+  "q_out_of_month": 0,
+  "q_bad_zone": 183979,
+  "q_bad_miles": 1059,
+  "q_bad_time": 416,
+  "q_bad_fare": 413,
+  "q_bad_speed": 8,
+  "q_bad_pay": 4,
+  "n_rejected": 185281,
+  "n_silver": 4197687,
+  "sec_quality": 1.5,
+  "sec_silver": 36.8,
+  "sec_gold": 5.9,
+  "sec_total": 44.2,
+  "silver_mb": 129.0
+}

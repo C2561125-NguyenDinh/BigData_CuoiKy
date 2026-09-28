@@ -1,0 +1,34 @@
+{
+  "seconds": 27.1,
+  "hv_zone_week": {
+    "zones": 237,
+    "treated": 37,
+    "control": 200,
+    "weeks": 103,
+    "obs": 24411,
+    "trips": 425139263.0
+  },
+  "ye_zone_week": {
+    "zones": 54,
+    "treated": 38,
+    "control": 16,
+    "weeks": 103,
+    "obs": 5562,
+    "trips": 60238446.0
+  },
+  "hv_zone_day": {
+    "zones": 237,
+    "obs": 173247
+  },
+  "hv_od_month": {
+    "pairs": 9280,
+    "obs": 222720,
+    "by_type": {
+      "CRZ\u2192CRZ": 1351,
+      "CRZ\u2192ngo\u00e0i": 1180,
+      "kh\u00f4ng ch\u1ea1m CRZ": 5741,
+      "ngo\u00e0i\u2192CRZ": 1008
+    },
+    "trips": 342491463.0
+  }
+}

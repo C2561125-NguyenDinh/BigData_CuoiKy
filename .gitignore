@@ -1,0 +1,20 @@
+# Du lieu lon (~46 GB): tai lai bang code/00_download_data*.{py,ps1}
+data/*
+!data/README.md
+# Tep nen va tep tam
+code_sync.tar.gz
+__pycache__/
+*.pyc
+*.bak
+report/_build/
+spark_work/
+duck_tmp/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+# Ket qua cu khong con dung trong bao cao
+report/*.csv
+report/*.png
+outputs/**/t87*
+outputs/**/t88*
+outputs/**/f55*

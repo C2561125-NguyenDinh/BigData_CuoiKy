@@ -1,0 +1,25 @@
+{
+  "datasets": 18,
+  "total_rows": 1123452376,
+  "total_mb": 28863.100000000002,
+  "drift": [
+    {
+      "layer": "Bronze",
+      "source": "fhvhv",
+      "distinct_schemas": 2,
+      "schemas": {
+        "cc5218a0b9": "2024-01..2024-12 (12 tệp)",
+        "fefb24f298": "2025-01..2025-12 (12 tệp)"
+      }
+    },
+    {
+      "layer": "Bronze",
+      "source": "yellow",
+      "distinct_schemas": 2,
+      "schemas": {
+        "c15873e78e": "2024-01..2024-12 (12 tệp)",
+        "483751328d": "2025-01..2025-12 (12 tệp)"
+      }
+    }
+  ]
+}

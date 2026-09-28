@@ -1,0 +1,4 @@
+engine,query,month,seconds_median,seconds_min,seconds_max,max_rss_mb,groups
+DuckDB (SQL),"Số chuyến, tổng giá cước, tổng thu nhập tài xế theo vùng đón (1 tháng HVFHV đầy đủ)",2024-03,2.0798415609897347,1.826769689010689,3.747432154996204,163.8984375,261
+Pandas (read_parquet 3 cột + groupby),"Số chuyến, tổng giá cước, tổng thu nhập tài xế theo vùng đón (1 tháng HVFHV đầy đủ)",2024-03,6.3637154860043665,2.534701987999142,10.61278610600857,1382.171875,261
+PyArrow (dataset + group_by),"Số chuyến, tổng giá cước, tổng thu nhập tài xế theo vùng đón (1 tháng HVFHV đầy đủ)",2024-03,1.7090544660022715,1.6346581199904904,1.7510285590105923,741.2578125,261

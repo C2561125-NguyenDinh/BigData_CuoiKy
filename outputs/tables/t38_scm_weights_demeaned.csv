@@ -1,0 +1,201 @@
+zone,weight,Zone,Borough,grp
+112,0.3188628456222693,Greenpoint,Brooklyn,OUTER
+236,0.19267188335381386,Upper East Side North,Manhattan,MN_NORTH
+106,0.1406112753229764,Gowanus,Brooklyn,OUTER
+52,0.07131671758470813,Cobble Hill,Brooklyn,OUTER
+166,0.06915561068380953,Morningside Heights,Manhattan,MN_NORTH
+33,0.0681589774760469,Brooklyn Heights,Brooklyn,OUTER
+263,0.05512136918818014,Yorkville West,Manhattan,MN_NORTH
+255,0.039082145600959774,Williamsburg (North Side),Brooklyn,OUTER
+202,0.028653357897217204,Roosevelt Island,Manhattan,MN_NORTH
+93,0.008200488266394055,Flushing Meadows-Corona Park,Queens,OUTER
+217,0.008165329003618722,South Williamsburg,Brooklyn,OUTER
+5,2.6706384505555064e-16,Arden Heights,Staten Island,OUTER
+25,2.1584839416058533e-16,Boerum Hill,Brooklyn,OUTER
+66,2.0062074792930674e-16,DUMBO/Vinegar Hill,Brooklyn,OUTER
+38,1.9092453214535025e-16,Cambria Heights,Queens,OUTER
+61,1.8631950695646118e-16,Crown Heights North,Brooklyn,OUTER
+16,1.812925912508735e-16,Bayside,Queens,OUTER
+102,1.508461687112994e-16,Glendale,Queens,OUTER
+65,1.503594412944917e-16,Downtown Brooklyn/MetroTech,Brooklyn,OUTER
+11,1.4686198425112625e-16,Bath Beach,Brooklyn,OUTER
+208,1.4465188836478354e-16,Schuylerville/Edgewater Park,Bronx,OUTER
+57,1.3854855559166527e-16,Corona,Queens,OUTER
+55,1.262399460471685e-16,Coney Island,Brooklyn,OUTER
+247,1.19280358007968e-16,West Concourse,Bronx,OUTER
+117,1.1823943260996625e-16,Hammels/Arverne,Queens,OUTER
+56,1.0707185885900748e-16,Corona,Queens,OUTER
+54,1.0496970819645233e-16,Columbia Street,Brooklyn,OUTER
+17,1.0370193989315469e-16,Bedford,Brooklyn,OUTER
+91,1.0249493528299339e-16,Flatlands,Brooklyn,OUTER
+157,9.786538504009433e-17,Maspeth,Queens,OUTER
+183,9.778165203268289e-17,Pelham Bay,Bronx,OUTER
+15,9.074090216986887e-17,Bay Terrace/Fort Totten,Queens,OUTER
+201,9.038498840209244e-17,Rockaway Park,Queens,OUTER
+119,8.694657767267244e-17,Highbridge,Bronx,OUTER
+47,8.502594503883898e-17,Claremont/Bathgate,Bronx,OUTER
+124,8.177088375822044e-17,Howard Beach,Queens,OUTER
+216,8.164463878591958e-17,South Ozone Park,Queens,OUTER
+195,8.058798863386752e-17,Red Hook,Brooklyn,OUTER
+18,8.00802485851505e-17,Bedford Park,Bronx,OUTER
+49,7.814510184107539e-17,Clinton Hill,Brooklyn,OUTER
+173,7.738985666342359e-17,North Corona,Queens,OUTER
+70,7.552295533710662e-17,East Elmhurst,Queens,OUTER
+53,7.50198409975339e-17,College Point,Queens,OUTER
+213,7.057139584157846e-17,Soundview/Castle Hill,Bronx,OUTER
+262,6.932153554980419e-17,Yorkville East,Manhattan,MN_NORTH
+252,6.871543638031857e-17,Whitestone,Queens,OUTER
+182,6.852862616380619e-17,Parkchester,Bronx,OUTER
+171,6.819906031312515e-17,Murray Hill-Queens,Queens,OUTER
+63,6.676762352014432e-17,Cypress Hills,Brooklyn,OUTER
+210,6.583105469343292e-17,Sheepshead Bay,Brooklyn,OUTER
+223,6.555762602128706e-17,Steinway,Queens,OUTER
+7,6.436488309145357e-17,Astoria,Queens,OUTER
+67,6.303245400474225e-17,Dyker Heights,Brooklyn,OUTER
+20,6.15091794036355e-17,Belmont,Bronx,OUTER
+37,5.80449077275594e-17,Bushwick South,Brooklyn,OUTER
+85,5.803263162061135e-17,Erasmus,Brooklyn,OUTER
+205,5.685916605516323e-17,Saint Albans,Queens,OUTER
+226,5.3813231342607374e-17,Sunnyside,Queens,OUTER
+225,5.24172347172168e-17,Stuyvesant Heights,Brooklyn,OUTER
+151,5.206111433886984e-17,Manhattan Valley,Manhattan,MN_NORTH
+176,4.9522279716326436e-17,Oakwood,Staten Island,OUTER
+92,4.2229160381259386e-17,Flushing,Queens,OUTER
+189,3.7666168991916027e-17,Prospect Heights,Brooklyn,OUTER
+242,3.747987135403372e-17,Van Nest/Morris Park,Bronx,OUTER
+150,3.746017943937361e-17,Manhattan Beach,Brooklyn,OUTER
+178,3.714155142569107e-17,Ocean Parkway South,Brooklyn,OUTER
+94,3.647949046130601e-17,Fordham South,Bronx,OUTER
+192,3.49511116055097e-17,Queensboro Hill,Queens,OUTER
+133,3.4850200255549804e-17,Kensington,Brooklyn,OUTER
+116,3.406645709155191e-17,Hamilton Heights,Manhattan,MN_NORTH
+215,3.2851365046367914e-17,South Jamaica,Queens,OUTER
+41,3.219003441076075e-17,Central Harlem,Manhattan,MN_NORTH
+40,2.8840524952684044e-17,Carroll Gardens,Brooklyn,OUTER
+44,2.8021554430289296e-17,Charleston/Tottenville,Staten Island,OUTER
+73,2.6235654768025354e-17,East Flushing,Queens,OUTER
+74,2.6089953088001396e-17,East Harlem North,Manhattan,MN_NORTH
+239,2.4801809337902736e-17,Upper West Side South,Manhattan,MN_NORTH
+194,2.435395480035821e-17,Randalls Island,Manhattan,MN_NORTH
+256,2.3836848285646374e-17,Williamsburg (South Side),Brooklyn,OUTER
+97,2.3262688310884707e-17,Fort Greene,Brooklyn,OUTER
+130,2.3034619537234966e-17,Jamaica,Queens,OUTER
+72,2.2646824502996984e-17,East Flatbush/Remsen Village,Brooklyn,OUTER
+181,2.201654523766795e-17,Park Slope,Brooklyn,OUTER
+42,2.1578410331664975e-17,Central Harlem North,Manhattan,MN_NORTH
+238,2.0370326443195526e-17,Upper West Side North,Manhattan,MN_NORTH
+108,1.906680554975808e-17,Gravesend,Brooklyn,OUTER
+220,1.8724198715857158e-17,Spuyten Duyvil/Kingsbridge,Bronx,OUTER
+152,1.73284999704383e-17,Manhattanville,Manhattan,MN_NORTH
+251,1.699430842105391e-17,Westerleigh,Staten Island,OUTER
+149,1.6766077231170443e-17,Madison,Brooklyn,OUTER
+118,1.67513532020284e-17,Heartland Village/Todt Hill,Staten Island,OUTER
+198,1.5674594185145526e-17,Ridgewood,Queens,OUTER
+89,1.2913672875629328e-17,Flatbush/Ditmas Park,Brooklyn,OUTER
+145,1.2224944996203194e-17,Long Island City/Hunters Point,Queens,OUTER
+168,1.1582898656012522e-17,Mott Haven/Port Morris,Bronx,OUTER
+167,9.863699853941329e-18,Morrisania/Melrose,Bronx,OUTER
+146,8.166640785018183e-18,Long Island City/Queens Plaza,Queens,OUTER
+175,7.625954678871393e-18,Oakland Gardens,Queens,OUTER
+136,7.439320970230806e-18,Kingsbridge Heights,Bronx,OUTER
+214,5.095313974696599e-18,South Beach/Dongan Hills,Staten Island,OUTER
+98,5.028632419124221e-18,Fresh Meadows,Queens,OUTER
+193,4.618176129757506e-18,Queensbridge/Ravenswood,Queens,OUTER
+78,4.098708901109325e-18,East Tremont,Bronx,OUTER
+203,3.851359247933724e-18,Rosedale,Queens,OUTER
+24,3.62936978346723e-18,Bloomingdale,Manhattan,MN_NORTH
+243,2.786691164072935e-18,Washington Heights North,Manhattan,MN_NORTH
+245,2.471949393109994e-18,West Brighton,Staten Island,OUTER
+80,1.0087292094261546e-18,East Williamsburg,Brooklyn,OUTER
+6,0.0,Arrochar/Fort Wadsworth,Staten Island,OUTER
+3,0.0,Allerton/Pelham Gardens,Bronx,OUTER
+76,0.0,East New York,Brooklyn,OUTER
+77,0.0,East New York/Pennsylvania Avenue,Brooklyn,OUTER
+71,0.0,East Flatbush/Farragut,Brooklyn,OUTER
+62,0.0,Crown Heights South,Brooklyn,OUTER
+64,0.0,Douglaston,Queens,OUTER
+58,0.0,Country Club,Bronx,OUTER
+60,0.0,Crotona Park East,Bronx,OUTER
+69,0.0,East Concourse/Concourse Village,Bronx,OUTER
+46,0.0,City Island,Bronx,OUTER
+51,0.0,Co-Op City,Bronx,OUTER
+19,0.0,Bellerose,Queens,OUTER
+32,0.0,Bronxdale,Bronx,OUTER
+29,0.0,Brighton Beach,Brooklyn,OUTER
+28,0.0,Briarwood/Jamaica Hills,Queens,OUTER
+26,0.0,Borough Park,Brooklyn,OUTER
+23,0.0,Bloomfield/Emerson Hill,Staten Island,OUTER
+21,0.0,Bensonhurst East,Brooklyn,OUTER
+22,0.0,Bensonhurst West,Brooklyn,OUTER
+39,0.0,Canarsie,Brooklyn,OUTER
+31,0.0,Bronx Park,Bronx,OUTER
+35,0.0,Brownsville,Brooklyn,OUTER
+36,0.0,Bushwick North,Brooklyn,OUTER
+34,0.0,Brooklyn Navy Yard,Brooklyn,OUTER
+9,0.0,Auburndale,Queens,OUTER
+10,0.0,Baisley Park,Queens,OUTER
+14,0.0,Bay Ridge,Brooklyn,OUTER
+86,0.0,Far Rockaway,Queens,OUTER
+84,0.0,Eltingville/Annadale/Prince's Bay,Staten Island,OUTER
+82,0.0,Elmhurst,Queens,OUTER
+83,0.0,Elmhurst/Maspeth,Queens,OUTER
+81,0.0,Eastchester,Bronx,OUTER
+75,0.0,East Harlem South,Manhattan,MN_NORTH
+177,0.0,Ocean Hill,Brooklyn,OUTER
+174,0.0,Norwood,Bronx,OUTER
+139,0.0,Laurelton,Queens,OUTER
+147,0.0,Longwood,Bronx,OUTER
+155,0.0,Marine Park/Mill Basin,Brooklyn,OUTER
+153,0.0,Marble Hill,Manhattan,MN_NORTH
+172,0.0,New Dorp/Midland Beach,Staten Island,OUTER
+169,0.0,Mount Hope,Bronx,OUTER
+160,0.0,Middle Village,Queens,OUTER
+165,0.0,Midwood,Brooklyn,OUTER
+127,0.0,Inwood,Manhattan,MN_NORTH
+126,0.0,Hunts Point,Bronx,OUTER
+95,0.0,Forest Hills,Queens,OUTER
+101,0.0,Glen Oaks,Queens,OUTER
+115,0.0,Grymes Hill/Clifton,Staten Island,OUTER
+109,0.0,Great Kills,Staten Island,OUTER
+122,0.0,Hollis,Queens,OUTER
+121,0.0,Hillcrest/Pomonok,Queens,OUTER
+131,0.0,Jamaica Estates,Queens,OUTER
+129,0.0,Jackson Heights,Queens,OUTER
+123,0.0,Homecrest,Brooklyn,OUTER
+128,0.0,Inwood Hill Park,Manhattan,MN_NORTH
+156,0.0,Mariners Harbor,Staten Island,OUTER
+159,0.0,Melrose South,Bronx,OUTER
+134,0.0,Kew Gardens,Queens,OUTER
+135,0.0,Kew Gardens Hills,Queens,OUTER
+180,0.0,Ozone Park,Queens,OUTER
+179,0.0,Old Astoria,Queens,OUTER
+212,0.0,Soundview/Bruckner,Bronx,OUTER
+218,0.0,Springfield Gardens North,Queens,OUTER
+207,0.0,Saint Michaels Cemetery/Woodside,Queens,OUTER
+204,0.0,Rossville/Woodrow,Staten Island,OUTER
+197,0.0,Richmond Hill,Queens,OUTER
+206,0.0,Saint George/New Brighton,Staten Island,OUTER
+191,0.0,Queens Village,Queens,OUTER
+190,0.0,Prospect Park,Brooklyn,OUTER
+187,0.0,Port Richmond,Staten Island,OUTER
+188,0.0,Prospect-Lefferts Gardens,Brooklyn,OUTER
+185,0.0,Pelham Parkway,Bronx,OUTER
+196,0.0,Rego Park,Queens,OUTER
+200,0.0,Riverdale/North Riverdale/Fieldston,Bronx,OUTER
+184,0.0,Pelham Bay Park,Bronx,OUTER
+219,0.0,Springfield Gardens South,Queens,OUTER
+240,0.0,Van Cortlandt Park,Bronx,OUTER
+235,0.0,University Heights/Morris Heights,Bronx,OUTER
+241,0.0,Van Cortlandt Village,Bronx,OUTER
+222,0.0,Starrett City,Brooklyn,OUTER
+221,0.0,Stapleton,Staten Island,OUTER
+227,0.0,Sunset Park East,Brooklyn,OUTER
+228,0.0,Sunset Park West,Brooklyn,OUTER
+254,0.0,Williamsbridge/Olinville,Bronx,OUTER
+250,0.0,Westchester Village/Unionport,Bronx,OUTER
+244,0.0,Washington Heights South,Manhattan,MN_NORTH
+248,0.0,West Farms/Bronx River,Bronx,OUTER
+258,0.0,Woodhaven,Queens,OUTER
+257,0.0,Windsor Terrace,Brooklyn,OUTER
+260,0.0,Woodside,Queens,OUTER
+259,0.0,Woodlawn/Wakefield,Bronx,OUTER

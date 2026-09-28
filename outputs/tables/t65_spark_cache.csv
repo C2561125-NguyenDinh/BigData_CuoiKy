@@ -1,0 +1,14 @@
+phase,query,rep,seconds
+không lưu đệm,q1_vùng×ngày,1,4.443
+không lưu đệm,q1_vùng×ngày,2,1.91
+không lưu đệm,q2_nhóm×giờ,1,1.789
+không lưu đệm,q2_nhóm×giờ,2,1.173
+không lưu đệm,q3_OD,1,2.567
+không lưu đệm,q3_OD,2,2.262
+lưu đệm,q1_vùng×ngày,1,2.082
+lưu đệm,q1_vùng×ngày,2,1.346
+lưu đệm,q2_nhóm×giờ,1,2.433
+lưu đệm,q2_nhóm×giờ,2,2.245
+lưu đệm,q3_OD,1,2.215
+lưu đệm,q3_OD,2,1.872
+lưu đệm,vật chất hóa bộ đệm,1,22.28

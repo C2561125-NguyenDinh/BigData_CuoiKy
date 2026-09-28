@@ -1,0 +1,46 @@
+{
+  "runs": [
+    {
+      "arrow": false,
+      "rep": 1,
+      "rows": 2004221,
+      "cols": 8,
+      "seconds": 40.459
+    },
+    {
+      "arrow": false,
+      "rep": 2,
+      "rows": 2004221,
+      "cols": 8,
+      "seconds": 22.105
+    },
+    {
+      "arrow": false,
+      "rep": 3,
+      "rows": 2004221,
+      "cols": 8,
+      "seconds": 23.482
+    },
+    {
+      "arrow": true,
+      "rep": 1,
+      "rows": 2004221,
+      "cols": 8,
+      "seconds": 4.46
+    },
+    {
+      "arrow": true,
+      "rep": 2,
+      "rows": 2004221,
+      "cols": 8,
+      "seconds": 3.103
+    },
+    {
+      "arrow": true,
+      "rep": 3,
+      "rows": 2004221,
+      "cols": 8,
+      "seconds": 1.505
+    }
+  ]
+}

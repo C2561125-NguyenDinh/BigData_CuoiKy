@@ -1,0 +1,116 @@
+{
+  "month": "2025-03",
+  "trips": 19564232,
+  "results": [
+    {
+      "qi": "Quận đón, quận trả, tháng",
+      "columns": "pb, db",
+      "classes": 31,
+      "trips": 19564232,
+      "unique_pct": 5.111368542348097e-06,
+      "lt5_pct": 5.111368542348097e-06,
+      "lt10_pct": 5.111368542348097e-06,
+      "median_class": 87337.0,
+      "seconds": 0.59
+    },
+    {
+      "qi": "Quận đón, quận trả, ngày",
+      "columns": "pb, db, d",
+      "classes": 931,
+      "trips": 19564232,
+      "unique_pct": 5.111368542348097e-06,
+      "lt5_pct": 5.111368542348097e-06,
+      "lt10_pct": 5.111368542348097e-06,
+      "median_class": 2790.0,
+      "seconds": 0.43
+    },
+    {
+      "qi": "Quận đón, quận trả, ngày, giờ",
+      "columns": "pb, db, d, hr",
+      "classes": 21192,
+      "trips": 19564232,
+      "unique_pct": 0.0052800437042455845,
+      "lt5_pct": 0.0325083039293339,
+      "lt10_pct": 0.09942122951721284,
+      "median_class": 125.0,
+      "seconds": 0.48
+    },
+    {
+      "qi": "Vùng đón, vùng trả",
+      "columns": "pu, dl",
+      "classes": 59282,
+      "trips": 19564232,
+      "unique_pct": 0.017255980198967177,
+      "lt5_pct": 0.10518685323298149,
+      "lt10_pct": 0.3159745805508747,
+      "median_class": 35.0,
+      "seconds": 0.29
+    },
+    {
+      "qi": "Vùng đón, vùng trả, thứ, giờ",
+      "columns": "pu, dl, dow, hr",
+      "classes": 3053872,
+      "trips": 19564232,
+      "unique_pct": 5.996131102922926,
+      "lt5_pct": 18.99411129452973,
+      "lt10_pct": 33.661316222379696,
+      "median_class": 2.0,
+      "seconds": 17.59
+    },
+    {
+      "qi": "Vùng đón, vùng trả, ngày",
+      "columns": "pu, dl, d",
+      "classes": 1119136,
+      "trips": 19564232,
+      "unique_pct": 1.5531046656980965,
+      "lt5_pct": 5.957887843489077,
+      "lt10_pct": 11.354700762084605,
+      "median_class": 4.0,
+      "seconds": 0.61
+    },
+    {
+      "qi": "Vùng đón, vùng trả, ngày, giờ",
+      "columns": "pu, dl, d, hr",
+      "classes": 7003620,
+      "trips": 19564232,
+      "unique_pct": 19.108743956828974,
+      "lt5_pct": 48.83304900493922,
+      "lt10_pct": 72.23677883190099,
+      "median_class": 1.0,
+      "seconds": 19.88
+    },
+    {
+      "qi": "Vùng đón, vùng trả, ngày, giờ, hãng",
+      "columns": "pu, dl, d, hr, company_code",
+      "classes": 9090207,
+      "trips": 19564232,
+      "unique_pct": 28.344204873465007,
+      "lt5_pct": 63.79019631335388,
+      "lt10_pct": 84.12456466474124,
+      "median_class": 1.0,
+      "seconds": 30.09
+    },
+    {
+      "qi": "Vùng đón, vùng trả, phút đón",
+      "columns": "pu, dl, date_trunc('minute', pickup_ts)",
+      "classes": 18412080,
+      "trips": 19564232,
+      "unique_pct": 88.97632679882348,
+      "lt5_pct": 99.8325311210785,
+      "lt10_pct": 99.99896750355444,
+      "median_class": 1.0,
+      "seconds": 53.78
+    },
+    {
+      "qi": "Vùng đón, vùng trả, giây đón (như bản công bố)",
+      "columns": "pu, dl, pickup_ts",
+      "classes": 19541252,
+      "trips": 19564232,
+      "unique_pct": 99.76548529990853,
+      "lt5_pct": 100.0,
+      "lt10_pct": 100.0,
+      "median_class": 1.0,
+      "seconds": 11.08
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "month": "2025-03",
+  "n_rows": 19564232,
+  "runs": [
+    {
+      "phase": "không lưu đệm",
+      "query": "q1_vùng×ngày",
+      "rep": 1,
+      "seconds": 4.443
+    },
+    {
+      "phase": "không lưu đệm",
+      "query": "q1_vùng×ngày",
+      "rep": 2,
+      "seconds": 1.91
+    },
+    {
+      "phase": "không lưu đệm",
+      "query": "q2_nhóm×giờ",
+      "rep": 1,
+      "seconds": 1.789
+    },
+    {
+      "phase": "không lưu đệm",
+      "query": "q2_nhóm×giờ",
+      "rep": 2,
+      "seconds": 1.173
+    },
+    {
+      "phase": "không lưu đệm",
+      "query": "q3_OD",
+      "rep": 1,
+      "seconds": 2.567
+    },
+    {
+      "phase": "không lưu đệm",
+      "query": "q3_OD",
+      "rep": 2,
+      "seconds": 2.262
+    },
+    {
+      "phase": "lưu đệm",
+      "query": "q1_vùng×ngày",
+      "rep": 1,
+      "seconds": 2.082
+    },
+    {
+      "phase": "lưu đệm",
+      "query": "q1_vùng×ngày",
+      "rep": 2,
+      "seconds": 1.346
+    },
+    {
+      "phase": "lưu đệm",
+      "query": "q2_nhóm×giờ",
+      "rep": 1,
+      "seconds": 2.433
+    },
+    {
+      "phase": "lưu đệm",
+      "query": "q2_nhóm×giờ",
+      "rep": 2,
+      "seconds": 2.245
+    },
+    {
+      "phase": "lưu đệm",
+      "query": "q3_OD",
+      "rep": 1,
+      "seconds": 2.215
+    },
+    {
+      "phase": "lưu đệm",
+      "query": "q3_OD",
+      "rep": 2,
+      "seconds": 1.872
+    },
+    {
+      "phase": "lưu đệm",
+      "query": "vật chất hóa bộ đệm",
+      "rep": 1,
+      "seconds": 22.28
+    }
+  ],
+  "cache_mem_mb": 380.4,
+  "cache_disk_mb": 0.0,
+  "jvm_peak_mb": 1601.62890625
+}

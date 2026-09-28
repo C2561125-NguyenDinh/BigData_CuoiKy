@@ -1,0 +1,13 @@
+duckdb==1.5.5
+pyarrow==25.0.1
+pandas==2.3.3
+numpy
+scipy
+statsmodels==0.15.0
+scikit-learn==1.7.2
+lightgbm==4.7.0
+matplotlib==3.10.9
+pyshp
+shapely==2.1.2
+python-docx==1.2.0
+pyspark==3.5.3

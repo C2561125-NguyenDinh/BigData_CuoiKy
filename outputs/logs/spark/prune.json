@@ -1,0 +1,50 @@
+{
+  "runs": [
+    {
+      "case": "toàn bộ Silver (không lọc)",
+      "files": 120,
+      "partitions": 48,
+      "scanned_mb": 16019.1,
+      "rows_scanned": 544311785,
+      "rows": 544311785,
+      "seconds": 39.181
+    },
+    {
+      "case": "service='hvfhv'",
+      "files": 96,
+      "partitions": 24,
+      "scanned_mb": 14146.3,
+      "rows_scanned": 461438058,
+      "rows": 461438058,
+      "seconds": 30.132
+    },
+    {
+      "case": "service='hvfhv' AND year=2025",
+      "files": 48,
+      "partitions": 12,
+      "scanned_mb": 7131.3,
+      "rows_scanned": 232106815,
+      "rows": 232106815,
+      "seconds": 15.286
+    },
+    {
+      "case": "service='hvfhv' AND year=2025 AND month=3",
+      "files": 4,
+      "partitions": 1,
+      "scanned_mb": 601.6,
+      "rows_scanned": 19564232,
+      "rows": 19564232,
+      "seconds": 1.402
+    },
+    {
+      "case": "lọc theo cột d (không phải khóa phân vùng)",
+      "files": 120,
+      "partitions": 48,
+      "scanned_mb": 16019.1,
+      "rows_scanned": 23353605,
+      "rows": 23353605,
+      "seconds": 7.4
+    }
+  ],
+  "jvm_peak_mb": 716.04296875
+}

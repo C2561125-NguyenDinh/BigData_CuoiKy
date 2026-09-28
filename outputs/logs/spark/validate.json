@@ -1,0 +1,8 @@
+{
+  "rows_spark": 358148,
+  "rows_duckdb": 358148,
+  "unmatched_keys": 0,
+  "metrics": 17,
+  "all_within_1e9": true,
+  "exact_cells_share": 0.6470588235294118
+}

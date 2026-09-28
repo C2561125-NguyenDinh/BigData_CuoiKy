@@ -1,0 +1,20 @@
+{
+  "service": "yellow",
+  "month": "2025-07",
+  "chunk": 0,
+  "n_raw": 3898963,
+  "q_out_of_month": 7,
+  "q_bad_zone": 31914,
+  "q_bad_miles": 124048,
+  "q_bad_time": 103343,
+  "q_bad_fare": 248464,
+  "q_bad_speed": 1043,
+  "q_bad_pay": 0,
+  "n_rejected": 443803,
+  "n_silver": 3455160,
+  "sec_quality": 0.7,
+  "sec_silver": 16.3,
+  "sec_gold": 4.0,
+  "sec_total": 20.9,
+  "silver_mb": 79.7
+}

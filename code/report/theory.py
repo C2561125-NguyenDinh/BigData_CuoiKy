@@ -9,9 +9,9 @@ from results import pct_log
 def model(rp, R):
     rp.H2("2.11. Mô hình lý thuyết và giả thuyết nghiên cứu")
     rp.P("Mục này xây dựng một mô hình đơn giản gồm bốn khối: cầu chuyến đi theo chi phí tổng quát, quan hệ tốc độ – lưu lượng, "
-         "cơ chế lan tỏa qua mạng lưới chuyến đi và cơ chế phân bổ gánh nặng của phí. Mục đích không phải mô hình hóa toàn bộ thị "
-         "trường, mà suy ra các giả thuyết có thể bác bỏ được bằng dữ liệu, trong đó có những dự báo định lượng về hình dạng của "
-         "tác động chứ không chỉ về dấu. Các giả thuyết được kiểm định ở mục 4.15.")
+         "cơ chế lan tỏa qua mạng lưới chuyến đi và cơ chế phân bổ gánh nặng của phí. Mô hình không nhằm mô tả toàn bộ thị "
+         "trường; nó được dùng để suy ra các giả thuyết có thể bác bỏ được bằng dữ liệu, gồm cả dự báo định lượng về hình dạng của "
+         "tác động, ngoài dự báo về dấu. Các giả thuyết được kiểm định ở mục 4.15.")
     rp.H3("2.11.1. Cầu chuyến đi theo chi phí tổng quát")
     rp.P("Gọi q_od là số chuyến gọi xe từ vùng o đến vùng d, p_od là giá hành khách trả, T_od là thời gian di chuyển và v là giá "
          "trị thời gian. Cầu có độ co giãn không đổi theo chi phí tổng quát:")
@@ -34,8 +34,8 @@ def model(rp, R):
     rp.EQ("Δ ln S ≈ [α β (V/K)^β / (1 + α (V/K)^β)] · (−Δ ln V)")
     rp.PS(
         "Hệ số trong ngoặc tăng rất nhanh theo V/K vì β lớn. Hai dự báo: **H2:** tốc độ tăng khi lưu lượng vào vùng giảm. **H2b "
-        "(độ lồi):** cùng một mức giảm lưu lượng tạo ra mức tăng tốc độ lớn hơn ở các giờ có lưu lượng cao. Nói cách khác, lợi ích về "
-        "tốc độ phải tập trung ở giờ đông, chứ không phân bố đều.",
+        "(độ lồi):** cùng một mức giảm lưu lượng tạo ra mức tăng tốc độ lớn hơn ở các giờ có lưu lượng cao. Vì vậy lợi ích về "
+        "tốc độ phải tập trung ở giờ đông.",
         "Mô hình cũng cho một dự báo động. Tốc độ tăng làm giảm thành phần v·T của chi phí tổng quát, kéo một phần lưu lượng quay lại, "
         "đúng cơ chế mà Duranton và Turner (2011) ghi nhận ở quy mô toàn quốc. **H6:** mức tăng tốc độ lớn nhất ngay sau khi áp dụng và "
         "giảm dần theo thời gian khi nhu cầu điều chỉnh.")
@@ -54,7 +54,7 @@ def model(rp, R):
         "nhập tối thiểu theo quãng đường và thời gian, dạng pay = a · dặm + b · phút, nên:")
     rp.EQ("pay / dặm = a + b · 60 / S")
     rp.P("**H4:** khi tốc độ S tăng, thu nhập tài xế mỗi dặm giảm một lượng cơ học ≈ b · 60 · (1/S₁ − 1/S₀), kể cả khi công thức "
-         "trả lương không đổi. Đây là một kênh ít được chú ý: chính việc giảm ùn tắc làm giảm thu nhập mỗi dặm của tài xế khi thu nhập "
+         "trả lương không đổi. Qua kênh này, chính việc giảm ùn tắc làm giảm thu nhập mỗi dặm của tài xế khi thu nhập "
          "gắn với thời gian.")
     hyp = pd.DataFrame([
         ("H1", "Cầu theo chi phí tổng quát", "Số chuyến chạm CRZ giảm", "DiD, SCM, DML (Chương 4)"),
@@ -175,7 +175,7 @@ def tests(rp, R):
         f"độ trước chính sách {vn(h4.mph_pre, 2)} dặm/giờ và mức tăng {vn(h4.d_mph, 2)} dặm/giờ, dự báo cơ học là thu nhập mỗi dặm "
         f"thay đổi {vn(h4.predicted_d_pay_pm, 3)} USD. Hệ số DiD quan sát được lại là {vn(h4.did_d_pay_pm, 3)} USD (sai số chuẩn "
         f"{vn(h4.did_d_pay_pm_se, 3)}), ngược dấu với dự báo.",
-        "Kết quả này có hai cách đọc, và cả hai đều quan trọng. Thứ nhất, nó cho thấy nếu hệ số DiD đúng, phải có một yếu tố khác làm "
+        "Kết quả này có hai cách đọc. Thứ nhất, nó cho thấy nếu hệ số DiD đúng, phải có một yếu tố khác làm "
         "tăng thu nhập mỗi dặm trong CRZ đủ để lấn át hiệu ứng cơ học của tốc độ, chẳng hạn nền tảng tăng tỷ lệ chia cho tài xế trong "
         "vùng có phí để giữ nguồn cung. Thứ hai, và phù hợp hơn với các phép thử ở mục 4.14, hệ số DiD của thu nhập mỗi dặm chịu xu "
         "hướng có sẵn, nên phép so sánh này là một lý do độc lập nữa để không diễn giải nó như tác động nhân quả. H4 vì vậy chưa kiểm "
@@ -183,13 +183,16 @@ def tests(rp, R):
         "đổi nào của thu nhập tài xế.")
     rp.H3("4.15.5. Tổng hợp")
     lp = R.t("t90").set_index("outcome")
+    t93 = R.t("t93")
+    n_spec = t93.spec.nunique()
+    n_mph_pos = int(((t93.outcome == "mph") & (t93.ci_low_wild > 0)).sum())
     shr_rel = 100 * shp.coef / shp.treated_pre_mean
     a4 = pw[(pw.post_weeks == pw.post_weeks.min()) & (pw.outcome == "mph")].iloc[0]
     a52 = pw[(pw.post_weeks == pw.post_weeks.max()) & (pw.outcome == "mph")].iloc[0]
     summ = pd.DataFrame([
         ("H1", "Số chuyến giảm", f"{vn(pct_log(tw.coef), 1)}% (TWFE, một năm trước); {vn(pct_log(lp.loc['ln_n'].effect_trend_adj), 1)}% sau điều chỉnh xu hướng 2023–2024", "Ủng hộ một phần: không tách được khỏi xu hướng có sẵn"),
         ("H1b", "Giảm theo tỷ trọng phí", f"Hệ số góc {vn(m1['slope'], 2)}, p ≈ 0,07; gradient yếu hơn nhiều so với dự báo", "Ủng hộ yếu"),
-        ("H2", "Tốc độ tăng", f"+{vn(mp.coef, 2)} dặm/giờ; +{vn(lp.loc['mph'].effect_trend_adj, 2)} sau điều chỉnh xu hướng 2023–2024", "Ủng hộ"),
+        ("H2", "Tốc độ tăng", f"+{vn(mp.coef, 2)} dặm/giờ; +{vn(lp.loc['mph'].effect_trend_adj, 2)} sau điều chỉnh xu hướng 2023–2024; tăng có ý nghĩa ở {n_mph_pos} trên {n_spec} đặc tả xu hướng (mục 4.14.6)", "Ủng hộ; độ lớn phụ thuộc giả định xu hướng"),
         ("H2b", "Tăng nhiều hơn ở giờ đông", f"Hệ số {vn(a1.coef, 3)}, p {pval(a1.p)}; số hạng bậc hai dương", "Ủng hộ vừa phải"),
         ("H3", "Lan tỏa theo phơi nhiễm", f"Hệ số {vn(r0.coef, 2)}, lớn gấp {vn(r0.coef / mech, 1)} lần dự báo cơ học", "Ủng hộ về chiều; có thêm kênh hành vi"),
         ("H4", "Thu nhập/dặm giảm cơ học", f"Dự báo {vn(h4.predicted_d_pay_pm, 2)} USD, DiD {vn(h4.did_d_pay_pm, 2)} USD (chịu tiền xu hướng)", "Chưa kiểm định được"),
@@ -198,7 +201,7 @@ def tests(rp, R):
     ], columns=["Giả thuyết", "Dự báo", "Bằng chứng", "Kết luận"])
     rp.TAB(summ, "Tổng hợp kết quả kiểm định các giả thuyết lý thuyết", widths=[1.8, 3.6, 7.0, 3.6], size=9.5,
            align=["center", "left", "left", "left"], source="Nguồn: tác giả tổng hợp từ t30, t80, t83–t86, t90.")
-    rp.P("Ba giả thuyết được ủng hộ rõ (tốc độ tăng, lan tỏa theo phơi nhiễm về chiều, lợi ích tốc độ giảm dần), bốn được ủng hộ một "
+    rp.P("Ba giả thuyết được ủng hộ rõ (tốc độ tăng, dù độ lớn phụ thuộc giả định xu hướng; lan tỏa theo phơi nhiễm về chiều; lợi ích tốc độ giảm dần), bốn được ủng hộ một "
          "phần và một chưa kiểm định được. Điểm yếu lớn nhất so với mô hình là H1: dữ liệu 2022–2025 cho thấy số chuyến CRZ đã giảm "
          "tương đối từ trước, nên dự báo cơ bản nhất của mô hình cầu không được xác nhận chắc chắn. Hai điểm khác mô hình không giải "
          "thích tốt là hình dạng của liều – đáp ứng theo giá (tác động gần như không đổi theo tỷ trọng phí) và độ lớn của lan tỏa ở vùng "

@@ -1,0 +1,78 @@
+{
+  "service": "yellow",
+  "month": "2023-07",
+  "chunk": 0,
+  "seconds": 5.0,
+  "tables": [
+    {
+      "service": "yellow",
+      "month": "2023-07",
+      "chunk": 0,
+      "table": "zone_day_pu",
+      "rows_orig": 6454,
+      "rows_new": 6454,
+      "n_numeric_cols": 18,
+      "max_rel_diff": 3.2968201189303513e-15
+    },
+    {
+      "service": "yellow",
+      "month": "2023-07",
+      "chunk": 0,
+      "table": "zone_day_do",
+      "rows_orig": 7721,
+      "rows_new": 7721,
+      "n_numeric_cols": 16,
+      "max_rel_diff": 1.7453753570807725e-15
+    },
+    {
+      "service": "yellow",
+      "month": "2023-07",
+      "chunk": 0,
+      "table": "grp_hour_day",
+      "rows_orig": 17995,
+      "rows_new": 17995,
+      "n_numeric_cols": 15,
+      "max_rel_diff": 7.869150286011248e-15
+    },
+    {
+      "service": "yellow",
+      "month": "2023-07",
+      "chunk": 0,
+      "table": "company_grp_day",
+      "rows_orig": 775,
+      "rows_new": 775,
+      "n_numeric_cols": 14,
+      "max_rel_diff": 7.494428843820254e-16
+    },
+    {
+      "service": "yellow",
+      "month": "2023-07",
+      "chunk": 0,
+      "table": "zone_hour_month",
+      "rows_orig": 4788,
+      "rows_new": 4788,
+      "n_numeric_cols": 16,
+      "max_rel_diff": 2.6230500953370805e-15
+    },
+    {
+      "service": "yellow",
+      "month": "2023-07",
+      "chunk": 0,
+      "table": "od_month",
+      "rows_orig": 22289,
+      "rows_new": 22289,
+      "n_numeric_cols": 16,
+      "max_rel_diff": 8.99331461258425e-15
+    },
+    {
+      "service": "yellow",
+      "month": "2023-07",
+      "chunk": 0,
+      "table": "trip_sample",
+      "rows_orig": 27830,
+      "rows_new": 27830,
+      "n_numeric_cols": 24,
+      "max_rel_diff": 0.0
+    }
+  ]
+}

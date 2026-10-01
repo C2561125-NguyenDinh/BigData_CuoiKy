@@ -35,7 +35,7 @@ def build(rp, R):
         "được tạo ra từ đâu, có bị thay đổi không, chất lượng có ổn định không, và việc công bố nó có gây hại cho ai không. Chương 2 "
         "và Chương 7 của bài giảng gọi chung các câu hỏi này là quản trị dữ liệu và quản trị rủi ro. Chương này trả lời chúng trên "
         "chính tài sản dữ liệu của đồ án, bằng các phép đo có thể chạy lại, thay vì chỉ mô tả khung lý thuyết.",
-        "Câu hỏi nghiên cứu tương ứng là RQ7: tài sản dữ liệu của đồ án có những rủi ro nào về tính toàn vẹn, chất lượng và quyền "
+        "Câu hỏi nghiên cứu tương ứng là RQ6: tài sản dữ liệu của đồ án có những rủi ro nào về tính toàn vẹn, chất lượng và quyền "
         "riêng tư, và có thể công bố dữ liệu tổng hợp theo cách bảo vệ quyền riêng tư mà vẫn giữ được kết luận chính sách hay "
         "không. Bảng 6.1 đối chiếu từng chủ đề của bài giảng với phần triển khai trong chương.")
     fw = pd.DataFrame([
@@ -73,7 +73,7 @@ def build(rp, R):
         f"Dấu vân tay lược đồ cho phép phát hiện lệch lược đồ tự động. Ở lớp Bronze, mỗi nguồn có đúng hai lược đồ, tách chính xác "
         f"tại ranh giới 2024/2025 do cột cbd_congestion_fee được thêm vào. Ở lớp Silver, mọi phân vùng có cùng số cột nhưng dấu vân tay "
         f"vẫn khác nhau giữa các năm. Chính khác biệt này, cụ thể là kiểu của cột phí (DECIMAL ở năm 2024, số thực ở năm 2025), là "
-        f"gốc của lỗi ép kiểu phát hiện ở mục 5.2. Nói cách khác, danh mục đã chứa sẵn tín hiệu cảnh báo; điều còn thiếu là một quy "
+        f"gốc của lỗi ép kiểu phát hiện ở mục 5.2. Như vậy, danh mục đã chứa sẵn tín hiệu cảnh báo; điều còn thiếu là một quy "
         f"tắc tự động buộc các phân vùng của cùng một bảng phải có cùng dấu vân tay. Đây là một ví dụ cụ thể cho luận điểm của mục 2.6 "
         f"bài giảng rằng danh mục dữ liệu chỉ có giá trị khi được gắn với kiểm tra tự động.")
 
@@ -244,7 +244,7 @@ def build(rp, R):
         f"đuôi của phân phối nhiều chiều, không nhất thiết là gian lận. Các quy tắc nghiệp vụ cụ thể (tip lớn hơn giá, tốc độ gần "
         f"bằng 0 trong chuyến dài, cùng vùng đón trả nhưng đi xa) trùng với Isolation Forest ở mức 18–25%, cho thấy hai cách tiếp cận "
         f"bổ sung cho nhau.",
-        f"Quy tắc đầu tiên trong bảng là một bài học về hiểu nghiệp vụ. Nếu coi \"thu nhập tài xế lớn hơn giá cước cộng tip\" là dấu "
+        f"Quy tắc đầu tiên trong bảng cho thấy cần hiểu nghiệp vụ trước khi đặt quy tắc. Nếu coi \"thu nhập tài xế lớn hơn giá cước cộng tip\" là dấu "
         f"hiệu bất thường, {vn(r0.pct, 1)}% chuyến sẽ bị đánh dấu, và chỉ {vn(r0.overlap_iso_pct, 1)}% trong số đó bị Isolation "
         f"Forest coi là bất thường. Ở New York, thu nhập tài xế HVFHV được tính theo công thức tối thiểu của TLC dựa trên thời gian và "
         f"quãng đường, độc lập với giá mà nền tảng thu của khách (mục 2.3.3), nên nền tảng có thể trả tài xế nhiều hơn giá thu ở chuyến "
@@ -360,7 +360,7 @@ def build(rp, R):
     rp.PS(
         "Kiến trúc Zero Trust (Rose và cộng sự, 2020), được trình bày ở mục 7.4 của bài giảng, bỏ giả định rằng mọi thứ bên trong "
         "mạng nội bộ là đáng tin. Mỗi yêu cầu truy cập được xác thực và cấp quyền riêng, theo nguyên tắc quyền tối thiểu. Áp dụng vào "
-        "pipeline của đồ án, điều quan trọng không phải là công nghệ mà là phân loại tài sản đúng. Kết quả mục 6.7 cho thấy dữ liệu ở mức "
+        "pipeline của đồ án, phân loại tài sản đúng quan trọng hơn lựa chọn công nghệ. Kết quả mục 6.7 cho thấy dữ liệu ở mức "
         "chuyến, dù ở Bronze hay Silver, có rủi ro tái nhận dạng cao; Silver còn được làm sạch và dễ truy vấn hơn nên cần kiểm soát "
         "truy cập chặt nhất. Ngược lại, lớp Gold chiếm chưa tới hai phần trăm dung lượng nhưng chứa toàn bộ thông tin cần cho phân tích và có thể công bố. Việc "
         "tách bạch này cho phép cấp cho phần lớn người dùng phân tích quyền đọc Gold mà không bao giờ chạm vào dữ liệu vi mô.")
@@ -375,7 +375,7 @@ def build(rp, R):
         f"tốn khoảng {vn(rto.minutes.iloc[0], 0)} phút; mất một tháng HVFHV chỉ tốn khoảng {vn(rto.minutes.iloc[2], 1)} phút nhờ phân "
         f"vùng. RPO bằng 0 đối với dữ liệu, vì Bronze là bản sao của nguồn công khai và các lớp sau là hàm tất định của Bronze. Chỉ mã "
         f"nguồn và cấu hình là không tái tạo được và cần sao lưu theo quy tắc 3-2-1.",
-        "Đây là một lợi thế ít được nhắc đến của kiến trúc medallion có tính lũy đẳng: chiến lược sao lưu có thể chỉ tập trung vào lớp "
+        "Kiến trúc medallion có tính lũy đẳng còn có một lợi thế: chiến lược sao lưu có thể chỉ tập trung vào lớp "
         "Bronze và mã nguồn, còn Silver và Gold được coi là bộ đệm có thể tính lại. Cái giá phải trả là thời gian tính lại, và bảng trên "
         "cho biết chính xác cái giá đó.")
 
@@ -401,8 +401,8 @@ def build(rp, R):
         "Khung quản trị rủi ro ở mục 7.8 của bài giảng đề xuất nhận diện, đánh giá, xử lý và giám sát rủi ro một cách có hệ thống. Sổ "
         "đăng ký trên khác các danh sách rủi ro thường gặp ở một điểm: mỗi rủi ro được gắn với bằng chứng cụ thể trong đồ án, và phần "
         "lớn không phải là giả định mà đã xảy ra hoặc đã được đo. Bốn trong tám rủi ro liên quan đến tính đúng của kết luận phân tích "
-        "chứ không phải đến an ninh hạ tầng. Điều này phản ánh đặc điểm của các dự án phân tích dữ liệu lớn: rủi ro lớn nhất thường "
-        "không phải bị tấn công, mà là đưa ra quyết định dựa trên một con số sai mà không ai biết là sai.")
+        "chứ không phải đến an ninh hạ tầng. Với các dự án phân tích dữ liệu lớn, rủi ro lớn nhất thường là đưa ra quyết "
+        "định dựa trên một con số sai mà không ai biết là sai, nhiều hơn là rủi ro bị tấn công.")
     rp.H2("6.11. Tiểu kết Chương 6")
     rp.P(f"Chương 6 đã áp dụng các công cụ quản trị dữ liệu và rủi ro lên chính tài sản dữ liệu của đồ án. Danh mục và phả hệ tự "
          f"động cho biết dữ liệu nằm ở đâu và kết quả nào phụ thuộc vào bảng nào; dấu băm và đối soát xác nhận toàn bộ {vint(len(rec))} "

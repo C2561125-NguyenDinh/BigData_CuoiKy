@@ -1,0 +1,78 @@
+{
+  "service": "hvfhv",
+  "month": "2022-10",
+  "chunk": 0,
+  "seconds": 9.2,
+  "tables": [
+    {
+      "service": "hvfhv",
+      "month": "2022-10",
+      "chunk": 0,
+      "table": "zone_day_pu",
+      "rows_orig": 1288,
+      "rows_new": 1288,
+      "n_numeric_cols": 18,
+      "max_rel_diff": 2.9997584179313175e-15
+    },
+    {
+      "service": "hvfhv",
+      "month": "2022-10",
+      "chunk": 0,
+      "table": "zone_day_do",
+      "rows_orig": 1291,
+      "rows_new": 1291,
+      "n_numeric_cols": 16,
+      "max_rel_diff": 4.426758806816632e-16
+    },
+    {
+      "service": "hvfhv",
+      "month": "2022-10",
+      "chunk": 0,
+      "table": "grp_hour_day",
+      "rows_orig": 2973,
+      "rows_new": 2973,
+      "n_numeric_cols": 15,
+      "max_rel_diff": 1.9883822431965174e-15
+    },
+    {
+      "service": "hvfhv",
+      "month": "2022-10",
+      "chunk": 0,
+      "table": "company_grp_day",
+      "rows_orig": 250,
+      "rows_new": 250,
+      "n_numeric_cols": 14,
+      "max_rel_diff": 1.0799130304552898e-15
+    },
+    {
+      "service": "hvfhv",
+      "month": "2022-10",
+      "chunk": 0,
+      "table": "zone_hour_month",
+      "rows_orig": 6131,
+      "rows_new": 6131,
+      "n_numeric_cols": 16,
+      "max_rel_diff": 1.2117283272169174e-15
+    },
+    {
+      "service": "hvfhv",
+      "month": "2022-10",
+      "chunk": 0,
+      "table": "od_month",
+      "rows_orig": 48987,
+      "rows_new": 48987,
+      "n_numeric_cols": 16,
+      "max_rel_diff": 5.169793832310982e-15
+    },
+    {
+      "service": "hvfhv",
+      "month": "2022-10",
+      "chunk": 0,
+      "table": "trip_sample",
+      "rows_orig": 7261,
+      "rows_new": 7261,
+      "n_numeric_cols": 24,
+      "max_rel_diff": 0.0
+    }
+  ]
+}

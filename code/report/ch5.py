@@ -42,7 +42,7 @@ def build(rp, R):
     rp.PS(
         "Chương 4 đã cho thấy toàn bộ pipeline chạy được trên DuckDB, một bộ máy phân tích nhúng chạy trên một nút. Chương này đưa "
         "vào bộ máy thứ hai, Apache Spark, là nền tảng xử lý phân tán trong bộ nhớ được Chương 3 của bài giảng trình bày như công cụ "
-        "trung tâm của phân tích dữ liệu lớn. Mục đích không phải thay DuckDB bằng Spark, mà trả lời ba câu hỏi mà một đồ án chỉ "
+        "trung tâm của phân tích dữ liệu lớn. Spark không thay DuckDB; nó được dùng để trả lời ba câu hỏi mà một đồ án chỉ "
         "dùng một bộ máy không trả lời được.",
         "Câu hỏi thứ nhất là tính đúng. Một bảng Gold do một bộ máy tạo ra có thể sai vì lỗi logic, lỗi ép kiểu hoặc lỗi của chính "
         "bộ máy, và những lỗi này thường không lộ ra khi chỉ nhìn vào kết quả phân tích. Tái lập cùng bảng bằng một bộ máy độc lập "
@@ -50,7 +50,7 @@ def build(rp, R):
         "phí: mô hình phân tán của Spark tốn thêm bao nhiêu thời gian và bộ nhớ khi chạy trên đúng phần cứng mà DuckDB đã dùng. Câu "
         "hỏi thứ ba là cơ chế: các thành phần mà lý thuyết nêu ra, gồm bộ tối ưu Catalyst, thực thi truy vấn thích nghi, lưu đệm, "
         "cắt tỉa phân vùng, Apache Arrow và xử lý luồng có cấu trúc, tác động đo được đến đâu trên dữ liệu thật của đồ án.",
-        "Ba câu hỏi này gộp lại thành câu hỏi nghiên cứu RQ6. Mục 5.1 mô tả thiết kế thực nghiệm. Mục 5.2 trình bày kết quả tái lập "
+        "Ba câu hỏi này gộp lại thành câu hỏi nghiên cứu RQ5. Mục 5.1 mô tả thiết kế thực nghiệm. Mục 5.2 trình bày kết quả tái lập "
         "và đối chứng chéo, trong đó có một lỗi thật của pipeline được phát hiện nhờ Spark. Các mục 5.3 đến 5.8 lần lượt phân tích "
         "hiệu năng và từng cơ chế. Mục 5.9 thảo luận hàm ý cho việc chọn công cụ.")
 
@@ -78,7 +78,7 @@ def build(rp, R):
         "Một chi tiết vận hành đáng ghi lại: lần chạy đầu tiên, Spark không khởi động được vì máy ảo không phân giải được tên máy "
         "của chính nó, và sau đó không xóa được tệp tạm vì thư mục dự án được gắn từ Windows với quyền chỉ ghi, không xóa. Hai lỗi "
         "này được xử lý bằng biến môi trường SPARK_LOCAL_HOSTNAME và bằng cách đặt thư mục làm việc của Spark trên đĩa cục bộ. Chúng "
-        "minh họa một điểm mà bài giảng nhấn mạnh ở mục 3.7: chi phí thật của một bộ máy phân tán nằm nhiều ở vận hành, không chỉ ở "
+        "minh họa một điểm mà bài giảng nhấn mạnh ở mục 3.7: chi phí của một bộ máy phân tán nằm nhiều ở vận hành chứ không riêng ở "
         "thời gian tính toán.")
     rp.H3("5.1.2. Truy vấn chuẩn")
     rp.P("Mọi phép so sánh bộ máy dùng cùng một truy vấn: dựng bảng Gold zone_day_pu từ lớp Silver, tức tổng hợp theo dịch vụ, ngày "
@@ -198,11 +198,11 @@ def build(rp, R):
         f"chỉ tiêu dưới 1e-9 và tổng phí CBD của taxi vàng hai bên khớp nhau ({vn(y1.total_spark, 2)} và {vn(y1.total_duckdb, 2)} "
         f"USD). Mọi con số trong báo cáo này đều dùng dữ liệu sau khi sửa.",
         f"Về độ lớn, lỗi nhỏ: tổng phí taxi vàng trong năm 2025 bị ghi cao hơn {vn(100 * (y0.total_duckdb / y0.total_spark - 1), 4)}%, "
-        f"và các ước lượng DiD về phí trên mỗi chuyến của taxi vàng chỉ đổi ở chữ số thập phân thứ năm. Nhưng loại lỗi này đáng chú ý vì ba lý do. Nó im lặng: không "
+        f"và các ước lượng DiD về phí trên mỗi chuyến của taxi vàng chỉ đổi ở chữ số thập phân thứ năm. Dù vậy, loại lỗi này cần lưu ý vì ba lý do. Nó im lặng: không "
         "có cảnh báo, không có lỗi thực thi. Nó phụ thuộc thứ tự tệp: nếu tệp đầu tiên thuộc năm 2025, lỗi sẽ không xảy ra. Và nó "
-        "không thể phát hiện bằng cách xem kết quả phân tích, vì mọi con số đều hợp lý. Chỉ một phép tính độc lập mới lộ ra nó. Đây "
-        "là lập luận thực nghiệm mạnh nhất của chương cho việc có hai bộ máy trong một pipeline dữ liệu lớn: bộ máy thứ hai đóng vai "
-        "trò kiểm toán viên.")
+        "không thể phát hiện bằng cách xem kết quả phân tích, vì mọi con số đều hợp lý. Chỉ một phép tính độc lập mới lộ ra nó. Kết quả "
+        "này là lý do thực nghiệm chính để dùng hai bộ máy trong một pipeline dữ liệu lớn: bộ máy thứ hai làm nhiệm vụ kiểm "
+        "toán.")
     rp.TAB(vtab(val), "Đối chứng Spark – DuckDB, lần 2 (sau khi sửa lỗi)", widths=[2.6, 6.7, 6.7], size=9.5,
            align=["left", "center", "center"], source="Nguồn: t61_spark_validation.csv.")
 
@@ -229,8 +229,8 @@ def build(rp, R):
         f"khoảng {vn(s0.jvm_peak_mb, 0)} MB, gấp {vn(s0.jvm_peak_mb / d0.py_peak_mb, 1)} lần tiến trình DuckDB.",
         f"Spark DataFrame và Spark SQL cho thời gian gần như trùng nhau ({vn(s0.median_s, 2)} và {vn(q0.median_s, 2)} giây). Đây là "
         f"điều lý thuyết dự đoán: cả hai cách viết đều được Catalyst dịch về cùng một cây kế hoạch logic, tối ưu bằng cùng bộ quy tắc "
-        f"và sinh cùng một kế hoạch vật lý. Lựa chọn giữa SQL và DataFrame vì vậy là lựa chọn về khả năng bảo trì mã, không phải về "
-        f"hiệu năng.")
+        f"và sinh cùng một kế hoạch vật lý. Vì hiệu năng như nhau, lựa chọn giữa SQL và DataFrame chỉ còn phụ thuộc vào khả năng "
+        f"bảo trì mã.")
     rp.H3("5.3.2. Mở rộng theo khối lượng dữ liệu")
     rows = []
     fits = {}
@@ -381,8 +381,8 @@ def build(rp, R):
         f"hóa từng dòng bằng pickle, gửi qua socket và Python dựng lại từng đối tượng. Có Arrow, dữ liệu được gửi theo lô cột nhị "
         f"phân mà pandas đọc trực tiếp. Với {vint(a0.rows)} dòng tám cột, thời gian giảm từ {vn(a0.median_s, 1)} giây xuống "
         f"{vn(a1.median_s, 1)} giây, nhanh hơn {vn(a0.median_s / a1.median_s, 1)} lần.",
-        "Đây là khác biệt lớn nhất trong mọi thực nghiệm của chương, và nó không nằm ở bộ máy tính toán mà ở ranh giới giữa hai môi "
-        "trường chạy. Trong thực tế, nhiều pipeline PySpark chậm không phải vì Spark chậm mà vì chuyển dữ liệu qua ranh giới "
+        "Đây là khác biệt lớn nhất trong mọi thực nghiệm của chương, và nguyên nhân nằm ở ranh giới giữa hai môi trường chạy chứ "
+        "không ở bộ máy tính toán. Trong thực tế, nhiều pipeline PySpark chậm vì chuyển dữ liệu qua ranh giới "
         "JVM – Python không có Arrow, hoặc vì dùng hàm do người dùng định nghĩa bằng Python chạy từng dòng.")
 
     # ================================================================ 5.8

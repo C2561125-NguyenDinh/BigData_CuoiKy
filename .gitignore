@@ -1,8 +1,16 @@
-# Du lieu lon (~46 GB): tai lai bang code/00_download_data*.{py,ps1}
+# Du lieu tho va Silver/Bronze (~46 GB): tai lai bang code/00_download_data*.py
 data/*
 !data/README.md
-# Tep nen va tep tam
-code_sync.tar.gz
+# Lop Gold (~240 MB) duoc dua len kho de chay lai phan tich ma khong can du lieu tho
+!data/gold/
+data/gold/*
+!data/gold/*.parquet
+!data/gold/zone_adjacency.csv
+!data/gold/long/
+data/gold/long/*
+!data/gold/long/zone_day_pu.parquet
+# Tep nen, tep tam
+*.tar.gz
 __pycache__/
 *.pyc
 *.bak
@@ -18,6 +26,7 @@ report/*.png
 outputs/**/t87*
 outputs/**/t88*
 outputs/**/f55*
-
+outputs/logs/spark/cores_*
 # Script day len GitHub (chi dung tren may)
 push_github.bat
+capnhat_github.bat

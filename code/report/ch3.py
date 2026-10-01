@@ -454,6 +454,9 @@ def build(rp, R):
          "thu nhập tài xế)", "Mục 4.15"),
         ("19_long_preperiod.py", "Nghiên cứu sự kiện theo tháng 2022–2025, giả dược năm 2024, điều chỉnh xu hướng, độ nhạy "
          "Rambachan–Roth (RM, SD)", "Mục 4.14.4, 4.14.5"),
+        ("20_inference_robustness.py", "Sai số Conley, phân cụm hai chiều, wild cluster bootstrap, kiểm định bội (Holm, BH, "
+         "Romano–Wolf), sáu dạng xu hướng, Rambachan–Roth có bootstrap, DML theo ngưỡng cắt và ATO", "Mục 4.14.6"),
+        ("21_regeneration_check.py", "Dựng lại phân vùng Gold 2022–2023 từ Bronze và so với Gold đang dùng", "Mục 3.2.4"),
     ], columns=["Bước", "Nội dung", "Kết quả ở"])
     rp.TAB(mods, "Các bước mở rộng của pipeline", widths=[4.4, 9.2, 2.4], size=10, align=["left", "left", "center"],
            source="Nguồn: thư mục code/.")

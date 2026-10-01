@@ -45,7 +45,7 @@ def build(rp, R):
         f"5 cũng cho thấy Spark có ba vai trò mà DuckDB không thay thế được ngay cả ở quy mô này: kiểm toán độc lập (phát hiện lỗi ép "
         f"kiểu), đường nâng cấp khi dữ liệu vượt một máy, và xử lý luồng có trạng thái. Quan điểm của mục 3.8 trong bài giảng về tối ưu "
         f"chi phí tính toán vì vậy cần được hiểu đúng: chọn công cụ theo quy mô và tần suất thực tế, nhưng một bộ máy thứ hai với chi "
-        f"phí thấp có thể đáng giá vì lý do kiểm soát chất lượng, không phải vì tốc độ.")
+        f"phí thấp có thể đáng giá vì giúp kiểm soát chất lượng, dù không nhanh hơn.")
     rp.H3("8.1.2. Chất lượng dữ liệu ảnh hưởng đến kết luận nhân quả")
     q = R.t("t07")
     rp.PS(
@@ -53,7 +53,7 @@ def build(rp, R):
         f"bản ghi HVFHV). Nếu tỷ lệ này thay đổi khác nhau giữa CRZ và vùng đối chứng quanh thời điểm chính sách, chẳng hạn do ứng dụng "
         f"thay đổi cách ghi vị trí, kết quả nhân quả sẽ bị ảnh hưởng. Phụ lục F cho thấy tỷ lệ loại ổn định qua 24 tháng, nhưng đây là "
         f"một điểm cần được theo dõi thường xuyên nếu pipeline được dùng để giám sát chính sách lâu dài.",
-        "Cách xác định vùng xử lý từ dữ liệu thu phí cũng là một bài học về chất lượng dữ liệu. Nếu gán tay theo ranh giới đường 60, "
+        "Cách xác định vùng xử lý từ dữ liệu thu phí cũng liên quan đến chất lượng dữ liệu. Nếu gán tay theo ranh giới đường 60, "
         "sáu vùng vắt ranh giới sẽ bị xếp nhầm vào nhóm này hay nhóm kia. Với các chính sách khác mà ranh giới không trùng với đơn vị "
         "thống kê, cách làm tương tự có thể áp dụng miễn là có một biến trong dữ liệu phản ánh trực tiếp việc chịu chính sách.")
 
@@ -65,8 +65,8 @@ def build(rp, R):
         f"khoảng {vn((R.t('t53').bronze_mb.sum() + R.t('t53').silver_mb.sum()) / 1024, 1)} GB cộng khoảng nửa gigabyte cho Gold. Các con "
         f"số này đủ nhỏ để quy trình giám sát chính sách có thể chạy định kỳ mỗi tháng trên hạ tầng rất khiêm tốn, hoặc trên một máy "
         f"ảo đám mây cỡ nhỏ trong vài giờ.",
-        "Trong khung ROI và TCO của Chương 6 bài giảng, điểm đáng chú ý là phần lớn chi phí của một dự án như thế này không nằm ở hạ "
-        "tầng mà ở công sức thiết kế: xác định vùng xử lý, lựa chọn đối chứng, xây dựng các phép thử giả dược. Một khi pipeline đã "
+        "Trong khung ROI và TCO của Chương 6 bài giảng, phần lớn chi phí của một dự án như thế này nằm ở công sức thiết kế, còn hạ "
+        "tầng tốn rất ít: xác định vùng xử lý, lựa chọn đối chứng, xây dựng các phép thử giả dược. Một khi pipeline đã "
         "được xây dựng và kiểm chứng, chi phí biên của việc đánh giá thêm một chỉ tiêu hay thêm một tháng dữ liệu gần như bằng 0.")
 
     rp.H2("8.2. Về tác động lên số chuyến")
@@ -82,8 +82,9 @@ def build(rp, R):
         "tăng; đồ án không xác định được phần này nhưng phân phối chi phí hành khách cho thấy nó có thể không nhỏ. Thứ hai, cầu của "
         "chuyến ngắn trong khu trung tâm rất co giãn vì có nhiều phương án thay thế gần như miễn phí về tiền (đi bộ, xe đạp) hoặc rẻ "
         "(tàu điện ngầm, taxi với phí thấp hơn). Thứ ba, một phần mức giảm có thể là xu hướng có sẵn chưa được kiểm soát hết, như phép "
-        "thử giả dược về số chuyến gợi ý. Vì vậy, đồ án coi phạm vi 6–10% là tác động tổng hợp của phí cùng mọi phản ứng đi kèm trong "
-        "năm đầu, không phải độ co giãn thuần theo giá.")
+        "thử giả dược về số chuyến gợi ý. Mục 4.14.6 xác nhận điều này: với dữ liệu 2022–2025, tác động lên số chuyến nằm trong "
+        "khoảng từ 0 đến khoảng 10% tùy giả định xu hướng. Vì vậy, phạm vi 6–10% là cận trên của tác động tổng hợp của phí cùng mọi "
+        "phản ứng đi kèm trong năm đầu, và độ co giãn ngụ ý ở trên cũng là cận trên, không phải độ co giãn thuần theo giá.")
     rp.H3("8.2.2. So sánh với nghiên cứu khác")
     rp.PS(
         "Pandey, Guler và Gayah (2026) báo cáo mức giảm 5,95% tổng số chuyến của các công ty gọi xe. Con số này nằm ở cận dưới của "
@@ -110,9 +111,11 @@ def build(rp, R):
         f"Mục tiêu tuyên bố của chính sách là giảm ùn tắc. Dữ liệu gọi xe cho phép đo điều này gián tiếp qua tốc độ của chính các chuyến "
         f"đi. Mức tăng {vn(mp.coef, 2)} dặm/giờ trên nền {vn(mp.treated_pre_mean, 1)} dặm/giờ nghe có vẻ khiêm tốn, nhưng cần đặt trong "
         f"bối cảnh: tốc độ khu trung tâm vào giờ cao điểm buổi chiều chỉ khoảng 7 dặm/giờ, và mức tăng tập trung đúng vào các giờ đó. "
-        f"Kết quả tốc độ còn là bằng chứng vững nhất trong đồ án: nó có bước nhảy rõ tại mốc chính sách, vượt qua giả dược theo thời "
-        f"gian (giả dược ngược dấu), không nhạy với xu hướng nhóm và được xác nhận bởi cả DML.",
-        f"Thời gian chờ giảm {vn(-wt.coef, 2)} phút là lợi ích trực tiếp cho hành khách còn lại trong hệ thống. Nó cũng cho thấy phí có "
+        f"Kết quả tốc độ có bước nhảy rõ tại mốc chính sách, vượt qua giả dược theo thời gian (giả dược ngược dấu), không nhạy với xu "
+        f"hướng nhóm và được xác nhận bởi cả DML. Tuy vậy, với dữ liệu 2022–2025, độ lớn của nó phụ thuộc vào giả định về xu hướng "
+        f"dài hạn: tốc độ tăng có ý nghĩa ở phần lớn đặc tả nhưng không khác 0 khi cho phép xu hướng bậc hai (mục 4.14.6). Trong hai "
+        f"chỉ tiêu ùn tắc, thời gian chờ là kết quả vững hơn.",
+        f"Thời gian chờ giảm {vn(-wt.coef, 2)} phút, và vẫn giảm ở mọi đặc tả xu hướng trừ đặc tả kém tin cậy nhất, là lợi ích trực tiếp cho hành khách còn lại trong hệ thống. Nó cũng cho thấy phí có "
         f"tác động qua hai kênh: đường thông thoáng hơn và nguồn cung xe tương đối dồi dào hơn so với cầu. Về mặt phúc lợi, những hành "
         f"khách vẫn đi xe gọi công nghệ trả thêm phí nhưng nhận lại thời gian di chuyển và chờ đợi ngắn hơn.")
     pw80 = R.t("t80")
@@ -134,14 +137,14 @@ def build(rp, R):
     rp.PS(
         "Tốc độ tăng mạnh nhất vào chiều tối ngày thường và gần như không tăng vào giờ cao điểm buổi sáng hay cuối tuần. Mẫu hình này "
         "phù hợp với lý thuyết đường cong tốc độ – lưu lượng: khi lưu lượng gần mức bão hòa, giảm một ít xe tạo ra cải thiện lớn về tốc "
-        "độ. Nó cũng gợi ý rằng một cơ cấu phí phân biệt theo giờ chi tiết hơn có thể đạt hiệu quả cao hơn cùng mức thu. Đây chính là "
+        "độ. Nó cũng gợi ý rằng một cơ cấu phí phân biệt theo giờ chi tiết hơn có thể đạt hiệu quả cao hơn cùng mức thu. Đây là "
         "khuyến nghị của Vickrey (1969) về phí thay đổi theo thời gian.")
 
     rp.H2("8.4. Về giá cước, chi phí hành khách và thu nhập tài xế")
     rp.H3("8.4.1. Vì sao không kết luận")
     rp.PS(
         f"Kết quả DiD thô cho thấy chi phí hành khách của chuyến đón trong CRZ tăng {vn(rt.coef, 2)} USD, gấp "
-        f"{vn(rt.coef / cb.coef, 1)} lần phí CBD. Đây là loại con số dễ trở thành tiêu đề báo chí. Đồ án chủ động không dùng nó làm kết "
+        f"{vn(rt.coef / cb.coef, 1)} lần phí CBD. Đồ án không dùng con số này làm kết "
         f"luận vì ba bằng chứng: xu hướng giá của CRZ đã tách khỏi vùng đối chứng trong suốt năm 2024; phép thử giả dược tháng 07/2024 "
         f"tạo ra \"tác động\" có ý nghĩa với cùng độ lớn; và đặc tả có xu hướng nhóm đảo dấu kết quả. Khi ba phép thử cùng thất bại, "
         f"hệ số DiD không còn diễn giải được như tác động nhân quả.",
@@ -151,7 +154,7 @@ def build(rp, R):
         "toán định giá.")
     rp.H3("8.4.2. Ý nghĩa đối với phương pháp")
     rp.PS(
-        "Trường hợp này minh họa một điểm phương pháp quan trọng: giả định xu hướng song song có thể đúng với một biến kết quả và sai "
+        "Về phương pháp, trường hợp này cho thấy giả định xu hướng song song có thể đúng với một biến kết quả và sai "
         "với biến khác trong cùng một thiết kế. Số chuyến, tốc độ, thời gian chờ và giá cước đều được đo trên cùng vùng, cùng tuần, "
         "nhưng chỉ một số biến có động thái trước chính sách đủ ổn định. Việc chạy phép thử giả dược riêng cho từng biến, thay vì chỉ "
         "cho biến chính, là cần thiết. Đây cũng là tinh thần của Roth và cộng sự (2023) và Rambachan và Roth (2023) về việc đánh giá "
@@ -172,8 +175,8 @@ def build(rp, R):
     rp.H3("8.6.1. Chồng lấn là vấn đề trung tâm")
     fu = R.dml("dlog_n", "đầy đủ")
     rp.PS(
-        f"Ứng dụng DML trong đồ án cho thấy vấn đề lớn nhất khi áp dụng học máy nhân quả cho chính sách không gian không phải là chọn "
-        f"thuật toán mà là chồng lấn. Với bộ biến đầy đủ, AUC của mô hình xu hướng là {vn(fu.auc_propensity, 3)}; mô hình \"biết\" gần như "
+        f"Ứng dụng DML trong đồ án cho thấy khi áp dụng học máy nhân quả cho chính sách không gian, chồng lấn là vấn đề khó hơn "
+        f"việc chọn thuật toán. Với bộ biến đầy đủ, AUC của mô hình xu hướng là {vn(fu.auc_propensity, 3)}; mô hình \"biết\" gần như "
         f"chắc chắn cặp nào chạm CRZ. Trong tình huống đó, mọi ước lượng dựa trên trọng số xu hướng chỉ đại diện cho một tập con rất nhỏ "
         f"và đặc biệt. Báo cáo ước lượng mà không báo cáo chồng lấn sẽ gây hiểu nhầm.",
         f"Lựa chọn của đồ án là dùng bộ biến rút gọn chỉ gồm đặc trưng chuyến đi. Lựa chọn này có cái giá: nếu có yếu tố gắn với vị trí "
@@ -221,15 +224,17 @@ def build(rp, R):
     rp.H2("8.8. Hạn chế của nghiên cứu")
     lim = pd.DataFrame([
         ("Năm gốc 2022 còn chịu ảnh hưởng COVID-19", "Xu hướng trước chính sách có thể là phục hồi sau đại dịch, không kéo dài tuyến tính",
-         "Dữ liệu 2019 làm mốc thứ hai; xu hướng phi tuyến"),
-        ("Tác động lên số chuyến phụ thuộc giả định xu hướng", "Không tách chắc chắn tác động khỏi xu hướng có sẵn; điểm gãy RR gần bằng 0",
+         "Đã kiểm tra bằng sáu đặc tả năm gốc và dạng xu hướng (mục 4.14.6); cần dữ liệu 2019 làm mốc thứ hai"),
+        ("Tác động lên số chuyến phụ thuộc giả định xu hướng", "Ước lượng từ 0 đến khoảng 10% tùy đặc tả; điểm gãy RR nhỏ",
          "Thêm vùng đối chứng tương đồng; dữ liệu lưu lượng xe con"),
-        ("Silver 2022–2023 không lưu bền cho phần lớn tháng", "Không kiểm toán lại được từng chuyến mở rộng sau khi chạy",
-         "Lưu Silver trên máy có RAM lớn hơn hoặc lưu trữ đám mây"),
+        ("Silver 2022–2023 không lưu bền cho phần lớn tháng", "Muốn kiểm toán từng chuyến phải dựng lại từ Bronze",
+         "Đã kiểm chứng dựng lại Gold từ Bronze khớp với Gold đang dùng (bước 21, mục 3.2.4)" if "t96_regeneration_check" in R.T
+         else "Lưu Silver trên máy có RAM lớn hơn hoặc lưu trữ đám mây"),
         ("Không có dữ liệu xe con cá nhân", "Không đo trực tiếp lưu lượng giao thông vào vùng", "Kết hợp dữ liệu cảm biến giao thông, dữ liệu thu phí của MTA"),
         ("Tốc độ đo trên chuyến gọi xe", "Có thể khác tốc độ của toàn bộ phương tiện", "Dùng dữ liệu GPS xe buýt MTA"),
-        ("Giá cước chịu xu hướng có sẵn", "Không kết luận được về phân bổ gánh nặng", "Dữ liệu dài hơn; phương pháp của Rambachan và Roth (2023)"),
-        ("Chồng lấn thấp trong DML", "Ước lượng chỉ đại diện cho vùng chồng lấn", "Thiết kế ở cấp chuyến với đặc trưng thời gian chi tiết"),
+        ("Giá cước chịu xu hướng có sẵn", "Không kết luận được về phân bổ gánh nặng; vấn đề này được đặt ngoài phạm vi", "Dữ liệu giá theo chuyến của nền tảng; thiết kế có nhóm đối chứng ngoài New York"),
+        ("Tương quan không gian giữa các vùng", "Sai số Conley và hai chiều lớn hơn sai số theo vùng 2–3,5 lần; thu nhập tài xế/dặm mất ý nghĩa", "Đã báo cáo ở mục 4.14.6; các kết quả chính không đổi"),
+        ("Chồng lấn thấp trong DML", "Ước lượng chỉ đại diện cho vùng chồng lấn", "Đã kiểm tra ngưỡng cắt và ước lượng ATO (mục 4.14.6); thiết kế ở cấp chuyến"),
         ("Không quan sát hành khách cá nhân", "Không đo được phương thức thay thế cụ thể", "Kết hợp dữ liệu lượt quẹt thẻ tàu điện ngầm"),
         ("Phí ghi nhận khác phí thực thu", "Doanh thu phí chỉ là ước lượng từ hóa đơn", "Đối chiếu với báo cáo tài chính của MTA"),
         ("Taxi vàng có biến động riêng ở quận ngoài", "Kết quả taxi vàng kém ổn định", "Phân tích riêng theo nhà cung cấp và loại chuyến"),
@@ -245,12 +250,15 @@ def build(rp, R):
         "giảm tương đối từ trước, nhưng năm gốc 2022 còn chịu ảnh hưởng của làn sóng Omicron và quá trình phục hồi sau đại dịch. Nếu "
         "xu hướng đó là phục hồi đang chậm lại thì trừ đi xu hướng tuyến tính sẽ làm tác động bị ước lượng thấp; nếu nó là dịch chuyển "
         "lâu dài của hoạt động ra khỏi khu trung tâm thì các ước lượng một năm sẽ bị phóng đại. Dữ liệu TLC không phân biệt được hai "
-        "khả năng này, nên đồ án báo cáo khoảng 0–2% là ước lượng thận trọng và 6–10% là cận trên.",
+        "khả năng này. Mục 4.14.6 cho thấy riêng việc chọn năm gốc và dạng xu hướng đã làm ước lượng thay đổi từ khoảng 0 đến "
+        "khoảng 10%, nên đồ án không đưa ra một con số cụ thể cho tác động lên số chuyến; khoảng 6–10% của các thiết kế một năm là cận "
+        "trên.",
         "Các hạn chế còn lại chủ yếu liên quan đến phạm vi dữ liệu TLC. Chúng không làm thay đổi các kết luận chính về chiều của tác "
         "động lên tốc độ và thời gian chờ, nhưng giới hạn khả năng mở rộng kết luận sang toàn bộ hệ thống giao thông.")
-    rp.H2("8.9. Tiểu kết Chương 5")
+    rp.H2("8.9. Tiểu kết Chương 8")
     rp.P("Chương 8 đã thảo luận ý nghĩa của các kết quả. Về kỹ thuật, bài toán quy mô hàng trăm triệu bản ghi có thể xử lý trên máy "
-         "cá nhân khi kết hợp đúng các lựa chọn kiến trúc. Về chính sách, phí CRZ cải thiện tốc độ và thời gian chờ; mức giảm số chuyến "
-         "gọi xe trùng phần lớn với xu hướng có sẵn từ 2022, nên độ lớn của nó chưa kết luận chắc chắn. Về phương pháp, việc kiểm tra giả dược cho từng chỉ "
+         "cá nhân khi kết hợp đúng các lựa chọn kiến trúc. Về chính sách, phí CRZ làm giảm thời gian chờ, kết quả vững nhất của đồ án, "
+         "và nhiều khả năng làm tăng tốc độ; mức giảm số chuyến gọi xe trùng phần lớn với xu hướng có sẵn từ 2022, nên độ lớn của nó "
+         "chưa kết luận chắc chắn. Về phương pháp, việc kiểm tra giả dược cho từng chỉ "
          "tiêu và kiểm tra chồng lấn trong học máy nhân quả là cần thiết để phân biệt kết quả đáng tin với kết quả chỉ phản ánh xu "
          "hướng có sẵn.")

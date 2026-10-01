@@ -39,6 +39,15 @@ def data_section(rp, R):
         f"là ghi Parquet nén qua lớp chia sẻ thư mục của máy ảo, và không làm mất khả năng tái lập vì lớp Bronze được giữ nguyên. Các bảng Gold dài (2022–2025) được "
         f"ghi riêng vào thư mục data/gold/long và không thay thế các bảng Gold chính, nên mọi kết quả của giai đoạn 2024–2025 ở các "
         f"chương khác giữ nguyên.")
+    if "t96_regeneration_check" in R.T:
+        rg = R.t("t96")
+        parts = rg.drop_duplicates(["service", "month", "chunk"])
+        desc = ", ".join(f"{'HVFHV' if r.service == 'hvfhv' else 'taxi vàng'} {r.month[5:]}/{r.month[:4]}" for r in parts.itertuples())
+        rp.P(f"Để kiểm chứng rằng việc không lưu Silver không làm mất khả năng kiểm toán, bước 21 dựng lại từ Bronze "
+             f"{len(parts)} phân vùng không lưu Silver ({desc}) vào một thư mục tạm và so sánh {len(rg)} bảng Gold mới với bảng đang "
+             f"dùng. Số dòng trùng khớp ở {int((rg.rows_orig == rg.rows_new).sum())}/{len(rg)} bảng và sai lệch tương đối lớn nhất "
+             f"giữa tổng các cột số là {vn(rg.max_rel_diff.max(), 2) if rg.max_rel_diff.max() >= 0.01 else f'{rg.max_rel_diff.max():.1e}'.replace('.', ',')}. "
+             f"Silver của các phân vùng này vì vậy có thể dựng lại đúng bất kỳ lúc nào từ Bronze và mã nguồn.")
 
 
 def analysis_section(rp, R):
@@ -76,17 +85,17 @@ def analysis_section(rp, R):
     i = idx.set_index("ym")
     ratio = lambda y: float(i.loc[f"{y}-12", "crz"] / i.loc[f"{y}-12", "control"]) if f"{y}-12" in i.index else np.nan
     rp.PS(
-        f"Kết quả quan trọng nhất của mục này là về số chuyến. {lab57} và chuỗi chỉ số theo tháng cho thấy số chuyến HVFHV trong CRZ đã "
+        f"Thay đổi lớn nhất ở mục này là về số chuyến. {lab57} và chuỗi chỉ số theo tháng cho thấy số chuyến HVFHV trong CRZ đã "
         f"giảm tương đối so với nhóm đối chứng một cách đều đặn từ năm 2023, trước khi có chính sách: độ dốc trước chính sách là "
         f"{vn(100 * n.pre_slope_per_month, 2)} điểm log mỗi tháng. Giả dược 2024 so với 2023 là {vn(pct_log(n.placebo_2024_vs_2023), 1)}%, "
         f"gần bằng tác động thô 2025 so với 2024 ({vn(pct_log(n.effect_2025_vs_2024), 1)}%). Khi ngoại suy xu hướng tuyến tính, tác động "
         f"còn {vn(pct_log(n.effect_trend_adj), 2)}% (sai số chuẩn {vn(100 * n.effect_trend_adj_se, 2)} điểm log), không khác 0. Với giả "
         f"định thay đổi hằng năm không đổi, gia tốc là {vn(pct_log(n.accel), 1)}% (p {pval(n.accel_p)}).",
-        f"Nói cách khác, phần lớn mức giảm khoảng 6–10% mà các thiết kế dựa trên một năm trước chính sách tìm thấy trùng với một xu hướng "
+        f"Như vậy, phần lớn mức giảm khoảng 6–10% mà các thiết kế dựa trên một năm trước chính sách tìm thấy trùng với một xu hướng "
         f"giảm tương đối đã có từ trước. Phạm vi tác động tương thích với dữ liệu ba năm là từ khoảng 0 (nếu xu hướng tháng tiếp diễn "
         f"tuyến tính) đến khoảng {vn(-pct_log(n.accel), 0)}% (nếu thay đổi năm tiếp diễn đều), và chỉ lên tới mức của thiết kế ban đầu nếu "
-        f"xu hướng giảm tương đối tự dừng lại đúng vào tháng 01/2025. Không có lý do độc lập nào để tin vào khả năng cuối cùng. Đây là một "
-        f"điều chỉnh lớn so với kết luận ban đầu về số chuyến và được đưa vào các chương thảo luận và kết luận.",
+        f"xu hướng giảm tương đối tự dừng lại đúng vào tháng 01/2025. Không có lý do độc lập nào để tin vào khả năng cuối cùng. Kết luận "
+        f"ban đầu về số chuyến vì vậy được điều chỉnh trong các chương thảo luận và kết luận.",
         f"Tốc độ và thời gian chờ cho bức tranh khác. Tốc độ cũng có xu hướng tăng tương đối trước chính sách (giả dược "
         f"{vn(s_.placebo_2024_vs_2023, 2)} dặm/giờ), nhưng tác động thô năm 2025 ({vn(s_.effect_2025_vs_2024, 2)} dặm/giờ) lớn gấp đôi, "
         f"và sau điều chỉnh xu hướng vẫn còn {vn(s_.effect_trend_adj, 2)} dặm/giờ (sai số chuẩn {vn(s_.effect_trend_adj_se, 3)}); gia "
@@ -109,7 +118,8 @@ def analysis_section(rp, R):
         "Đồ án cài đặt phiên bản đơn giản hóa và bảo thủ của hai lớp này: độ chệch lớn nhất có thể được cộng trực tiếp vào hai đầu "
         "khoảng tin cậy thông thường, thay vì dùng khoảng tin cậy tối ưu có độ dài cố định của các tác giả. Khoảng thu được vì vậy "
         "rộng hơn khoảng của Rambachan và Roth, và giá trị phá vỡ là cận dưới của giá trị phá vỡ thật. Tác động theo RM được chuẩn hóa so "
-        "với tháng cuối trước chính sách (12/2024) như trong bài gốc.")
+        "với tháng cuối trước chính sách (12/2024) như trong bài gốc. Mục 4.14.6 bổ sung khoảng tin cậy bootstrap có tính đến sai số "
+        "của chính biến động lớn nhất trước chính sách.")
     rows = []
     for y in sm.index:
         r = sm.loc[y]
@@ -132,4 +142,4 @@ def analysis_section(rp, R):
         f"chỉnh xu hướng chỉ mất ý nghĩa khi độ cong của xu hướng vượt {vn(s_.breakdown_SD, 4)} dặm/giờ mỗi tháng²; với thời gian chờ là "
         f"{vn(w_.breakdown_SD, 4)} phút mỗi tháng². Với số chuyến, tác động sau điều chỉnh xu hướng không khác 0 ngay cả khi M = 0. Kết hợp "
         f"với mục 4.14.4, bằng chứng về tốc độ và thời gian chờ đứng vững trước giả định xu hướng tuyến tính, còn bằng chứng về số chuyến "
-        f"thì không.")
+        f"thì không. Mục 4.14.6 kiểm tra các dạng xu hướng khác.")

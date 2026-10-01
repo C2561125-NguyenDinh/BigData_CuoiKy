@@ -76,13 +76,15 @@ def thanks(rp):
         "trong bài giảng là khung sườn để tôi thiết kế pipeline và lựa chọn phương pháp cho đồ án này.",
         "Tôi cũng cảm ơn Ủy ban Taxi và Limousine thành phố New York đã công bố dữ liệu chuyến đi ở mức chi tiết "
         "từng chuyến, cùng cộng đồng phát triển DuckDB, Apache Spark, Apache Arrow, pandas, statsmodels, scikit-learn và "
-        "LightGBM. Nếu không có các công cụ mã nguồn mở này, việc xử lý gần sáu trăm triệu bản ghi trên một máy "
+        "LightGBM. Nếu không có các công cụ mã nguồn mở này, việc xử lý hơn một tỷ bản ghi trên một máy "
         "tính cá nhân sẽ không khả thi.",
         "Do giới hạn về thời gian và tài nguyên tính toán, đồ án chắc chắn còn thiếu sót. Tôi mong nhận được góp ý "
         "của thầy để hoàn thiện nghiên cứu.")
 
 
 def abstract_vi(rp, R):
+    t93 = R.t("t93")
+    t93w, t93m = t93[t93.outcome == "wait"], t93[t93.outcome == "mph"]
     m = R.J["07_did_main"]
     tw = R.did("hvfhv", "ln_n")
     dd = R.did("hvfhv", "ln_n", "DDD mùa vụ")
@@ -114,20 +116,19 @@ def abstract_vi(rp, R):
         f"Về suy luận nhân quả, đồ án kết hợp sai khác kép với hai chiều hiệu ứng cố định (TWFE), sai khác bậc ba "
         f"khử mùa vụ (DDD), nghiên cứu sự kiện, kiểm soát tổng hợp (SCM) và học máy nhân quả (Double/Debiased ML, "
         f"AIPW, DR-learner với LightGBM). Trên panel {m['hv_zone_week']['zones']} vùng × {m['hv_zone_week']['weeks']} tuần, "
-        f"số chuyến HVFHV đón trong CRZ giảm {vn(-pct_log(tw.coef), 1)}% so với nhóm đối chứng theo TWFE "
-        f"(sai số chuẩn {vn(100 * tw.se, 2)} điểm log) và {vn(-pct_log(dd.coef), 1)}% theo DDD. SCM cho mức giảm trung bình "
-        f"{vn(-sc['avg_pct_effect_post'], 1)}%; DML trên {vint(dm.n_overlap)} cặp điểm đón – điểm trả thuộc vùng chồng lấn "
-        f"cho {vn(-pct_log(dm.aipw_ate), 1)}%. Tốc độ trung bình của chuyến đón trong CRZ tăng {vn(mph.coef, 2)} dặm/giờ "
-        f"và thời gian chờ xe giảm {vn(-wt.coef, 2)} phút. Hai kết quả về ùn tắc này vững qua các phép thử giả dược, "
-        f"còn các chỉ tiêu giá cước và thu nhập tài xế bị chi phối bởi xu hướng có sẵn từ trước nên không được diễn giải "
-        f"như tác động nhân quả.",
+        f"thời gian chờ xe của chuyến đón trong CRZ giảm {vn(-wt.coef, 2)} phút và tốc độ trung bình tăng {vn(mph.coef, 2)} dặm/giờ "
+        f"so với nhóm đối chứng. Số chuyến HVFHV đón trong CRZ giảm {vn(-pct_log(tw.coef), 1)}% theo TWFE (sai số chuẩn "
+        f"{vn(100 * tw.se, 2)} điểm log), {vn(-pct_log(dd.coef), 1)}% theo DDD, {vn(-sc['avg_pct_effect_post'], 1)}% theo SCM và "
+        f"{vn(-pct_log(dm.aipw_ate), 1)}% theo DML trên {vint(dm.n_overlap)} cặp điểm đón – điểm trả thuộc vùng chồng lấn. Các kết "
+        f"quả này giữ ý nghĩa thống kê với sai số Conley, phân cụm hai chiều, wild cluster bootstrap và hiệu chỉnh kiểm định bội. Các "
+        f"chỉ tiêu giá cước và thu nhập tài xế bị chi phối bởi xu hướng có sẵn từ trước nên không được diễn giải như tác động nhân quả.",
         f"Để kiểm tra giả định xu hướng song song, đồ án bổ sung {vint(R.t('t03x').total_rows.sum())} bản ghi của 2022–2023 và ước "
-        f"lượng nghiên cứu sự kiện theo tháng trên bốn năm. Kết quả làm thay đổi cách đọc về số chuyến: năm 2024 so với 2023, trước "
-        f"khi có phí, số chuyến CRZ đã giảm tương đối {vn(-pct_log(R.t('t90').set_index('outcome').loc['ln_n'].placebo_2024_vs_2023), 1)}%, "
-        f"và sau khi trừ xu hướng tuyến tính, tác động năm 2025 chỉ còn "
-        f"{vn(100 * R.t('t90').set_index('outcome').loc['ln_n'].effect_trend_adj, 2, sign=True)}%. Mức giảm 6–10% vì thế là cận "
-        f"trên; phần vượt xu hướng khoảng 0–2%. Tác động lên tốc độ (+{vn(R.t('t90').set_index('outcome').loc['mph'].effect_trend_adj, 2)} "
-        f"dặm/giờ sau điều chỉnh) và thời gian chờ vẫn giữ chiều, với độ lớn nhỏ hơn.",
+        f"lượng nghiên cứu sự kiện theo tháng trên bốn năm với sáu cách chọn năm gốc và dạng xu hướng. Kết quả xếp các kết luận theo "
+        f"mức độ chắc chắn. Thời gian chờ giảm ở {int((t93w.ci_high_wild < 0).sum())} trên {len(t93w)} đặc tả. Tốc độ tăng ở "
+        f"{int((t93m.ci_low_wild > 0).sum())} đặc tả, nhưng độ lớn phụ thuộc giả định. Số chuyến của CRZ đã giảm tương đối "
+        f"{vn(-pct_log(R.t('t90').set_index('outcome').loc['ln_n'].placebo_2024_vs_2023), 1)}% trong năm 2024, trước khi có phí; tùy "
+        f"giả định xu hướng, tác động của phí lên số chuyến nằm trong khoảng từ 0 đến khoảng 10%, nên mức giảm 6–10% của các thiết "
+        f"kế một năm là cận trên và dữ liệu không xác định được con số chính xác hơn.",
         f"Tổng phí CBD ghi nhận trong dữ liệu năm 2025 là {vn(rev[rev.service == 'hvfhv'].cbd.sum() / 1e6, 1)} triệu USD "
         f"từ HVFHV và {vn(rev[rev.service == 'yellow'].cbd.sum() / 1e6, 1)} triệu USD từ taxi vàng. Phân tích lan tỏa cho "
         f"thấy mức giảm lan ra các vùng lân cận ngoài ranh giới và nhỏ dần theo khoảng cách, nên dùng Manhattan phía bắc "
@@ -145,6 +146,8 @@ def abstract_vi(rp, R):
 
 
 def abstract_en(rp, R):
+    t93 = R.t("t93")
+    t93w, t93m = t93[t93.outcome == "wait"], t93[t93.outcome == "mph"]
     tw = R.did("hvfhv", "ln_n")
     dd = R.did("hvfhv", "ln_n", "DDD mùa vụ")
     sc = R.J["08_scm"]["standard"]
@@ -164,18 +167,19 @@ def abstract_en(rp, R):
         "million raw records on a machine with about 3 GB of RAM. Treated zones are inferred from the data rather than "
         "assigned by hand. Identification combines two-way fixed-effects difference-in-differences, a seasonal "
         "triple-difference, event studies, synthetic control and double/debiased machine learning with LightGBM nuisances.",
-        f"Ride-hailing pickups in the CRZ fall by {en(-pct_log(tw.coef))}% (TWFE) and {en(-pct_log(dd.coef))}% (seasonal DDD) "
-        f"relative to control zones; synthetic control gives {en(-sc['avg_pct_effect_post'])}% and AIPW on the overlap "
-        f"sample of origin–destination pairs gives {en(-pct_log(dm.aipw_ate))}%. Average speed of CRZ pickups rises by "
-        f"{en(mph.coef, 2)} mph and waiting time falls by {en(-wt.coef, 2)} minutes, and both results survive placebo tests. "
-        "Fare and driver-pay outcomes show strong pre-existing differential trends and are not given a causal "
+        f"Waiting time for CRZ pickups falls by {en(-wt.coef, 2)} minutes and average trip speed rises by {en(mph.coef, 2)} mph "
+        f"relative to control zones. Ride-hailing pickups in the CRZ fall by {en(-pct_log(tw.coef))}% (TWFE), "
+        f"{en(-pct_log(dd.coef))}% (seasonal DDD), {en(-sc['avg_pct_effect_post'])}% (synthetic control) and "
+        f"{en(-pct_log(dm.aipw_ate))}% (AIPW on the overlap sample of origin–destination pairs). These estimates remain "
+        "significant with Conley spatial standard errors, two-way clustering, the wild cluster bootstrap and multiple-testing "
+        "corrections. Fare and driver-pay outcomes show strong pre-existing differential trends and are not given a causal "
         "interpretation. Effects spill over to neighbouring zones outside the boundary and fade with distance.",
         f"Adding {en(R.t('t03x').total_rows.sum() / 1e6)} million records for 2022–2023 and estimating a monthly event study "
-        f"over four years changes the reading of the trip effect: CRZ trips were already falling relative to control zones "
-        f"before the toll, and after removing a linear pre-trend the 2025 effect is "
-        f"{en(100 * R.t('t90').set_index('outcome').loc['ln_n'].effect_trend_adj, 2)}%. The 6–10% decline is therefore an "
-        "upper bound, with roughly 0–2% attributable to the toll beyond the existing trend. Speed and waiting-time gains "
-        "keep their sign after trend adjustment, with smaller magnitudes.",
+        f"over four years under six choices of base year and trend shape ranks the conclusions by robustness. Waiting time "
+        f"falls in {int((t93w.ci_high_wild < 0).sum())} of {len(t93w)} specifications and speed rises in "
+        f"{int((t93m.ci_low_wild > 0).sum())}, with a magnitude that depends on the trend assumption. CRZ trips were already "
+        "falling relative to control zones before the toll, and the toll effect on trips ranges from about zero to about 10% "
+        "depending on the trend assumption; the 6–10% decline from one-year designs is an upper bound.",
         "Three extension modules follow the remaining chapters of the course. Apache Spark independently rebuilds the main "
         "Gold table; the cell-by-cell comparison with DuckDB uncovered a silent type-coercion bug in the consolidation step, "
         "fixed before this report was built, and eight experiments measure adaptive query execution, caching, partition "

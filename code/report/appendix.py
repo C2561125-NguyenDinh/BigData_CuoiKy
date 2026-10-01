@@ -292,22 +292,88 @@ def _logs(rp, R):
 
 
 def _code(rp, R):
-    rp.appendix("I", "PHỤ LỤC I. MÃ NGUỒN")
-    rp.P("Phụ lục này in toàn bộ mã nguồn của pipeline và phân tích (không gồm mã dựng báo cáo). Mã nguồn đồng thời được nộp dưới "
-         "dạng tệp trong thư mục code/.")
+    rp.appendix("I", "PHỤ LỤC I. MÃ NGUỒN VÀ HƯỚNG DẪN CHẠY LẠI")
+    rp.H2("I.1. Kho mã nguồn trên GitHub")
+    rp.P("Toàn bộ mã nguồn, báo cáo, các bảng và hình kết quả được lưu tại kho GitHub:", indent=False)
+    _link(rp, GITHUB_URL)
+    repo = pd.DataFrame([
+        ("code/", "Mã nguồn bước 00–20, config.py, panels.py, causal.py, viz.py, run_all.py, run_all.sh, requirements.txt"),
+        ("code/report/", "Mã dựng báo cáo Word/PDF từ các bảng và hình trong outputs/"),
+        ("outputs/tables, figures, logs", "Mọi bảng (CSV), hình (PNG) và nhật ký chạy được dùng trong báo cáo"),
+        ("report/", "Báo cáo hoàn chỉnh dạng .pdf và .docx"),
+        ("data/gold/", "Lớp Gold: các bảng tổng hợp đủ để chạy lại mọi phân tích nhân quả"),
+        ("data/README.md", "Hướng dẫn tải lại dữ liệu thô NYC TLC (khoảng 24 GB, không đưa lên kho)"),
+    ], columns=["Thư mục", "Nội dung"])
+    rp.TAB(repo, "Cấu trúc kho mã nguồn trên GitHub", widths=[4.6, 11.4], size=10.5, align=["left", "left"],
+           source="Nguồn: " + GITHUB_URL)
+    gold = R.root / "data" / "gold"
+    gmb = sum(p.stat().st_size for p in list(gold.glob("*.parquet")) + [gold / "long" / "zone_day_pu.parquet"]
+              if p.exists()) / 1e6
+    rp.H2("I.2. Chạy lại kết quả")
+    rp.P(f"Cài thư viện bằng pip install -r code/requirements.txt. Kho đã kèm lớp Gold (khoảng {vn(gmb, 0)} MB), nên lệnh "
+         "python code/run_all.py --from-gold chạy lại các bước phân tích 06–11, 14, 17–20 và dựng lại báo cáo mà không cần tải dữ "
+         "liệu thô. Lệnh python code/run_all.py không kèm tùy chọn chạy toàn bộ pipeline từ đầu: tải dữ liệu thô bằng "
+         "00_download_data.py và 00_download_data_2022_2023.py, dựng Bronze, Silver, Gold, các thực nghiệm hiệu năng, Spark, quản trị "
+         "dữ liệu và mọi phân tích. Các tệp run_all.py và tệp tải dữ liệu chạy được trên Windows, macOS và Linux.")
+    rp.H2("I.3. Danh mục tệp mã nguồn")
     code_dir = R.root / "code"
-    files = ["config.py", "00_download_data.py", "01_bronze_catalog.py", "02_zone_dimension.py", "03_silver_gold_month.py",
-             "04_gold_consolidate.py", "05_benchmark.py", "panels.py", "causal.py", "viz.py", "06_eda.py", "07_did_main.py",
-             "08_synthetic_control.py", "09_dml_heterogeneity.py", "10_spillover_robustness.py", "11_appendix_tables.py",
-             "12_pipeline_figures.py", "14_extra_analysis.py", "15_spark_pipeline.py", "15b_compare_outputs.py",
-             "16_governance_risk.py", "17_business_analytics.py", "18_theory_sensitivity.py", "19_long_preperiod.py",
-             "00_download_data_2022_2023.ps1", "run_all.sh", "requirements.txt"]
-    for i, fn in enumerate(files, 1):
+    files = ["config.py", "00_download_data.py", "00_download_data_2022_2023.py", "01_bronze_catalog.py", "02_zone_dimension.py",
+             "03_silver_gold_month.py", "04_gold_consolidate.py", "05_benchmark.py", "panels.py", "causal.py", "viz.py",
+             "06_eda.py", "07_did_main.py", "08_synthetic_control.py", "09_dml_heterogeneity.py", "10_spillover_robustness.py",
+             "11_appendix_tables.py", "12_pipeline_figures.py", "13_build_report.py", "14_extra_analysis.py",
+             "15_spark_pipeline.py", "15b_compare_outputs.py", "16_governance_risk.py", "17_business_analytics.py",
+             "18_theory_sensitivity.py", "19_long_preperiod.py", "20_inference_robustness.py", "run_all.py", "run_all.sh",
+             "requirements.txt"]
+    q3 = chr(34) * 3
+    rows, total = [], 0
+    for fn in files:
         p = code_dir / fn
         if not p.exists():
             continue
-        rp.H2(f"I.{i}. {fn}")
-        rp.CODE(p.read_text(encoding="utf-8"), size=7.5)
+        txt = p.read_text(encoding="utf-8")
+        total += len(txt.splitlines())
+        doc = ""
+        if fn.endswith(".py") and txt.lstrip().startswith(q3):
+            doc = txt.lstrip()[3:].split("\n")[0].strip().rstrip(".")
+        elif fn.endswith(".sh"):
+            doc = "Bản bash tương đương của run_all.py"
+        elif fn == "requirements.txt":
+            doc = "Danh sách thư viện Python và phiên bản"
+        rows.append((fn, doc, vint(len(txt.splitlines()))))
+    rp.TAB(pd.DataFrame(rows, columns=["Tệp", "Nội dung", "Số dòng"]), "Danh mục tệp mã nguồn trong thư mục code/",
+           widths=[4.6, 9.8, 1.6], size=9, align=["left", "left", "center"], source="Nguồn: kho GitHub, thư mục code/.")
+    rp.P(f"Tổng cộng {vint(total)} dòng mã trong {len(rows)} tệp, chưa kể {len(list((code_dir / 'report').glob('*.py')))} tệp "
+         "dựng báo cáo trong code/report/. Toàn văn mã nguồn được lưu trên kho GitHub thay vì in trong báo cáo.")
+
+
+GITHUB_URL = "https://github.com/C2561125-NguyenDinh/BigData_CuoiKy"
+
+
+def _link(rp, url):
+    """Đoạn chứa một siêu liên kết ngoài có thể bấm được."""
+    from docx.oxml import OxmlElement
+    from docx.oxml.ns import qn
+    from docx.opc.constants import RELATIONSHIP_TYPE as RT
+    from docx.shared import Cm
+    p = rp.doc.add_paragraph()
+    p.paragraph_format.first_line_indent = Cm(0)
+    p.paragraph_format.left_indent = Cm(1.0)
+    rid = rp.doc.part.relate_to(url, RT.HYPERLINK, is_external=True)
+    h = OxmlElement("w:hyperlink")
+    h.set(qn("r:id"), rid)
+    r = OxmlElement("w:r")
+    rpr = OxmlElement("w:rPr")
+    for tag, val in (("w:color", "1F4E9A"), ("w:u", "single")):
+        e = OxmlElement(tag)
+        e.set(qn("w:val"), val)
+        rpr.append(e)
+    r.append(rpr)
+    t = OxmlElement("w:t")
+    t.text = url
+    r.append(t)
+    h.append(r)
+    p._p.append(h)
+    return p
 
 
 def build(rp, R):

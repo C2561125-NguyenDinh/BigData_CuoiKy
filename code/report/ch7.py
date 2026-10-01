@@ -26,7 +26,7 @@ def build(rp, R):
         "quyết định gì, và giá trị của tài sản đó được đo thế nào. Nội dung bám theo ba chương ứng dụng của bài giảng: dự báo nhu cầu "
         "và quản trị vận hành (Chương 4), phân tích khách hàng và thử nghiệm quy mô lớn (Chương 5), định giá và thương mại hóa dữ liệu "
         "(Chương 6).",
-        "Câu hỏi nghiên cứu tương ứng là RQ8: kết quả của đồ án tạo ra những thông tin gì cho quyết định kinh doanh, và phương pháp "
+        "Câu hỏi nghiên cứu tương ứng là RQ7: kết quả của đồ án tạo ra những thông tin gì cho quyết định kinh doanh, và phương pháp "
         "phân tích nào đáng tin cho từng loại quyết định? Mục 7.1 phân tích tác động theo hãng. Mục 7.2 so sánh dự báo nhu cầu với "
         "suy luận nhân quả. Mục 7.3 tính quy mô dữ liệu cần cho một thử nghiệm chính sách. Mục 7.4 xem xét định giá động. Mục 7.5 tổng "
         "hợp phân khúc chuyến đi. Mục 7.6 và 7.7 bàn về giá trị của tài sản dữ liệu và lộ trình chiến lược.")
@@ -104,13 +104,13 @@ def build(rp, R):
         "ngoại suy một xu hướng có thật, và chênh lệch gần bằng không của nó phù hợp với ước lượng điều chỉnh xu hướng hơn là với "
         "các thiết kế chỉ dùng một năm trước chính sách. Điều đó không làm mô hình này trở thành ước lượng nhân quả đáng tin, vì chuỗi "
         "giải thích vẫn bị lan tỏa, nhưng nó cho thấy khoảng cách giữa dự báo và DiD một phần do cách hai phương pháp xử lý xu hướng.",
-        "Đây là một kết quả phương pháp quan trọng, không chỉ cho đồ án. Độ chính xác dự báo trên giai đoạn giữ lại đo khả năng mô "
+        "Kết quả này có hệ quả về phương pháp vượt ra ngoài đồ án. Độ chính xác dự báo trên giai đoạn giữ lại đo khả năng mô "
         "hình tái hiện quan hệ giữa các chuỗi khi không có can thiệp. Nó không đo được việc quan hệ đó có còn đúng sau can thiệp hay "
         "không, vì chính can thiệp có thể làm thay đổi các chuỗi giải thích. Chọn mô hình phản thực tế theo sai số dự báo vì vậy có "
         "thể chọn đúng mô hình tệ nhất về mặt nhân quả. Brodersen và cộng sự (2015) nêu rõ giả định rằng các chuỗi đối chứng không bị "
         "can thiệp ảnh hưởng; dữ liệu của đồ án cho thấy giả định này bị vi phạm theo cách có thể đo được. Trong doanh nghiệp, nơi các "
         "đánh giá kiểu \"thực tế so với dự báo\" rất phổ biến, bài học là mọi chuỗi đối chứng phải được kiểm tra độc lập về khả năng "
-        "bị ảnh hưởng, chứ không chỉ về độ tương quan.",
+        "bị ảnh hưởng, ngoài việc kiểm tra độ tương quan.",
         "Dù vậy, mô hình dự báo vẫn có giá trị vận hành. Sai số dự báo ngày khoảng 9% trên giai đoạn khó nhất trong năm là đủ tốt để "
         "lập kế hoạch cung xe, và phần dư dự báo là đầu vào tự nhiên cho hệ thống phát hiện bất thường ở mục 6.5. Điều cần tránh là "
         "dùng cùng mô hình đó để trả lời câu hỏi nhân quả.")
@@ -140,7 +140,7 @@ def build(rp, R):
     rp.PS(
         f"Hai quy luật hiện ra. Thứ nhất, MDE giảm khi có thêm dữ liệu nhưng giảm chậm: với số chuyến, từ {vn(a4.loc['ln_n', 'mde80_pct'], 2)}% "
         f"sau 4 tuần xuống {vn(a52.loc['ln_n', 'mde80_pct'], 2)}% sau 52 tuần. Mức giảm chậm vì sai số chuẩn phân cụm theo vùng bị chi "
-        f"phối bởi số vùng, vốn cố định, hơn là bởi số tuần. Nói cách khác, sau vài tháng, dữ liệu mới chủ yếu làm tăng độ tin cậy về "
+        f"phối bởi số vùng, vốn cố định, hơn là bởi số tuần. Do đó, sau vài tháng, dữ liệu mới chủ yếu làm tăng độ tin cậy về "
         f"động thái chứ không cải thiện nhiều độ chính xác của tác động trung bình.",
         f"Thứ hai, và quan trọng hơn cho quyết định, bản thân tác động thay đổi theo thời gian. Mức giảm số chuyến sau 4 tuần chỉ là "
         f"{vn(-pct_log(a4.loc['ln_n', 'coef']), 1)}%, sau 13 tuần là {vn(-pct_log(pw[(pw.post_weeks == 13) & (pw.outcome == 'ln_n')].coef.iloc[0]), 1)}% "
@@ -148,7 +148,7 @@ def build(rp, R):
         f"({vn(a4.loc['mph', 'coef'], 2)} dặm/giờ sau 4 tuần) và giảm dần về {vn(a52.loc['mph', 'coef'], 2)} dặm/giờ khi tính cả năm. "
         f"Hai xu hướng ngược chiều gợi ý rằng hành khách điều chỉnh chậm (thói quen thay đổi dần), còn hệ thống giao thông điều chỉnh "
         f"nhanh rồi một phần lưu lượng quay lại khi đường thông thoáng hơn, đúng hiện tượng nhu cầu cảm ứng mà lý thuyết giao thông dự "
-        f"báo. Tất cả các ước lượng này đều có ý nghĩa thống kê ngay từ tuần thứ tư, nên vấn đề không phải là công suất mà là tác động "
+        f"báo. Tất cả các ước lượng này đều có ý nghĩa thống kê ngay từ tuần thứ tư, nên công suất đủ; điều cần lưu ý là tác động "
         f"đo sớm không đại diện cho tác động dài hạn.",
         "Với doanh nghiệp chạy thử nghiệm, hàm ý tương tự đã được ghi nhận trong tài liệu thử nghiệm trực tuyến dưới tên hiệu ứng mới "
         "lạ và hiệu ứng thích nghi (Kohavi, Tang và Xu, 2020): quyết định dựa trên vài tuần đầu có thể đánh giá sai tác động dài hạn "
@@ -242,7 +242,7 @@ def build(rp, R):
         "bảng trên tổng hợp các con số đó bằng đơn vị vật lý (GB, phút, lõi·giây) thay vì tiền. Lựa chọn không quy ra tiền là có chủ "
         "đích: đơn giá lưu trữ và tính toán thay đổi theo nhà cung cấp, vùng và thời điểm, còn đơn vị vật lý thì không. Người đọc có "
         "thể nhân với đơn giá hiện hành của mình.",
-        f"Hai con số đáng chú ý. Thứ nhất, lớp Gold chỉ chiếm {vn(g.loc['Tỷ lệ Gold / Bronze theo dung lượng', 'value'], 2)}% dung "
+        f"Bảng trên cho hai kết luận. Thứ nhất, lớp Gold chỉ chiếm {vn(g.loc['Tỷ lệ Gold / Bronze theo dung lượng', 'value'], 2)}% dung "
         f"lượng của Bronze. Chi phí lưu trữ lâu dài cho mục đích phân tích vì vậy gần như không đáng kể nếu chỉ giữ Gold, và Bronze "
         f"có thể tải lại từ nguồn khi cần. Thứ hai, chi phí xử lý của bước làm sạch và tổng hợp là khoảng "
         f"{vn(g.loc['Tài nguyên xử lý Silver+Gold trên mỗi triệu dòng Bronze', 'value'], 1)} lõi·giây cho mỗi triệu dòng, còn tái lập "
@@ -259,8 +259,8 @@ def build(rp, R):
         f"phí hay cơ cấu phí theo giờ, dựa trên các ước lượng như của đồ án, tác động trực tiếp đến khoản thu này và đến thời gian "
         f"di chuyển của hàng trăm nghìn chuyến mỗi ngày.",
         "Laney (2017) lập luận rằng doanh nghiệp nên quản lý thông tin như một tài sản với các chỉ tiêu giá trị riêng, dù chuẩn mực "
-        "kế toán chưa cho phép ghi nhận nó trên bảng cân đối. Một đặc điểm mà đồ án minh họa rõ là giá trị của dữ liệu không nằm ở dữ "
-        "liệu thô mà ở lớp tổng hợp đã được kiểm chứng: cùng tệp nguồn công khai, nhưng chỉ sau khi có pipeline có kiểm soát chất "
+        "kế toán chưa cho phép ghi nhận nó trên bảng cân đối. Trong đồ án, giá trị của dữ liệu nằm ở lớp tổng hợp đã được kiểm chứng "
+        "hơn là ở dữ liệu thô: cùng tệp nguồn công khai, nhưng chỉ sau khi có pipeline có kiểm soát chất "
         "lượng, đối chứng chéo và các thiết kế nhận dạng đáng tin thì nó mới đủ độ tin cậy để dùng cho quyết định.")
     rp.H3("7.6.3. Các sản phẩm dữ liệu có thể thương mại hóa")
     prod = pd.DataFrame([
@@ -298,10 +298,10 @@ def build(rp, R):
         "trình trên được sắp theo thứ tự phụ thuộc: không thể giám sát theo thời gian thực nếu chưa có định nghĩa chỉ tiêu ổn định ở "
         "lớp Gold, và không thể công bố có kiểm soát nếu chưa đo được rủi ro tái nhận dạng. Giai đoạn cuối cố ý đặt việc chuyển sang "
         "cụm tính toán phân tán sau cùng, vì Chương 5 cho thấy ở quy mô hiện tại nó chưa đem lại lợi ích tốc độ.",
-        "Về văn hóa, bài học rõ nhất từ đồ án là giá trị của thói quen kiểm chứng. Ba phát hiện quan trọng của đồ án đến từ việc thử "
+        "Về văn hóa, ba phát hiện chính của đồ án đều đến từ việc thử "
         "bác bỏ kết quả của chính mình: tác động lên giá cước không vượt qua giả dược (Chương 4), bảng Gold có lỗi ép kiểu (Chương 5), "
-        "và mô hình dự báo tốt nhất cho phản thực tế sai (mục 7.2). Một tổ chức muốn ra quyết định dựa trên dữ liệu cần thưởng cho việc "
-        "tìm ra những điều này, chứ không chỉ cho việc đưa ra con số.")
+        "và mô hình dự báo tốt nhất cho phản thực tế sai (mục 7.2). Một tổ chức ra quyết định dựa trên dữ liệu vì vậy cần ghi nhận công "
+        "sức kiểm chứng kết quả, bên cạnh việc đưa ra con số.")
     rp.H2("7.8. Tiểu kết Chương 7")
     rp.P(f"Chương 7 đã chuyển kết quả sang góc nhìn kinh doanh. Phí CRZ ảnh hưởng không đều giữa các hãng: Uber giảm "
          f"{vn(-u.pct, 1)}% số chuyến trong vùng, Lyft giảm {vn(-ly.pct, 1)}%, và thị phần Uber giảm {vn(-sh.coef, 2)} điểm phần trăm. "

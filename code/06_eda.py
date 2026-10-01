@@ -355,16 +355,20 @@ save(f, "f18_rider_cost_hist")
 out["n_sample_hvfhv"] = int(len(smp))
 
 # Taxi vàng: số chuyến theo nhà cung cấp (VendorID) × năm × nhóm vùng đón, đọc trực tiếp từ Bronze
+# (Bỏ qua khi chỉ có lớp Gold, ví dụ khi chạy lại từ kho GitHub: giữ nguyên bảng t27b đã có.)
 from config import RAW, duck
-con = duck()
-con.execute(f"CREATE TEMP TABLE z AS SELECT LocationID, grp FROM '{(GOLD / 'dim_zone.parquet').as_posix()}'")
-vend = con.execute(f"""
-    SELECT year(tpep_pickup_datetime) AS yr, VendorID AS vendor, coalesce(z.grp, 'UNKNOWN') AS pu_grp, count(*) AS n
-    FROM read_parquet('{(RAW / 'yellow_tripdata_202*.parquet').as_posix()}') y
-    LEFT JOIN z ON y.PULocationID = z.LocationID
-    WHERE year(tpep_pickup_datetime) IN (2024, 2025)
-    GROUP BY ALL ORDER BY ALL""").df()
-vend.to_csv(TAB / "t27b_yellow_vendor_by_year_group.csv", index=False)
+if list(RAW.glob("yellow_tripdata_202[45]-*.parquet")):
+    con = duck()
+    con.execute(f"CREATE TEMP TABLE z AS SELECT LocationID, grp FROM '{(GOLD / 'dim_zone.parquet').as_posix()}'")
+    vend = con.execute(f"""
+        SELECT year(tpep_pickup_datetime) AS yr, VendorID AS vendor, coalesce(z.grp, 'UNKNOWN') AS pu_grp, count(*) AS n
+        FROM read_parquet('{(RAW / 'yellow_tripdata_202[45]-*.parquet').as_posix()}') y
+        LEFT JOIN z ON y.PULocationID = z.LocationID
+        WHERE year(tpep_pickup_datetime) IN (2024, 2025)
+        GROUP BY ALL ORDER BY ALL""").df()
+    vend.to_csv(TAB / "t27b_yellow_vendor_by_year_group.csv", index=False)
+else:
+    print("Không có dữ liệu thô taxi vàng: giữ bảng t27b hiện có.")
 
 (LOG / "06_eda.json").write_text(json.dumps(dict(seconds=round(time.time() - t0, 1), **out), indent=2))
 print(out, "time", round(time.time() - t0, 1))

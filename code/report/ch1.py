@@ -59,7 +59,8 @@ def build(rp, R):
         "gọi xe. Pandey, Guler và Gayah (2026) dùng sai khác kép và báo cáo tổng số chuyến của các công ty gọi xe giảm "
         "5,95%, trong khi số yêu cầu đi chung giảm mạnh hơn nhiều. Các ước lượng như vậy trả lời câu hỏi \"trung bình giảm "
         "bao nhiêu\" nhưng để lại ba khoảng trống: tác động khác nhau thế nào giữa các loại chuyến và khung giờ; phần nhu cầu "
-        "bị mất có dịch chuyển sang các vùng lân cận hay không; và ai là người thực sự gánh khoản phí.",
+        "bị mất có dịch chuyển sang các vùng lân cận hay không; và ai là người thực sự gánh khoản phí. Đồ án tập trung vào hai "
+        "khoảng trống đầu; khoảng trống thứ ba cần dữ liệu giá theo chuyến của nền tảng nên nằm ngoài phạm vi.",
         "Ba khoảng trống này quan trọng vì chúng quyết định cách đọc con số trung bình. Nếu nhu cầu chỉ dịch chuyển điểm "
         "đón ra ngoài ranh giới vài trăm mét, mức giảm trong vùng không đồng nghĩa với giảm số người đi lại. Nếu vùng đối "
         "chứng bị ảnh hưởng gián tiếp, ước lượng sai khác kép sẽ bị chệch. Nếu nền tảng tăng giá cước cơ sở cùng lúc với "
@@ -109,7 +110,7 @@ def build(rp, R):
     ], numbered=True)
 
     rp.H2("1.4. Câu hỏi nghiên cứu")
-    rp.H3("1.4.1. Tám câu hỏi nghiên cứu")
+    rp.H3("1.4.1. Bảy câu hỏi nghiên cứu")
     rp.BUL([
         "**RQ1.** Kiến trúc Lakehouse với DuckDB và Parquet có xử lý được toàn bộ dữ liệu trong điều kiện tài nguyên hạn "
         "chế không, và các lựa chọn định dạng, bộ máy xử lý ảnh hưởng thế nào đến chi phí tính toán?",
@@ -118,23 +119,23 @@ def build(rp, R):
         "**RQ3.** Phí có cải thiện điều kiện di chuyển, thể hiện qua tốc độ chuyến đi và thời gian chờ xe, hay không?",
         "**RQ4.** Tác động có khác nhau giữa loại luồng, khung giờ, ngày trong tuần và đặc trưng chuyến đi không, và có lan "
         "sang các vùng lân cận ranh giới không?",
-        "**RQ5.** Phí được chuyển sang hành khách và tài xế như thế nào, và dữ liệu hiện có cho phép kết luận đến đâu về "
-        "điểm này?",
-        "**RQ6.** Một bộ máy xử lý phân tán trong bộ nhớ (Apache Spark) có tái lập đúng kết quả của bộ máy nhúng không, tốn thêm "
+        "**RQ5.** Một bộ máy xử lý phân tán trong bộ nhớ (Apache Spark) có tái lập đúng kết quả của bộ máy nhúng không, tốn thêm "
         "bao nhiêu tài nguyên trên cùng phần cứng, và các cơ chế của nó tác động đến hiệu năng ra sao?",
-        "**RQ7.** Tài sản dữ liệu của đồ án có những rủi ro nào về toàn vẹn, chất lượng và quyền riêng tư, và có thể công bố "
+        "**RQ6.** Tài sản dữ liệu của đồ án có những rủi ro nào về toàn vẹn, chất lượng và quyền riêng tư, và có thể công bố "
         "dữ liệu tổng hợp bảo vệ quyền riêng tư mà vẫn giữ được kết luận chính sách không?",
-        "**RQ8.** Kết quả tạo ra thông tin gì cho quyết định kinh doanh, và phương pháp nào đáng tin cho từng loại quyết định?",
+        "**RQ7.** Kết quả tạo ra thông tin gì cho quyết định kinh doanh, và phương pháp nào đáng tin cho từng loại quyết định?",
     ])
     rp.H3("1.4.2. Mức độ chắc chắn kỳ vọng của từng câu trả lời")
     rp.PS(
         "Các câu hỏi không có cùng mức độ trả lời được. RQ1 là câu hỏi kỹ thuật, được trả lời trực tiếp bằng số đo thời gian, "
         "dung lượng và bộ nhớ. RQ2 và RQ3 có cấu trúc nhận dạng rõ ràng, nên có thể trả lời bằng nhiều phương pháp độc lập để "
-        "đối chiếu. RQ4 dựa trên các giả định mạnh hơn, đặc biệt là giả định chồng lấn trong học máy nhân quả. RQ5 khó nhất vì "
-        "giá cước và thu nhập tài xế chịu ảnh hưởng của những thay đổi quy định và chiến lược giá khác diễn ra trong cùng giai "
-        "đoạn. RQ6 và RQ7 lại là câu hỏi đo lường trực tiếp trên tài sản dữ liệu, nên có thể trả lời chắc chắn trong phạm vi phần "
-        "cứng và dữ liệu của đồ án. RQ8 kết hợp cả hai loại, và độ tin cậy của từng câu trả lời phụ thuộc vào thiết kế được dùng. "
-        "Đồ án chủ động báo cáo cả những trường hợp dữ liệu không đủ để kết luận.")
+        "đối chiếu. RQ4 dựa trên các giả định mạnh hơn, đặc biệt là giả định chồng lấn trong học máy nhân quả. RQ5 và RQ6 lại là câu hỏi đo lường trực tiếp trên tài sản dữ liệu, nên có thể trả lời chắc chắn trong phạm vi phần "
+        "cứng và dữ liệu của đồ án. RQ7 kết hợp cả hai loại, và độ tin cậy của từng câu trả lời phụ thuộc vào thiết kế được dùng. "
+        "Đồ án chủ động báo cáo cả những trường hợp dữ liệu không đủ để kết luận.",
+        "Câu hỏi phí được chuyển sang hành khách và tài xế như thế nào không được đặt thành câu hỏi nghiên cứu. Giá cước và thu "
+        "nhập tài xế chịu ảnh hưởng của những thay đổi quy định và chiến lược giá khác diễn ra trong cùng giai đoạn, và dữ liệu TLC "
+        "không có đủ thông tin để tách các yếu tố này. Các chỉ tiêu giá vẫn được ước lượng, nhưng chỉ để làm ví dụ về cách xu hướng "
+        "có sẵn có thể tạo ra tác động giả trong thiết kế sai khác kép.")
 
     rp.H2("1.5. Phạm vi nghiên cứu")
     rp.H3("1.5.1. Phạm vi dữ liệu và thời gian")
@@ -150,9 +151,9 @@ def build(rp, R):
     rp.H3("1.5.2. Phạm vi kết luận")
     rp.PS(
         "Kết luận của đồ án áp dụng cho thị trường gọi xe và taxi trong năm đầu thực hiện chính sách. Tác động dài hạn, tác động "
-        "lên giao thông công cộng, chất lượng không khí và hoạt động kinh doanh trong vùng nằm ngoài phạm vi. Các ước lượng về "
-        "giá cước và thu nhập tài xế được trình bày kèm cảnh báo về xu hướng có sẵn và không được dùng làm căn cứ chính cho "
-        "khuyến nghị chính sách.")
+        "lên giao thông công cộng, chất lượng không khí, hoạt động kinh doanh trong vùng và việc phân bổ gánh nặng của phí giữa "
+        "hành khách, tài xế và nền tảng nằm ngoài phạm vi. Các ước lượng về giá cước và thu nhập tài xế được trình bày như một "
+        "phép kiểm tra phương pháp, kèm cảnh báo về xu hướng có sẵn, và không được dùng làm căn cứ cho khuyến nghị chính sách.")
 
     rp.H2("1.6. Phương pháp nghiên cứu tổng quát")
     rp.H3("1.6.1. Kỹ thuật dữ liệu lớn")
@@ -173,8 +174,10 @@ def build(rp, R):
     rp.PS(
         "Mỗi kết luận chính đi kèm ít nhất một phép thử có thể bác bỏ nó: giả dược theo thời gian với ngày chính sách giả "
         f"07/07/2024, giả dược theo không gian trong kiểm soát tổng hợp, suy luận hoán vị với {R.J['10_spillover_robustness_perm']['permutation']['n_perm']} "
-        f"lần gán xử lý ngẫu nhiên và bảng độ vững gồm {len(R.t('t51'))} đặc tả thay thế. Những chỉ tiêu không vượt qua được "
-        "các phép thử này được báo cáo là chưa xác định được tác động.")
+        f"lần gán xử lý ngẫu nhiên và bảng độ vững gồm {len(R.t('t51'))} đặc tả thay thế. Sai số chuẩn được kiểm tra lại bằng sai số "
+        "Conley có tương quan không gian, phân cụm hai chiều và wild cluster bootstrap, kèm hiệu chỉnh kiểm định bội; giả định xu "
+        "hướng song song được kiểm tra trên dữ liệu 2022–2025 với sáu dạng xu hướng và phân tích độ nhạy Rambachan–Roth. Những chỉ "
+        "tiêu không vượt qua được các phép thử này được báo cáo là chưa xác định được tác động.")
 
     rp.H3("1.6.4. Xử lý phân tán, quản trị dữ liệu và phân tích kinh doanh")
     rp.PS(
@@ -197,9 +200,9 @@ def build(rp, R):
         "Đồ án bổ sung cho ước lượng trung bình đã có bằng ba lớp bằng chứng: tác động lên tốc độ và thời gian chờ như thước "
         "đo trực tiếp của ùn tắc; tác động không đồng nhất theo loại luồng, khung giờ và đặc trưng chuyến đi; và hiệu ứng lan "
         "tỏa theo khoảng cách tới ranh giới. Đồ án cũng chỉ ra rằng việc chọn Manhattan phía bắc làm nhóm đối chứng dẫn đến "
-        "đánh giá thấp tác động do chính các vùng này chịu ảnh hưởng gián tiếp. Thêm vào đó, với dữ liệu 2022–2025, đồ án cho thấy "
-        "một phần lớn mức giảm số chuyến mà thiết kế một năm tìm thấy trùng với xu hướng có sẵn, trong khi tác động lên tốc độ và "
-        "thời gian chờ vẫn đứng vững.")
+        "đánh giá thấp tác động do chính các vùng này chịu ảnh hưởng gián tiếp. Với dữ liệu 2022–2025, đồ án còn cho thấy "
+        "một phần lớn mức giảm số chuyến mà thiết kế một năm tìm thấy trùng với xu hướng có sẵn, trong khi tác động lên thời gian chờ, "
+        "và ở mức độ thấp hơn là tốc độ, vẫn đứng vững qua các giả định xu hướng khác nhau.")
     rp.P("Về lý thuyết, đồ án xây dựng một mô hình đơn giản kết hợp cầu theo chi phí tổng quát, hàm tốc độ – lưu lượng, lan tỏa qua "
          "mạng chuyến đi và phân bổ gánh nặng, suy ra tám giả thuyết định lượng và kiểm định chúng bằng các đặc tả liều – đáp ứng thiết "
          "kế riêng. Kết quả chỉ ra nơi mô hình chuẩn giải thích tốt và nơi nó cần được mở rộng.")

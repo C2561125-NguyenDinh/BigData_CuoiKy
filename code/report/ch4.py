@@ -42,7 +42,7 @@ def build(rp, R):
     rp.H1("CHƯƠNG 4. KẾT QUẢ THỰC NGHIỆM VÀ PHÂN TÍCH")
     rp.P("Chương này trình bày kết quả theo thứ tự của câu hỏi nghiên cứu. Mục 4.1 báo cáo hiệu năng của pipeline (RQ1). Các "
          "mục 4.2 đến 4.4 mô tả dữ liệu sau xử lý. Các mục 4.5 đến 4.12 trình bày ước lượng nhân quả về số chuyến, tốc độ, thời "
-         "gian chờ, giá và thu nhập (RQ2, RQ3, RQ5), tác động không đồng nhất và lan tỏa (RQ4). Mục 4.13 và 4.14 là các phép thử độ "
+         "gian chờ (RQ2, RQ3), giá và thu nhập như phép kiểm tra phương pháp, tác động không đồng nhất và lan tỏa (RQ4). Mục 4.13 và 4.14 là các phép thử độ "
          "tin cậy. Mục 4.15 đối chiếu kết quả với các giả thuyết lý thuyết của mục 2.11, và mục 4.16 tổng hợp kết quả theo câu hỏi nghiên cứu.")
 
     # ================================================================ 4.1
@@ -180,7 +180,7 @@ def build(rp, R):
     rp.PS(
         f"{lf05} cho thấy nhịp mùa vụ rõ rệt ở cả ba nhóm: số chuyến giảm vào tuần lễ Tạ ơn và tuần cuối năm, tăng mạnh vào đầu "
         "tháng 12, giảm nhẹ vào mùa hè. Mùa vụ của CRZ mạnh hơn quận ngoài, đặc biệt là cú sụt vào tuần cuối năm khi văn phòng đóng "
-        "cửa. Đây chính là loại khác biệt làm cho so sánh đơn giản trước – sau hay giả định xu hướng song song trở nên mong manh. "
+        "cửa. Chính loại khác biệt này làm so sánh đơn giản trước – sau và giả định xu hướng song song kém tin cậy. "
         "Ngay sau ngày 05/01/2025, đường CRZ không có bước nhảy lớn; thay đổi thể hiện rõ hơn khi so sánh cùng kỳ.")
     rp.H3("4.3.2. Tăng trưởng cùng kỳ theo tuần")
     yy = R.t("t15")
@@ -621,10 +621,10 @@ def build(rp, R):
     rg_ = sens[(sens.x_set == "rút gọn") & (sens.outcome == "dlog_n")].iloc[0]
     fu_ = sens[(sens.x_set == "đầy đủ") & (sens.outcome == "dlog_n")].iloc[0]
     rp.PS(
-        f"Kiểm tra chồng lấn là bước đầu tiên và cho kết quả quan trọng. Với bộ biến đầy đủ ({int(fu_.n_features)} đặc trưng, gồm "
+        f"Bước đầu tiên là kiểm tra chồng lấn. Với bộ biến đầy đủ ({int(fu_.n_features)} đặc trưng, gồm "
         f"quận và tốc độ, giá/dặm năm 2024), mô hình xu hướng phân tách hai nhóm gần như hoàn hảo: AUC = {vn(fu_.auc_propensity, 4)}, "
-        f"chỉ {vn(100 * fu_.share_in_overlap, 1)}% cặp OD ({vint(fu_.n_overlap)} cặp) có ê(X) trong khoảng [0,05; 0,95]. Nói cách "
-        f"khác, với đặc trưng vị trí, ta luôn đoán đúng một cặp có chạm CRZ hay không, và không còn đơn vị đối chứng tương đồng để so "
+        f"chỉ {vn(100 * fu_.share_in_overlap, 1)}% cặp OD ({vint(fu_.n_overlap)} cặp) có ê(X) trong khoảng [0,05; 0,95]. Tức là "
+        f"với đặc trưng vị trí, ta luôn đoán đúng một cặp có chạm CRZ hay không, và không còn đơn vị đối chứng tương đồng để so "
         f"sánh.",
         f"Với bộ biến rút gọn ({int(rg_.n_features)} đặc trưng chuyến đi, không có thông tin vị trí trực tiếp), AUC giảm xuống "
         f"{vn(rg_.auc_propensity, 4)} và {vn(100 * rg_.share_in_overlap, 1)}% cặp ({vint(rg_.n_overlap)} cặp, trong đó "
@@ -686,7 +686,7 @@ def build(rp, R):
     rp.P(f"Nhóm có mức giảm số chuyến mạnh nhất (G1, theo τ̂ thấp nhất) có tốc độ năm 2024 cao hơn ({vn(g('mph_2024', 'low_group'), 2)} "
          f"so với {vn(g('mph_2024', 'high_group'), 2)} dặm/giờ), thời lượng chuyến ngắn hơn ({vn(g('min_pt', 'low_group'), 1)} so với "
          f"{vn(g('min_pt', 'high_group'), 1)} phút) và ít chuyến đêm hơn. Nhóm giảm ít nhất (G5) có tỷ lệ chuyến đêm cao hơn và thời "
-         f"lượng dài hơn. Điểm đáng chú ý là tỷ lệ cặp chạm CRZ ở G5 ({vn(g('D', 'high_group'), 2)}) cao hơn G1 "
+         f"lượng dài hơn. Tỷ lệ cặp chạm CRZ ở G5 ({vn(g('D', 'high_group'), 2)}) cao hơn G1 "
          f"({vn(g('D', 'low_group'), 2)}): CATE được ước lượng cho mọi cặp, kể cả cặp đối chứng, nên G1 bao gồm nhiều cặp không chạm "
          f"CRZ có đặc trưng khiến chúng sẽ rất nhạy nếu bị tính phí.")
     rp.FIG(R.fig("f30"), "CATE ước lượng theo quãng đường trung bình của cặp OD chạm CRZ")
@@ -769,7 +769,7 @@ def build(rp, R):
         "Mẫu hình giảm dần theo khoảng cách có hai hàm ý. Thứ nhất, một phần lớn chuyến đi của các vùng lân cận có đầu kia trong CRZ, "
         "nên chúng cũng chịu phí; đây là lan tỏa qua mạng lưới chuyến đi chứ không phải hiệu ứng riêng của vùng. Thứ hai, dùng các vùng "
         "Manhattan phía bắc làm nhóm đối chứng sẽ đánh giá thấp tác động vì chính nhóm này bị ảnh hưởng; mục 4.14 xác nhận điều này.",
-        f"Kết quả đáng chú ý nhất là cột cuối: số chuyến từ CRZ trả khách ở dải 0–1 km ngoài ranh giới tăng "
+        f"Ở cột cuối, số chuyến từ CRZ trả khách ở dải 0–1 km ngoài ranh giới tăng "
         f"{vn(pct_log(fc01.coef), 2)}% (p = {pval(fc01.p)}), trong khi số chuyến từ CRZ trả khách trong CRZ giảm. Nhìn từ phía hành "
         f"khách, chuyến CRZ→CRZ bị tính phí giống chuyến CRZ→ngoài, nên động cơ né phí không nằm ở đây. Một cách giải thích hợp lý hơn "
         f"là một phần hành khách chọn đích đến ngay bên ngoài ranh giới khi có lựa chọn tương đương, hoặc các chuyến nội vùng dài "
@@ -906,6 +906,9 @@ def build(rp, R):
     import longpre
     if "t90_long_placebo_trend" in R.T:
         longpre.analysis_section(rp, R)
+    if "t93_trend_spec_sensitivity" in R.T:
+        import robust
+        robust.section(rp, R)
     import theory
     theory.tests(rp, R)
     # ================================================================ 4.16
@@ -923,35 +926,38 @@ def build(rp, R):
          f"[{vn(-pct_log(rg_.aipw_ate + 1.96 * rg_.aipw_se), 2)}; {vn(-pct_log(rg_.aipw_ate - 1.96 * rg_.aipw_se), 2)}]"),
         ("Đối chứng chỉ Manhattan phía bắc (bị lan tỏa)", vn(-mn.pct, 2), f"[{vn(-pct_log(mn.ci_high), 2)}; {vn(-pct_log(mn.ci_low), 2)}]"),
         ("Pandey, Guler, Gayah (2026) – tham chiếu", "5,95", "–"),
-    ] + ([("Dữ liệu 2022–2025, điều chỉnh xu hướng 2023–2024 (mục 4.14.4)", vn(-pct_log(lp.effect_trend_adj), 2),
+    ] + ([("Dữ liệu 2022–2025, điều chỉnh xu hướng 2023–2024 (mục 4.14.4, S1)", vn(-pct_log(lp.effect_trend_adj), 2),
            f"[{vn(-pct_log(lp.effect_trend_adj + 1.96 * lp.effect_trend_adj_se), 2)}; {vn(-pct_log(lp.effect_trend_adj - 1.96 * lp.effect_trend_adj_se), 2)}]"),
           ("Dữ liệu 2022–2025, gia tốc so với thay đổi năm 2024", vn(-pct_log(lp.accel), 2),
-           f"[{vn(-pct_log(lp.accel + 1.96 * lp.accel_se), 2)}; {vn(-pct_log(lp.accel - 1.96 * lp.accel_se), 2)}]")] if lp is not None else []),
+           f"[{vn(-pct_log(lp.accel + 1.96 * lp.accel_se), 2)}; {vn(-pct_log(lp.accel - 1.96 * lp.accel_se), 2)}]")] if lp is not None else [])
+      + ([(f"Dữ liệu 2022–2025, đặc tả {k} (mục 4.14.6)", vn(-pct_log(r.effect), 2),
+           f"[{vn(-pct_log(r.ci_high_wild), 2)}; {vn(-pct_log(r.ci_low_wild), 2)}]")
+          for k, r in R.t("t93").query("outcome == 'ln_n' and spec in ['S2', 'S3', 'S4']").set_index("spec").iterrows()]
+         if "t93_trend_spec_sensitivity" in R.T else []),
     columns=["Phương pháp", "Mức giảm số chuyến (%)", "KTC 95% / suy luận"])
     rp.TAB(ests, "Tổng hợp các ước lượng mức giảm số chuyến HVFHV chạm CRZ", widths=[7.4, 3.6, 5.0], size=10.5,
            align=["left", "center", "center"])
     rp.P("Bảng trên đặt các ước lượng cạnh nhau. Mọi thiết kế dựa trên một năm trước chính sách đều cho thấy số chuyến giảm trong "
-         "khoảng từ khoảng 6% đến 10%, và ước lượng tham chiếu của Pandey, Guler và Gayah (2026) nằm ở cận dưới của khoảng này. Hai dòng "
-         "cuối, dùng dữ liệu 2022–2025, cho thấy phần lớn mức giảm này trùng với xu hướng giảm tương đối đã có từ năm 2023: sau điều "
-         "chỉnh xu hướng, tác động không khác 0, và theo sai khác bậc hai theo năm, phần tăng thêm chỉ khoảng 2%. Vì vậy, khoảng 6–10% "
-         "nên được hiểu là cận trên của tác động, đạt được chỉ khi xu hướng giảm tương đối trước đó tự dừng lại đúng lúc chính sách bắt "
-         "đầu.")
+         "khoảng từ khoảng 6% đến 10%, và ước lượng tham chiếu của Pandey, Guler và Gayah (2026) nằm ở cận dưới của khoảng này. Các dòng "
+         "dùng dữ liệu 2022–2025 cho thấy con số này phụ thuộc vào giả định về xu hướng: điều chỉnh theo xu hướng tuyến tính 2023–2024 "
+         "cho tác động gần 0, bỏ các tháng đầu năm hoặc cho phép xu hướng bậc hai cho mức giảm khoảng 2–4%, còn dùng năm 2023 làm gốc cho "
+         "mức giảm gần bằng thiết kế một năm. Khoảng 6–10% vì vậy là cận trên, đạt được khi xu hướng giảm tương đối trước đó tự dừng lại "
+         "đúng lúc chính sách bắt đầu; dữ liệu không đủ để chọn một con số cụ thể trong khoảng từ 0 đến khoảng 10%.")
     summ = pd.DataFrame([
         ("RQ1", "Pipeline Lakehouse, DuckDB, Parquet", f"{vint(R.t('t03').total_rows.sum())} bản ghi trong {vn(tot.sec_total.sum() / 60, 1)} phút; Parquet ZSTD nhỏ hơn CSV {vn(1 / zs.size_ratio_vs_csv, 1)} lần; DuckDB dùng ít bộ nhớ nhất", "Cao"),
-        ("RQ2", "Số chuyến", "Giảm 6–10% với một năm trước chính sách; với dữ liệu 2022–2025, mức giảm trùng phần lớn với xu hướng có sẵn, phần vượt xu hướng khoảng 0–2%", "Thấp về độ lớn"),
-        ("RQ3", "Tốc độ, thời gian chờ", f"Tốc độ +{vn(mp.coef, 2)} dặm/giờ và thời gian chờ −{vn(-wt.coef, 2)} phút (một năm trước chính sách); vẫn có ý nghĩa sau điều chỉnh xu hướng 2023–2024 với độ lớn nhỏ hơn", "Cao về chiều, trung bình về độ lớn"),
+        ("RQ2", "Số chuyến", "Giảm 6–10% với một năm trước chính sách; với dữ liệu 2022–2025, từ khoảng 0 đến khoảng 10% tùy giả định xu hướng", "Thấp: chưa xác định được độ lớn"),
+        ("RQ3", "Tốc độ, thời gian chờ", f"Thời gian chờ −{vn(-wt.coef, 2)} phút (một năm), giảm ở mọi đặc tả xu hướng trừ đặc tả kém tin cậy nhất; tốc độ +{vn(mp.coef, 2)} dặm/giờ (một năm), tăng ở phần lớn đặc tả, độ lớn phụ thuộc giả định", "Thời gian chờ: cao; tốc độ: trung bình"),
         ("RQ4", "Không đồng nhất, lan tỏa", "Giảm mạnh hơn vào đêm, chuyến ngắn; tốc độ tăng mạnh chiều tối; lan tỏa giảm dần tới 5–10 km", "Trung bình"),
-        ("RQ5", "Giá, thu nhập tài xế", "Phí chuyển trực tiếp sang hành khách; tác động lên giá cước cơ sở và thu nhập tài xế không xác định được do xu hướng có sẵn", "Thấp"),
     ], columns=["Câu hỏi", "Nội dung", "Kết quả chính", "Mức độ chắc chắn"])
     rp.TAB(summ, "Đối chiếu câu hỏi nghiên cứu, kết quả và mức độ chắc chắn", widths=[1.6, 3.4, 8.0, 3.0], size=10,
            align=["center", "left", "left", "left"])
     rp.H2("4.17. Tiểu kết Chương 4")
     rp.P("Chương 4 cho thấy pipeline xử lý được toàn bộ dữ liệu với chi phí tính toán thấp và các lựa chọn kỹ thuật có tác động đo "
          "được. Về nhân quả, với một năm trước chính sách, mọi thiết kế đều cho thấy số chuyến gọi xe chạm CRZ giảm, tốc độ tăng và thời "
-         "gian chờ giảm, nhất quán giữa các phương pháp và vượt qua suy luận hoán vị. Khi mở rộng giai đoạn trước chính sách về 2022, "
-         "kết luận phân hóa: tốc độ và thời gian chờ vẫn cải thiện sau khi điều chỉnh xu hướng có sẵn, với độ lớn nhỏ hơn; còn mức giảm "
-         "số chuyến phần lớn trùng với xu hướng giảm tương đối của CRZ đã có từ năm 2023, nên tác động nhân quả lên số chuyến không phân "
-         "biệt được rõ với xu hướng đó. Tác động không đồng nhất theo khung giờ, loại luồng và khoảng cách, và lan ra các vùng lân cận "
+         "gian chờ giảm, nhất quán giữa các phương pháp và vượt qua suy luận hoán vị, wild bootstrap, sai số Conley và hiệu chỉnh kiểm "
+         "định bội. Khi mở rộng giai đoạn trước chính sách về 2022, kết luận phân hóa theo mức độ chắc chắn: thời gian chờ giảm ở mọi "
+         "đặc tả xu hướng hợp lý; tốc độ tăng ở phần lớn đặc tả nhưng độ lớn phụ thuộc giả định; còn số chuyến đã giảm tương đối từ năm "
+         "2023, nên tác động nhân quả lên số chuyến nằm đâu đó từ 0 đến khoảng 10% và không xác định được chính xác hơn. Tác động không đồng nhất theo khung giờ, loại luồng và khoảng cách, và lan ra các vùng lân cận "
          "theo mức phơi nhiễm. Các chỉ tiêu giá cước và thu nhập tài xế bị chi phối bởi xu hướng có sẵn nên không thể kết luận. Chương 8 "
          "thảo luận ý nghĩa của các kết quả này, sau khi Chương 5 đến 7 bổ sung phần xử lý phân tán, quản trị dữ liệu và phân tích kinh "
          "doanh.")

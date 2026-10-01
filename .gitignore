@@ -30,3 +30,4 @@ outputs/logs/spark/cores_*
 # Script day len GitHub (chi dung tren may)
 push_github.bat
 capnhat_github.bat
+README.md

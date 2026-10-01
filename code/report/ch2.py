@@ -502,9 +502,10 @@ def build(rp, R):
     rp.H3("2.10.2. Khung phân tích của đồ án")
     rp.PS(
         "Khung phân tích gồm ba tầng. Tầng dữ liệu biến dữ liệu thô thành các bảng Gold có kiểm soát chất lượng và đo chi phí xử lý "
-        "(RQ1). Tầng nhận dạng ước lượng tác động trung bình bằng các thiết kế độc lập và kiểm tra chéo (RQ2, RQ3). Tầng không đồng "
-        "nhất phân rã tác động theo loại luồng, khung giờ, khoảng cách và đặc trưng chuyến đi (RQ4). Ba mô-đun mở rộng bao quanh ba tầng này: kiểm toán và đo "
-        "chi phí xử lý phân tán (RQ5), quản trị dữ liệu và quyền riêng tư (RQ6), và chuyển kết quả thành thông tin kinh doanh (RQ7).",
+        "(RQ1). Tầng nhận dạng ước lượng tác động trung bình bằng các thiết kế độc lập và kiểm tra chéo (RQ2). Tầng không đồng "
+        "nhất phân rã tác động theo loại luồng, khung giờ, khoảng cách và đặc trưng chuyến đi (RQ3). Ba mô-đun mở rộng bao quanh ba "
+        "tầng này: kiểm toán và đo chi phí xử lý phân tán (phần thứ hai của RQ1), quản trị dữ liệu và quyền riêng tư (RQ4), và "
+        "chuyển kết quả thành thông tin kinh doanh (RQ5).",
         "Nguyên tắc xuyên suốt là một kết luận chỉ được coi là vững khi nhiều thiết kế dựa trên các giả định khác nhau cho kết quả "
         "cùng chiều và tương đương về độ lớn, và khi các phép thử giả dược không tạo ra một \"tác động\" có độ lớn tương đương.")
     import theory

@@ -110,27 +110,26 @@ def build(rp, R):
     ], numbered=True)
 
     rp.H2("1.4. Câu hỏi nghiên cứu")
-    rp.H3("1.4.1. Bảy câu hỏi nghiên cứu")
+    rp.H3("1.4.1. Năm câu hỏi nghiên cứu")
     rp.BUL([
         "**RQ1.** Kiến trúc Lakehouse với DuckDB và Parquet có xử lý được toàn bộ dữ liệu trong điều kiện tài nguyên hạn "
-        "chế không, và các lựa chọn định dạng, bộ máy xử lý ảnh hưởng thế nào đến chi phí tính toán?",
-        "**RQ2.** Phí CRZ làm thay đổi số chuyến gọi xe có điểm đầu hoặc điểm cuối trong vùng bao nhiêu so với phản thực "
-        "không có chính sách?",
-        "**RQ3.** Phí có cải thiện điều kiện di chuyển, thể hiện qua tốc độ chuyến đi và thời gian chờ xe, hay không?",
-        "**RQ4.** Tác động có khác nhau giữa loại luồng, khung giờ, ngày trong tuần và đặc trưng chuyến đi không, và có lan "
+        "chế không, các lựa chọn định dạng và bộ máy xử lý ảnh hưởng thế nào đến chi phí tính toán, và một bộ máy phân tán "
+        "(Apache Spark) có tái lập đúng kết quả với chi phí bao nhiêu trên cùng phần cứng?",
+        "**RQ2.** Phí CRZ làm thay đổi số chuyến gọi xe chạm vùng và điều kiện di chuyển, thể hiện qua tốc độ chuyến đi và "
+        "thời gian chờ xe, bao nhiêu so với phản thực không có chính sách?",
+        "**RQ3.** Tác động có khác nhau giữa loại luồng, khung giờ, ngày trong tuần và đặc trưng chuyến đi không, và có lan "
         "sang các vùng lân cận ranh giới không?",
-        "**RQ5.** Một bộ máy xử lý phân tán trong bộ nhớ (Apache Spark) có tái lập đúng kết quả của bộ máy nhúng không, tốn thêm "
-        "bao nhiêu tài nguyên trên cùng phần cứng, và các cơ chế của nó tác động đến hiệu năng ra sao?",
-        "**RQ6.** Tài sản dữ liệu của đồ án có những rủi ro nào về toàn vẹn, chất lượng và quyền riêng tư, và có thể công bố "
+        "**RQ4.** Tài sản dữ liệu của đồ án có những rủi ro nào về toàn vẹn, chất lượng và quyền riêng tư, và có thể công bố "
         "dữ liệu tổng hợp bảo vệ quyền riêng tư mà vẫn giữ được kết luận chính sách không?",
-        "**RQ7.** Kết quả tạo ra thông tin gì cho quyết định kinh doanh, và phương pháp nào đáng tin cho từng loại quyết định?",
+        "**RQ5.** Kết quả tạo ra thông tin gì cho quyết định kinh doanh, và phương pháp nào đáng tin cho từng loại quyết định?",
     ])
     rp.H3("1.4.2. Mức độ chắc chắn kỳ vọng của từng câu trả lời")
     rp.PS(
         "Các câu hỏi không có cùng mức độ trả lời được. RQ1 là câu hỏi kỹ thuật, được trả lời trực tiếp bằng số đo thời gian, "
-        "dung lượng và bộ nhớ. RQ2 và RQ3 có cấu trúc nhận dạng rõ ràng, nên có thể trả lời bằng nhiều phương pháp độc lập để "
-        "đối chiếu. RQ4 dựa trên các giả định mạnh hơn, đặc biệt là giả định chồng lấn trong học máy nhân quả. RQ5 và RQ6 lại là câu hỏi đo lường trực tiếp trên tài sản dữ liệu, nên có thể trả lời chắc chắn trong phạm vi phần "
-        "cứng và dữ liệu của đồ án. RQ7 kết hợp cả hai loại, và độ tin cậy của từng câu trả lời phụ thuộc vào thiết kế được dùng. "
+        "dung lượng, bộ nhớ và phép đối chứng từng ô giữa hai bộ máy. RQ2 có cấu trúc nhận dạng rõ ràng, nên có thể trả lời bằng "
+        "nhiều phương pháp độc lập để đối chiếu. RQ3 dựa trên các giả định mạnh hơn, đặc biệt là giả định chồng lấn trong học máy "
+        "nhân quả. RQ4 lại là câu hỏi đo lường trực tiếp trên tài sản dữ liệu, nên có thể trả lời chắc chắn trong phạm vi phần "
+        "cứng và dữ liệu của đồ án. RQ5 kết hợp cả hai loại, và độ tin cậy của từng câu trả lời phụ thuộc vào thiết kế được dùng. "
         "Đồ án chủ động báo cáo cả những trường hợp dữ liệu không đủ để kết luận.",
         "Câu hỏi phí được chuyển sang hành khách và tài xế như thế nào không được đặt thành câu hỏi nghiên cứu. Giá cước và thu "
         "nhập tài xế chịu ảnh hưởng của những thay đổi quy định và chiến lược giá khác diễn ra trong cùng giai đoạn, và dữ liệu TLC "
@@ -208,7 +207,7 @@ def build(rp, R):
          "kế riêng. Kết quả chỉ ra nơi mô hình chuẩn giải thích tốt và nơi nó cần được mở rộng.")
     rp.H3("1.7.3. Đóng góp về tính minh bạch")
     rp.PS(
-        "Toàn bộ số liệu trong báo cáo được sinh tự động từ tệp kết quả. Bộ mã nguồn gồm các bước đánh số từ 00 đến 17 có thể "
+        "Toàn bộ số liệu trong báo cáo được sinh tự động từ tệp kết quả. Bộ mã nguồn gồm các bước đánh số từ 00 đến 21 có thể "
         "chạy lại từ đầu. Một lỗi ép kiểu trong chính pipeline, được phát hiện nhờ đối chứng với Spark, được báo cáo cùng cách sửa "
         "và phạm vi ảnh hưởng. Những kết quả không vững, như tác động lên giá cước, được báo cáo cùng lý do không vững thay vì bị "
         "lược bỏ.")

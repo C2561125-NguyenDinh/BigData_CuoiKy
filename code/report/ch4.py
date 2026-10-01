@@ -42,7 +42,7 @@ def build(rp, R):
     rp.H1("CHƯƠNG 4. KẾT QUẢ THỰC NGHIỆM VÀ PHÂN TÍCH")
     rp.P("Chương này trình bày kết quả theo thứ tự của câu hỏi nghiên cứu. Mục 4.1 báo cáo hiệu năng của pipeline (RQ1). Các "
          "mục 4.2 đến 4.4 mô tả dữ liệu sau xử lý. Các mục 4.5 đến 4.12 trình bày ước lượng nhân quả về số chuyến, tốc độ, thời "
-         "gian chờ (RQ2, RQ3), giá và thu nhập như phép kiểm tra phương pháp, tác động không đồng nhất và lan tỏa (RQ4). Mục 4.13 và 4.14 là các phép thử độ "
+         "gian chờ (RQ2), giá và thu nhập như phép kiểm tra phương pháp, tác động không đồng nhất và lan tỏa (RQ3). Mục 4.13 và 4.14 là các phép thử độ "
          "tin cậy. Mục 4.15 đối chiếu kết quả với các giả thuyết lý thuyết của mục 2.11, và mục 4.16 tổng hợp kết quả theo câu hỏi nghiên cứu.")
 
     # ================================================================ 4.1
@@ -946,8 +946,8 @@ def build(rp, R):
     summ = pd.DataFrame([
         ("RQ1", "Pipeline Lakehouse, DuckDB, Parquet", f"{vint(R.t('t03').total_rows.sum())} bản ghi trong {vn(tot.sec_total.sum() / 60, 1)} phút; Parquet ZSTD nhỏ hơn CSV {vn(1 / zs.size_ratio_vs_csv, 1)} lần; DuckDB dùng ít bộ nhớ nhất", "Cao"),
         ("RQ2", "Số chuyến", "Giảm 6–10% với một năm trước chính sách; với dữ liệu 2022–2025, từ khoảng 0 đến khoảng 10% tùy giả định xu hướng", "Thấp: chưa xác định được độ lớn"),
-        ("RQ3", "Tốc độ, thời gian chờ", f"Thời gian chờ −{vn(-wt.coef, 2)} phút (một năm), giảm ở mọi đặc tả xu hướng trừ đặc tả kém tin cậy nhất; tốc độ +{vn(mp.coef, 2)} dặm/giờ (một năm), tăng ở phần lớn đặc tả, độ lớn phụ thuộc giả định", "Thời gian chờ: cao; tốc độ: trung bình"),
-        ("RQ4", "Không đồng nhất, lan tỏa", "Giảm mạnh hơn vào đêm, chuyến ngắn; tốc độ tăng mạnh chiều tối; lan tỏa giảm dần tới 5–10 km", "Trung bình"),
+        ("RQ2", "Tốc độ, thời gian chờ", f"Thời gian chờ −{vn(-wt.coef, 2)} phút (một năm), giảm ở mọi đặc tả xu hướng trừ đặc tả kém tin cậy nhất; tốc độ +{vn(mp.coef, 2)} dặm/giờ (một năm), tăng ở phần lớn đặc tả, độ lớn phụ thuộc giả định", "Thời gian chờ: cao; tốc độ: trung bình"),
+        ("RQ3", "Không đồng nhất, lan tỏa", "Giảm mạnh hơn vào đêm, chuyến ngắn; tốc độ tăng mạnh chiều tối; lan tỏa giảm dần tới 5–10 km", "Trung bình"),
     ], columns=["Câu hỏi", "Nội dung", "Kết quả chính", "Mức độ chắc chắn"])
     rp.TAB(summ, "Đối chiếu câu hỏi nghiên cứu, kết quả và mức độ chắc chắn", widths=[1.6, 3.4, 8.0, 3.0], size=10,
            align=["center", "left", "left", "left"])

@@ -35,9 +35,7 @@ def build(rp, R):
         "được tạo ra từ đâu, có bị thay đổi không, chất lượng có ổn định không, và việc công bố nó có gây hại cho ai không. Chương 2 "
         "và Chương 7 của bài giảng gọi chung các câu hỏi này là quản trị dữ liệu và quản trị rủi ro. Chương này trả lời chúng trên "
         "chính tài sản dữ liệu của đồ án, bằng các phép đo có thể chạy lại, thay vì chỉ mô tả khung lý thuyết.",
-        "Câu hỏi nghiên cứu tương ứng là RQ6: tài sản dữ liệu của đồ án có những rủi ro nào về tính toàn vẹn, chất lượng và quyền "
-        "riêng tư, và có thể công bố dữ liệu tổng hợp theo cách bảo vệ quyền riêng tư mà vẫn giữ được kết luận chính sách hay "
-        "không. Bảng 6.1 đối chiếu từng chủ đề của bài giảng với phần triển khai trong chương.")
+        "Chương này trả lời câu hỏi nghiên cứu RQ4 (mục 1.4.1). Bảng 6.1 đối chiếu từng chủ đề của bài giảng với phần triển khai trong chương.")
     fw = pd.DataFrame([
         ("2.6 Metadata và Data Catalog", "Danh mục dữ liệu tự động cho ba lớp, dấu vân tay lược đồ", "6.1", "t68"),
         ("2.6 Metadata (phả hệ)", "Phả hệ trích tự động từ mã nguồn: bước nào đọc, ghi bảng nào", "6.2", "t69, hình phả hệ"),

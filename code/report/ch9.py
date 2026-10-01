@@ -52,38 +52,12 @@ def build(rp, R):
          "ở vùng sát ranh giới, gợi ý rằng hành khách phản ứng với việc đi vào vùng thu phí như một sự kiện theo địa điểm, hơn là với "
          "mức tăng giá của từng chuyến.")
     rp.H2("9.2. Trả lời các câu hỏi nghiên cứu")
-    rp.H3("9.2.1. RQ1: kiến trúc và chi phí xử lý")
+    rp.H3("9.2.1. RQ1: kiến trúc, bộ máy xử lý và chi phí")
     rp.P(f"Pipeline Bronze–Silver–Gold trên DuckDB và Parquet xử lý toàn bộ dữ liệu trong {vn(tot.sec_total.sum() / 60, 1)} phút trên "
          f"máy 2 lõi, khoảng 3 GB RAM. Parquet ZSTD nhỏ hơn CSV {vn(1 / zs.size_ratio_vs_csv, 1)} lần và cho truy vấn tổng hợp nhanh "
          f"hơn {vn(csv.agg_query_s_median / zs.agg_query_s_median, 1)} lần. DuckDB dùng {vn(ddb.max_rss_mb, 0)} MB bộ nhớ cho truy vấn "
          f"một tháng, so với {vn(pdn.max_rss_mb, 0)} MB của pandas. Cắt tỉa cột và đẩy điều kiện lọc theo thời gian cho lợi ích lớn nhờ "
          f"dữ liệu được lưu theo thứ tự thời gian.")
-    rp.H3("9.2.2. RQ2: tác động lên số chuyến")
-    rp.P(f"Số chuyến HVFHV đón trong CRZ giảm {vn(-pct_log(tw.coef), 1)}% theo TWFE, {vn(-pct_log(dd.coef), 1)}% theo DDD khử mùa vụ, "
-         f"{vn(-sc['avg_pct_effect_post'], 1)}% theo kiểm soát tổng hợp và {vn(-pct_log(dm.aipw_ate), 1)}% theo AIPW trên cặp OD thuộc "
-         f"vùng chồng lấn. Kết quả vượt qua suy luận hoán vị và vững qua hầu hết các đặc tả thay thế. Luồng nội vùng CRZ→CRZ giảm mạnh "
-         f"nhất ({vn(-pct_log(b1.coef), 1)}%). Tuy vậy, "
-         f"với dữ liệu 2022–2025, giả dược 2024 so với 2023 đã cho {vn(pct_log(ln.placebo_2024_vs_2023), 1)}%, và sau khi trừ xu "
-         f"hướng tuyến tính, tác động còn {vn(100 * ln.effect_trend_adj, 2, sign=True)}% (sai số chuẩn {vn(100 * ln.effect_trend_adj_se, 2)} "
-         f"điểm %). Khi đổi năm gốc hoặc dạng xu hướng (mục 4.14.6), ước lượng đi từ khoảng 0 đến {vn(100 * t93l.loc['S3'].effect, 1, sign=True)}%. "
-         f"Kết luận vì vậy là: phí có thể làm số chuyến giảm từ 0 đến khoảng 10%; phạm vi 6–10% là cận trên, đúng khi xu hướng "
-         f"giảm tương đối 2023–2024 không kéo dài sang 2025, và dữ liệu TLC không xác định được con số chính xác hơn.")
-    rp.H3("9.2.3. RQ3: tác động lên ùn tắc")
-    rp.P(f"Tốc độ trung bình của chuyến đón trong CRZ tăng {vn(mp.coef, 2)} dặm/giờ và thời gian chờ giảm {vn(-wt.coef, 2)} phút. Hai kết "
-         f"quả có bước nhảy rõ tại mốc chính sách, vượt qua giả dược theo thời gian. Với dữ liệu 2022–2025, sau điều chỉnh xu hướng, tốc độ "
-         f"vẫn tăng {vn(lm.effect_trend_adj, 2)} dặm/giờ (sai số chuẩn {vn(lm.effect_trend_adj_se, 3)}) và thời gian chờ giảm "
-         f"{vn(-lw.effect_trend_adj, 2)} phút; độ lớn nhỏ hơn nhưng chiều không đổi. Qua sáu đặc tả năm gốc và dạng xu hướng, thời gian "
-         f"chờ giảm ở {int((t93w.ci_high_wild < 0).sum())} đặc tả và tốc độ tăng ở {int((t93m.ci_low_wild > 0).sum())} đặc tả. Thời gian "
-         f"chờ là bằng chứng vững nhất của đồ án về việc chính sách cải thiện điều kiện di chuyển; tốc độ ủng hộ cùng kết luận nhưng "
-         f"với độ lớn kém chắc chắn hơn. Sai số Conley, phân cụm hai chiều, wild bootstrap và hiệu chỉnh Holm, Romano–Wolf đều không "
-         f"làm hai kết quả này mất ý nghĩa thống kê.")
-    rp.H3("9.2.4. RQ4: không đồng nhất và lan tỏa")
-    rp.P(f"Số chuyến giảm mạnh hơn vào đêm và tối, ít hơn vào giờ đi làm buổi sáng; tốc độ tăng mạnh nhất vào chiều tối ngày thường. "
-         f"Kiểm định BLP xác nhận có không đồng nhất thật theo đặc trưng chuyến đi, với chuyến ngắn nhạy hơn. Về không gian, mức giảm "
-         f"lan tới các vùng cách CRZ vài km; dùng Manhattan phía bắc làm đối chứng cho mức giảm {vn(-mn.pct, 1)}%, so với "
-         f"{vn(-ou.pct, 1)}% khi dùng quận ngoài. Số chuyến từ CRZ trả khách ở dải 0–1 km ngoài ranh giới tăng "
-         f"{vn(pct_log(fc01.coef), 1)}%.")
-    rp.H3("9.2.5. RQ5: xử lý phân tán với Spark")
     rep = R.t("t60b")
     v1 = R.JS["spark/validate"]
     eng = R.t("t62").set_index("engine")
@@ -96,7 +70,31 @@ def build(rp, R):
          f"ngắn việc chuyển dữ liệu sang pandas {vn(ar.loc[False, 'median_s'] / ar.loc[True, 'median_s'], 1)} lần, còn lưu đệm không "
          f"đem lại lợi ích với truy vấn quét trên Parquet. Structured Streaming phát hiện thời điểm chính sách có hiệu lực ngay trong lô "
          f"vi mô đầu tiên sau đó.")
-    rp.H3("9.2.6. RQ6: quản trị dữ liệu, quyền riêng tư và rủi ro")
+    rp.H3("9.2.2. RQ2: tác động lên số chuyến và điều kiện di chuyển")
+    rp.P(f"Số chuyến HVFHV đón trong CRZ giảm {vn(-pct_log(tw.coef), 1)}% theo TWFE, {vn(-pct_log(dd.coef), 1)}% theo DDD khử mùa vụ, "
+         f"{vn(-sc['avg_pct_effect_post'], 1)}% theo kiểm soát tổng hợp và {vn(-pct_log(dm.aipw_ate), 1)}% theo AIPW trên cặp OD thuộc "
+         f"vùng chồng lấn. Kết quả vượt qua suy luận hoán vị và vững qua hầu hết các đặc tả thay thế. Luồng nội vùng CRZ→CRZ giảm mạnh "
+         f"nhất ({vn(-pct_log(b1.coef), 1)}%). Tuy vậy, "
+         f"với dữ liệu 2022–2025, giả dược 2024 so với 2023 đã cho {vn(pct_log(ln.placebo_2024_vs_2023), 1)}%, và sau khi trừ xu "
+         f"hướng tuyến tính, tác động còn {vn(100 * ln.effect_trend_adj, 2, sign=True)}% (sai số chuẩn {vn(100 * ln.effect_trend_adj_se, 2)} "
+         f"điểm %). Khi đổi năm gốc hoặc dạng xu hướng (mục 4.14.6), ước lượng đi từ khoảng 0 đến {vn(100 * t93l.loc['S3'].effect, 1, sign=True)}%. "
+         f"Kết luận vì vậy là: phí có thể làm số chuyến giảm từ 0 đến khoảng 10%; phạm vi 6–10% là cận trên, đúng khi xu hướng "
+         f"giảm tương đối 2023–2024 không kéo dài sang 2025, và dữ liệu TLC không xác định được con số chính xác hơn.")
+    rp.P(f"Tốc độ trung bình của chuyến đón trong CRZ tăng {vn(mp.coef, 2)} dặm/giờ và thời gian chờ giảm {vn(-wt.coef, 2)} phút. Hai kết "
+         f"quả có bước nhảy rõ tại mốc chính sách, vượt qua giả dược theo thời gian. Với dữ liệu 2022–2025, sau điều chỉnh xu hướng, tốc độ "
+         f"vẫn tăng {vn(lm.effect_trend_adj, 2)} dặm/giờ (sai số chuẩn {vn(lm.effect_trend_adj_se, 3)}) và thời gian chờ giảm "
+         f"{vn(-lw.effect_trend_adj, 2)} phút; độ lớn nhỏ hơn nhưng chiều không đổi. Qua sáu đặc tả năm gốc và dạng xu hướng, thời gian "
+         f"chờ giảm ở {int((t93w.ci_high_wild < 0).sum())} đặc tả và tốc độ tăng ở {int((t93m.ci_low_wild > 0).sum())} đặc tả. Thời gian "
+         f"chờ là bằng chứng vững nhất của đồ án về việc chính sách cải thiện điều kiện di chuyển; tốc độ ủng hộ cùng kết luận nhưng "
+         f"với độ lớn kém chắc chắn hơn. Sai số Conley, phân cụm hai chiều, wild bootstrap và hiệu chỉnh Holm, Romano–Wolf đều không "
+         f"làm hai kết quả này mất ý nghĩa thống kê.")
+    rp.H3("9.2.3. RQ3: không đồng nhất và lan tỏa")
+    rp.P(f"Số chuyến giảm mạnh hơn vào đêm và tối, ít hơn vào giờ đi làm buổi sáng; tốc độ tăng mạnh nhất vào chiều tối ngày thường. "
+         f"Kiểm định BLP xác nhận có không đồng nhất thật theo đặc trưng chuyến đi, với chuyến ngắn nhạy hơn. Về không gian, mức giảm "
+         f"lan tới các vùng cách CRZ vài km; dùng Manhattan phía bắc làm đối chứng cho mức giảm {vn(-mn.pct, 1)}%, so với "
+         f"{vn(-ou.pct, 1)}% khi dùng quận ngoài. Số chuyến từ CRZ trả khách ở dải 0–1 km ngoài ranh giới tăng "
+         f"{vn(pct_log(fc01.coef), 1)}%.")
+    rp.H3("9.2.4. RQ4: quản trị dữ liệu, quyền riêng tư và rủi ro")
     kan = R.t("t74").set_index("qi")
     dp = R.t("t75b")
     rec = R.t("t71")
@@ -108,7 +106,7 @@ def build(rp, R):
          f"tiết của bản công bố, {vn(kan.loc['Vùng đón, vùng trả, giây đón (như bản công bố)', 'unique_pct'], 1)}% chuyến là duy nhất, "
          f"nên dữ liệu vi mô có rủi ro tái nhận dạng cao; rủi ro giảm mạnh khi thời gian được làm thô. Bảng vùng × ngày có quyền riêng "
          f"tư vi phân với ε = 0,01 vẫn cho tác động lên số chuyến là {vn(e01.pct_effect_mean, 2)}%, gần như trùng với bản gốc.")
-    rp.H3("9.2.7. RQ7: giá trị kinh doanh")
+    rp.H3("9.2.5. RQ5: giá trị kinh doanh")
     co = R.t("t77_company")
     u = co[(co.outcome == "ln_uber") & (co.spec == "TWFE")].iloc[0]
     ly = co[(co.outcome == "ln_lyft") & (co.spec == "TWFE")].iloc[0]

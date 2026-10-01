@@ -26,8 +26,7 @@ def build(rp, R):
         "quyết định gì, và giá trị của tài sản đó được đo thế nào. Nội dung bám theo ba chương ứng dụng của bài giảng: dự báo nhu cầu "
         "và quản trị vận hành (Chương 4), phân tích khách hàng và thử nghiệm quy mô lớn (Chương 5), định giá và thương mại hóa dữ liệu "
         "(Chương 6).",
-        "Câu hỏi nghiên cứu tương ứng là RQ7: kết quả của đồ án tạo ra những thông tin gì cho quyết định kinh doanh, và phương pháp "
-        "phân tích nào đáng tin cho từng loại quyết định? Mục 7.1 phân tích tác động theo hãng. Mục 7.2 so sánh dự báo nhu cầu với "
+        "Chương này trả lời câu hỏi nghiên cứu RQ5 (mục 1.4.1). Mục 7.1 phân tích tác động theo hãng. Mục 7.2 so sánh dự báo nhu cầu với "
         "suy luận nhân quả. Mục 7.3 tính quy mô dữ liệu cần cho một thử nghiệm chính sách. Mục 7.4 xem xét định giá động. Mục 7.5 tổng "
         "hợp phân khúc chuyến đi. Mục 7.6 và 7.7 bàn về giá trị của tài sản dữ liệu và lộ trình chiến lược.")
 
@@ -64,11 +63,9 @@ def build(rp, R):
     rp.H2("7.2. Dự báo nhu cầu và giới hạn của dự báo làm phản thực tế")
     rp.H3("7.2.1. Thiết kế")
     rp.PS(
-        "Mục 4.4 của bài giảng trình bày dự báo nhu cầu bằng dữ liệu lớn như một ứng dụng vận hành cốt lõi. Một cách dùng dự báo cho "
-        "đánh giá chính sách, phổ biến trong doanh nghiệp, là huấn luyện mô hình dự báo trên giai đoạn trước sự kiện rồi coi dự báo "
-        "cho giai đoạn sau là phản thực tế; chênh lệch giữa thực tế và dự báo được diễn giải là tác động. Brodersen và cộng sự (2015) "
-        "chính thức hóa cách tiếp cận này trong CausalImpact bằng mô hình chuỗi thời gian cấu trúc Bayes có dùng các chuỗi đối chứng "
-        "làm biến giải thích.",
+        "Mục 2.9.1 đã trình bày cách dùng dự báo nhu cầu làm phản thực tế: huấn luyện mô hình trên giai đoạn trước sự kiện, rồi "
+        "diễn giải chênh lệch giữa thực tế và dự báo ở giai đoạn sau là tác động. Cách làm này phổ biến trong doanh nghiệp vì chỉ "
+        "cần chuỗi thời gian, không cần thiết kế nhận dạng. Mục này kiểm tra nó trên chính dữ liệu của đồ án.",
         "Đồ án áp dụng cách tiếp cận này cho log số chuyến HVFHV đón trong CRZ theo ngày, với năm mô hình: Ridge chỉ dùng lịch (thứ "
         "trong tuần, ngày lễ liên bang và ngày liền kề, kỳ nghỉ cuối năm, sóng điều hòa theo năm) có xu hướng tuyến tính; Ridge thêm "
         "hai chuỗi đối chứng là log số chuyến của Manhattan phía bắc và quận ngoài, có và không có xu hướng; Ridge chỉ thêm chuỗi quận "

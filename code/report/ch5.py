@@ -50,7 +50,7 @@ def build(rp, R):
         "phí: mô hình phân tán của Spark tốn thêm bao nhiêu thời gian và bộ nhớ khi chạy trên đúng phần cứng mà DuckDB đã dùng. Câu "
         "hỏi thứ ba là cơ chế: các thành phần mà lý thuyết nêu ra, gồm bộ tối ưu Catalyst, thực thi truy vấn thích nghi, lưu đệm, "
         "cắt tỉa phân vùng, Apache Arrow và xử lý luồng có cấu trúc, tác động đo được đến đâu trên dữ liệu thật của đồ án.",
-        "Ba câu hỏi này gộp lại thành câu hỏi nghiên cứu RQ5. Mục 5.1 mô tả thiết kế thực nghiệm. Mục 5.2 trình bày kết quả tái lập "
+        "Ba câu hỏi này tạo thành phần thứ hai của câu hỏi nghiên cứu RQ1. Mục 5.1 mô tả thiết kế thực nghiệm. Mục 5.2 trình bày kết quả tái lập "
         "và đối chứng chéo, trong đó có một lỗi thật của pipeline được phát hiện nhờ Spark. Các mục 5.3 đến 5.8 lần lượt phân tích "
         "hiệu năng và từng cơ chế. Mục 5.9 thảo luận hàm ý cho việc chọn công cụ.")
 

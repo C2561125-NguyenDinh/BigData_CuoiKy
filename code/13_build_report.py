@@ -28,7 +28,7 @@ from results import Results  # noqa: E402
 import front, ch1, ch2, ch3, ch4, ch5, ch6, ch7, ch8, ch9, refs, appendix  # noqa: E402,E401
 
 
-FRONT_TOC = ["LỜI CẢM ƠN", "LỜI CAM KẾT", "TÓM TẮT", "ABSTRACT", "DANH MỤC TỪ VIẾT TẮT",
+FRONT_TOC = ["LỜI CẢM ƠN", "LỜI CAM KẾT", "TÓM TẮT", "DANH MỤC TỪ VIẾT TẮT",
              "DANH MỤC BẢNG BIỂU", "DANH MỤC HÌNH ẢNH"]
 
 
@@ -39,7 +39,6 @@ def build(pages):
     front.thanks(rp)
     front.commitment(rp, R)
     front.abstract_vi(rp, R)
-    front.abstract_en(rp, R)
     # Dựng nội dung một lần vào tài liệu tạm để biết danh sách tiêu đề, hình, bảng,
     # rồi mới chèn các danh mục vào trước phần nội dung của tài liệu chính.
     tmp = Report(pages)

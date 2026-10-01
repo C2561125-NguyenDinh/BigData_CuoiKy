@@ -1,4 +1,4 @@
-"""Phần mở đầu theo mẫu: bìa, lời cảm ơn, lời cam kết, tóm tắt, abstract, từ viết tắt."""
+"""Phần mở đầu theo mẫu: bìa, lời cảm ơn, lời cam kết, tóm tắt, từ viết tắt."""
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from pathlib import Path
 
@@ -10,8 +10,6 @@ from results import pct_log
 TITLE = ("TÁC ĐỘNG KHÔNG ĐỒNG NHẤT VÀ HIỆU ỨNG LAN TỎA CỦA PHÍ GIẢM ÙN TẮC MANHATTAN "
          "LÊN THỊ TRƯỜNG GỌI XE CÔNG NGHỆ: TIẾP CẬN HỌC MÁY NHÂN QUẢ TRÊN KIẾN TRÚC "
          "LAKEHOUSE VỚI HÀNG TRĂM TRIỆU CHUYẾN ĐI")
-TITLE_EN = ("Heterogeneous and Spillover Effects of the Manhattan Congestion Relief Zone Toll on "
-            "Ride-hailing Markets: A Causal Machine Learning Study on a Big Data Lakehouse")
 
 
 STUDENT = "Đinh Nguyễn Tấn Nguyên – C25611252"
@@ -35,7 +33,7 @@ def cover(rp):
     rp.P("TIỂU LUẬN CUỐI KỲ", indent=False, align="center", size=14, bold=True, space_after=14)
     tp = rp.P(TITLE, indent=False, align="center", size=16, bold=True, space_after=8)
     tp.paragraph_format.line_spacing = 1.25
-    rp.P(TITLE_EN, indent=False, align="center", size=12, italic=True, space_after=22)
+    tp.paragraph_format.space_after = Pt(30)
     rp.P(f"Môn học: {COURSE}", indent=False, align="center", size=16, bold=True, space_after=22)
     for lab, val, sa in (("GVHD:", TEACHER, 14), ("HVTH:", STUDENT, 0)):
         for txt, b, a in ((lab, True, 0), (val, False, sa)):
@@ -62,7 +60,7 @@ def commitment(rp, R):
         "tự động từ các tệp kết quả của mã nguồn đính kèm, không có số liệu nào được nhập tay hay ước đoán.",
         "Mã nguồn, dữ liệu trung gian ở các lớp Bronze, Silver, Gold và các tệp kết quả được lưu đầy đủ trong "
         "thư mục đồ án để người chấm có thể chạy lại và đối chiếu. Các tài liệu tham khảo được trích dẫn rõ "
-        "nguồn. Nếu có sai phạm, tôi xin chịu hoàn toàn trách nhiệm.")
+        "nguồn.")
     rp.P("Thành phố Hồ Chí Minh, năm 2026", indent=False, align="right", italic=True)
     rp.P("Học viên thực hiện", indent=False, align="right", bold=True)
     rp.P(STUDENT.split(" – ")[0], indent=False, align="right")
@@ -143,52 +141,6 @@ def abstract_vi(rp, R):
         f"dự báo nhu cầu chính xác nhất cho phản thực tế trái chiều với DiD, một phần vì chuỗi đối chứng bị lan tỏa.",
         "Từ khóa: dữ liệu lớn, Lakehouse, DuckDB, Apache Spark, phí ùn tắc, gọi xe công nghệ, sai khác kép, kiểm soát tổng hợp, "
         "Double Machine Learning, quyền riêng tư vi phân, quản trị dữ liệu, xu hướng trước chính sách.")
-
-
-def abstract_en(rp, R):
-    t93 = R.t("t93")
-    t93w, t93m = t93[t93.outcome == "wait"], t93[t93.outcome == "mph"]
-    tw = R.did("hvfhv", "ln_n")
-    dd = R.did("hvfhv", "ln_n", "DDD mùa vụ")
-    sc = R.J["08_scm"]["standard"]
-    dm = R.dml("dlog_n")
-    mph = R.did("hvfhv", "mph")
-    wt = R.did("hvfhv", "wait")
-    man = R.t("t03")
-    uniq = R.t("t74").set_index("qi").loc["Vùng đón, vùng trả, giây đón (như bản công bố)", "unique_pct"]
-    rp.H1("ABSTRACT", numbered=False, size=14)
-    en = lambda x, d=1: f"{x:,.{d}f}"
-    rp.PS(
-        "On 5 January 2025 New York City started tolling vehicles entering Manhattan south of and including 60th Street, "
-        "the Congestion Relief Zone (CRZ). High-volume for-hire trips that start or end in the zone pay USD 1.50 and yellow "
-        "taxi trips USD 0.75. This case study evaluates the policy with trip-level records published by the NYC Taxi and "
-        "Limousine Commission for January 2024 to December 2025.",
-        f"A three-layer Bronze–Silver–Gold lakehouse built on DuckDB and Parquet processes {en(man.total_rows.sum() / 1e6)} "
-        "million raw records on a machine with about 3 GB of RAM. Treated zones are inferred from the data rather than "
-        "assigned by hand. Identification combines two-way fixed-effects difference-in-differences, a seasonal "
-        "triple-difference, event studies, synthetic control and double/debiased machine learning with LightGBM nuisances.",
-        f"Waiting time for CRZ pickups falls by {en(-wt.coef, 2)} minutes and average trip speed rises by {en(mph.coef, 2)} mph "
-        f"relative to control zones. Ride-hailing pickups in the CRZ fall by {en(-pct_log(tw.coef))}% (TWFE), "
-        f"{en(-pct_log(dd.coef))}% (seasonal DDD), {en(-sc['avg_pct_effect_post'])}% (synthetic control) and "
-        f"{en(-pct_log(dm.aipw_ate))}% (AIPW on the overlap sample of origin–destination pairs). These estimates remain "
-        "significant with Conley spatial standard errors, two-way clustering, the wild cluster bootstrap and multiple-testing "
-        "corrections. Fare and driver-pay outcomes show strong pre-existing differential trends and are not given a causal "
-        "interpretation. Effects spill over to neighbouring zones outside the boundary and fade with distance.",
-        f"Adding {en(R.t('t03x').total_rows.sum() / 1e6)} million records for 2022–2023 and estimating a monthly event study "
-        f"over four years under six choices of base year and trend shape ranks the conclusions by robustness. Waiting time "
-        f"falls in {int((t93w.ci_high_wild < 0).sum())} of {len(t93w)} specifications and speed rises in "
-        f"{int((t93m.ci_low_wild > 0).sum())}, with a magnitude that depends on the trend assumption. CRZ trips were already "
-        "falling relative to control zones before the toll, and the toll effect on trips ranges from about zero to about 10% "
-        "depending on the trend assumption; the 6–10% decline from one-year designs is an upper bound.",
-        "Three extension modules follow the remaining chapters of the course. Apache Spark independently rebuilds the main "
-        "Gold table; the cell-by-cell comparison with DuckDB uncovered a silent type-coercion bug in the consolidation step, "
-        "fixed before this report was built, and eight experiments measure adaptive query execution, caching, partition "
-        f"pruning, Arrow and Structured Streaming. A governance module shows that {en(uniq)}% of trips are unique at the "
-        "published level of detail, while zone-by-day counts released under differential privacy with epsilon = 0.01 "
-        "preserve the policy conclusion. A business module finds that the most accurate out-of-sample demand forecast "
-        "yields a counterfactual of the opposite sign to DiD, partly because its control series is itself affected by spillovers.",
-        "Keywords: big data, lakehouse, DuckDB, Apache Spark, congestion pricing, ride-hailing, difference-in-differences, "
-        "synthetic control, double machine learning, differential privacy, data governance, pre-trends.")
 
 
 ABBR = [

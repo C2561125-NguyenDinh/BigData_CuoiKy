@@ -41,9 +41,8 @@ def build(rp, R):
         f"kiện để làm được là ba lựa chọn đi cùng nhau: định dạng cột nén, bộ máy thực thi vector hóa có giới hạn bộ nhớ và cơ chế "
         f"tràn đĩa, và chia việc thành các phân vùng lũy đẳng. Thiếu một trong ba, bài toán sẽ vượt tài nguyên.",
         f"Chương 5 đã kiểm chứng trực tiếp nhận định này thay vì chỉ lập luận: trên cùng phần cứng, chi phí biên của Spark là "
-        f"{vn(bs, 3)} giây cho mỗi triệu dòng so với {vn(bd, 3)} giây của DuckDB, và JVM cần bộ nhớ cố định lớn hơn nhiều. Nhưng Chương "
-        f"5 cũng cho thấy Spark có ba vai trò mà DuckDB không thay thế được ngay cả ở quy mô này: kiểm toán độc lập (phát hiện lỗi ép "
-        f"kiểu), đường nâng cấp khi dữ liệu vượt một máy, và xử lý luồng có trạng thái. Quan điểm của mục 3.8 trong bài giảng về tối ưu "
+        f"{vn(bs, 3)} giây cho mỗi triệu dòng so với {vn(bd, 3)} giây của DuckDB, và JVM cần bộ nhớ cố định lớn hơn nhiều. Nhưng mục "
+        f"5.9 cũng chỉ ra ba vai trò mà DuckDB không thay thế được ngay cả ở quy mô này. Quan điểm của mục 3.8 trong bài giảng về tối ưu "
         f"chi phí tính toán vì vậy cần được hiểu đúng: chọn công cụ theo quy mô và tần suất thực tế, nhưng một bộ máy thứ hai với chi "
         f"phí thấp có thể đáng giá vì giúp kiểm soát chất lượng, dù không nhanh hơn.")
     rp.H3("8.1.2. Chất lượng dữ liệu ảnh hưởng đến kết luận nhân quả")

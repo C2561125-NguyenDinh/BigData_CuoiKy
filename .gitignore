@@ -30,4 +30,5 @@ outputs/logs/spark/cores_*
 # Script day len GitHub (chi dung tren may)
 push_github.bat
 capnhat_github.bat
-README.md
+# README chi giu tren may, khong dua len GitHub (data/README.md van duoc dua len)
+/README.md
